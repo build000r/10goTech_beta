@@ -1,0 +1,9 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/[site]/[service]": "pages/[site]/[service].js",
+  "/[site]": "pages/[site].js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
+  "/[site]/auth/signup": "pages/[site]/auth/signup.js"
+}

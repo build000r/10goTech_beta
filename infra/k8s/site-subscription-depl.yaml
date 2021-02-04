@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: site-subscription-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: site-subscription
+  template:
+    metadata:
+      labels:
+        app: site-subscription
+    spec:
+      containers:
+        - name: site-subscription
+          image: thesaas/site-subscription
+          env:
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: "http://nats-srv:4222"
+            - name: NATS_CLUSTER_ID
+              value: rfp
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+            - name: STRIPE_PUBLISHABLE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: stripe-publishable
+                  key: STRIPE_PUBLISHABLE_KEY
+            - name: STRIPE_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: stripe-secret
+                  key: STRIPE_SECRET_KEY
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: MONGO_URI
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: site-subscription-srv
+spec:
+  selector:
+    app: site-subscription
+  ports:
+    - name: site-subscription
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
