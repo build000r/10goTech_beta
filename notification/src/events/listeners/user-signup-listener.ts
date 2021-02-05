@@ -17,13 +17,7 @@ export class UserSignupListener extends Listener<UserSignupEvent> {
   async onMessage(data: UserSignupEvent["data"], msg: Message) {
     const { userOfSite, token } = data;
 
-    const site = await Site.findOne({ title: userOfSite });
-
-    if (!site) {
-      throw new BadRequestError("site not found");
-    }
-
-    await userSignup(data.email, data.token, data.userOfSite, site);
+    await userSignup(data.email, data.token, data.userOfSite);
 
     // is it an "admin" site?
 

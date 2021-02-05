@@ -1,10 +1,11 @@
 // import axios from "axios";
 import axios from "axios";
+import Link from "next/link";
 import { useState } from "react";
-import { Header, List, Message } from "semantic-ui-react";
+import { Button, Header, List, Message } from "semantic-ui-react";
 import VertCenterGrid from "../components/grid/vert-center";
 
-const useAuth = ({ user, currentUrlSite, renderIfAuth }) => {
+const useAuth = ({ user, currentUrlSite, renderIfAuth, siteOwnerId }) => {
   const goLogInOrSignUp = () => (
     <VertCenterGrid>
       <Header textAlign="center">
@@ -16,10 +17,26 @@ const useAuth = ({ user, currentUrlSite, renderIfAuth }) => {
             there?
           </Header.Subheader>
         ) : null}
+        <Header.Subheader>
+          <Button.Group>
+            <Link href={`/user/${currentUrlSite}/auth/signup`}>
+              <Button inverted color="linkedin">
+                Sign Up
+              </Button>
+            </Link>
+            <Link href={`/user/${currentUrlSite}/auth/signin`}>
+              <Button>Sign In</Button>
+            </Link>
+          </Button.Group>
+        </Header.Subheader>
       </Header>
-      go log in or sign up
     </VertCenterGrid>
   );
+
+  if (user && user.id === siteOwnerId) {
+    console.log(user);
+    return renderIfAuth();
+  }
 
   return user && user.userOfSite === currentUrlSite
     ? renderIfAuth()

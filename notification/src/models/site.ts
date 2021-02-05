@@ -5,7 +5,7 @@ import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 interface SiteAttrs {
   id: string;
   title: string;
-  owner?: UserDoc;
+  owner: UserDoc;
   sendgridApiKey?: string;
   sendFromEmail?: string;
 }

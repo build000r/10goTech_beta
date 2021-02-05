@@ -39,7 +39,7 @@ const Checkout = ({
   });
 
   useEffect(() => {
-    console.log("refresh", data.cart);
+    // console.log("refresh", data.cart);
   }, []);
 
   const nextActionButton = () => {
@@ -91,6 +91,7 @@ const Checkout = ({
     console.log("products", products);
 
     await doRequest();
+    // console.log(errors);
 
     emptyCart(() => {
       setRun(!run); // run useEffect in parent Cart

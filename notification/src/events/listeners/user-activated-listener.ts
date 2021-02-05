@@ -31,7 +31,11 @@ export class UserActivatedListener extends Listener<UserActivatedEvent> {
           1) store user. questions surrounding introduction of sgmail user
           2) SYSTEM send a welcome message 
       */
-      await firmActivated(user.email, user.userOfSite);
+      await firmActivated(
+        user.email,
+        user.userOfSite,
+        user.name ? user.name : ""
+      );
     } else {
       /* Is this a user of firm?
           1) lookup the welcome message for the site they signed up for. If none, use default.

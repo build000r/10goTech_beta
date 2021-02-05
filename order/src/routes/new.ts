@@ -24,6 +24,8 @@ router.post(
   async (req: Request, res: Response) => {
     const { products } = req.body;
 
+    console.log("placing order!", products);
+
     if (req.currentUser!.userOfSite !== products[0].site.title) {
       throw new NotAuthorizedError();
     }
@@ -36,12 +38,10 @@ router.post(
 
     await order.save();
 
-    order.populate("Product");
-
     new OrderCreatedPublisher(natsWrapper.client).publish({
       siteTitle: order.products[0].siteTitle,
       userId: order.userId,
-      productTitle: order.products[0].title,
+      products: order.products,
       version: order.version,
     });
 

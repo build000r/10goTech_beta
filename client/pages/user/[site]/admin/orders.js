@@ -17,6 +17,8 @@ import Router, { useRouter } from "next/router";
 const services = ({ orders, siteUsers }) => {
   const path = useRouter().asPath;
 
+  console.log(orders);
+
   const [values, setValues] = useState({
     ownerNote: "Order is currently being reviewed",
     crmStatus: "",
@@ -131,7 +133,8 @@ const services = ({ orders, siteUsers }) => {
     });
   };
 
-  const getOrderer = (id) => siteUsers.filter((u) => u.id === id);
+  const getOrderer = (id) =>
+    siteUsers.filter((u) => u.id === id || u._id === id);
 
   return (
     <Segment basic style={{ minHeight: "90vh" }}>
@@ -139,6 +142,8 @@ const services = ({ orders, siteUsers }) => {
         <Card.Group centered itemsPerRow={useMediaQuery(700) ? 1 : 3}>
           {orders.map((order) => {
             let { crmStatus, userId, products, id } = order;
+
+            console.log("userId", userId);
 
             const { name, email, phone, createdAt } = getOrderer(userId)[0];
 
@@ -192,6 +197,8 @@ services.getInitialProps = async (context) => {
   orders = orders.sort(function (a, b) {
     return new Date(b.createdAt) - new Date(a.createdAt);
   });
+
+  console.log("SITE USERS", siteUsers);
 
   return { orders, siteUsers };
 };

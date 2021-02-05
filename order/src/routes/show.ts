@@ -18,9 +18,7 @@ router.get(
       throw new NotFoundError();
     }
 
-    order.populate("Product");
-
-    if (req.currentUser!.id !== order.product.siteOwnerId || order.userId) {
+    if (req.currentUser!.id !== order.products[0].siteOwnerId || order.userId) {
       throw new NotAuthorizedError();
     }
 

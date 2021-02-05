@@ -4,31 +4,41 @@ import {
   Listener,
   Subjects,
   OrderCreatedEvent,
+  OrderCrmStatus,
 } from "@thesaas/common-rfp";
 import { orderCreatedReceipt, orderCreatedAlert } from "../../services/email";
 import { queueGroupName } from "./queue-group-name";
-// import { Order } from "../../models/order";
+import { Order } from "../../models/order";
+import { User, UserDoc } from "../../models/user";
 
 export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
   readonly subject = Subjects.OrderCreated;
   queueGroupName = queueGroupName;
 
   async onMessage(data: OrderCreatedEvent["data"], msg: Message) {
-    const { userId, productTitle, siteTitle } = data;
+    const { userId, products, siteTitle } = data;
 
-    // const order = Order.build({
-    //   userId: "",
-    //   productTitle: "",
-    //   siteId: "",
-    // });
+    const order = Order.build({
+      crmStatus: OrderCrmStatus.Created,
+      userId,
+      products,
+      siteTitle,
+    });
 
-    // await order.save();
+    await order.save();
 
-    // send teh PRODUCT ID
-    console.log("order created");
+    const orderer =
+      (await User.findOne({ id: order.userId })) ||
+      (await User.findOne({ _id: order.userId }));
 
-    await orderCreatedReceipt("email");
-    await orderCreatedAlert("email");
+    if (!orderer) {
+      throw new BadRequestError(
+        "The user who placed this order cannot be found."
+      );
+    }
+
+    await orderCreatedAlert(orderer, order);
+    await orderCreatedReceipt(orderer, order);
 
     console.log(`ordered`);
     msg.ack();

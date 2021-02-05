@@ -7,6 +7,7 @@ interface OrderAttrs {
   crmStatus: OrderCrmStatus; // CRM crmStatus
   products: any;
   ownerNote?: string;
+  siteTitle?: string;
 }
 interface OrderDoc extends mongoose.Document {
   userId: string;
@@ -15,6 +16,7 @@ interface OrderDoc extends mongoose.Document {
   ownerNote?: string;
   createdAt: string;
   version: number;
+  siteTitle?: string;
 }
 
 interface OrderModel extends mongoose.Model<OrderDoc> {
@@ -60,6 +62,9 @@ const orderSchema = new mongoose.Schema(
       },
     ],
     ownerNote: {
+      type: String,
+    },
+    siteTitle: {
       type: String,
     },
   },

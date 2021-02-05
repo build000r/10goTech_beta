@@ -33,7 +33,7 @@ const ViewPhotos = ({ photos }) => {
           return (
             <Card>
               <Image src={img} wrapped ui={false} />
-              <Card.Content>
+              {/* <Card.Content>
                 <Card.Meta>
                   <Form>
                     <Form.Field>
@@ -46,7 +46,7 @@ const ViewPhotos = ({ photos }) => {
                     <Form.Button floated="right">Save Caption</Form.Button>
                   </Form>
                 </Card.Meta>
-              </Card.Content>
+              </Card.Content> */}
               <Card.Content extra>
                 <div>
                   <DeleteImage

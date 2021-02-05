@@ -37,6 +37,16 @@ const CheckoutCard = ({ product, isAdmin }) => {
             <Link href={`/user/${product.site.title}/admin/${product.slug}`}>
               <Button>Edit/Delete Service</Button>
             </Link>
+            <Link
+              href={`/user/${product.site.title}/admin/${product.slug}/photo`}
+            >
+              <Button>Edit Photos</Button>
+            </Link>
+            <Link
+              href={`/user/${product.site.title}/admin/${product.slug}/email`}
+            >
+              <Button>Edit Email</Button>
+            </Link>
           </Message.Content>
         </Message>
       </div>
@@ -89,7 +99,7 @@ const CheckoutCard = ({ product, isAdmin }) => {
   const showCustomTextArea = () => (
     <Form>
       <TextArea
-        placeholder="Add a custom note to this service request"
+        placeholder={product.customerNote}
         onChange={(e) => {
           setValues({ ...values, userMessage: e.target.value });
         }}
@@ -104,9 +114,9 @@ const CheckoutCard = ({ product, isAdmin }) => {
       <Segment basic style={{ minHeight: "90vh" }}>
         {adminLinks()}
         <Item.Group centered>
-          <Item style={{ display: "flex", alignItems: "flex-start" }}>
-            <Item.Content style={{ marginLeft: "10px", marginTop: "10px" }}>
-              <Item.Header as="a">{product.title}</Item.Header>
+          <Item centered>
+            <Item.Content style={{ marginTop: "10px" }}>
+              <Item.Header>{product.title}</Item.Header>
               <Item.Description>{product.description}</Item.Description>
               <Item.Extra fluid></Item.Extra>
               {Checkbox(product.clickOptions, handleClickOptions)}
@@ -117,7 +127,7 @@ const CheckoutCard = ({ product, isAdmin }) => {
             <Item.Extra fluid>
               {isAdmin ? (
                 <Button active={false} fluid color="green">
-                  Add to card (disabled while administrator is logged in)
+                  Add to cart (disabled while administrator is logged in)
                 </Button>
               ) : (
                 showAddToCart(showAddToCartButton)

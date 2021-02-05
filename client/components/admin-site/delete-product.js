@@ -22,7 +22,7 @@ const DeleteProduct = ({ siteTitle, productTitle }) => {
   });
 
   return (
-    <Button negative fluid onClick={() => doRequest()}>
+    <Button floated="right" size="mini" negative onClick={() => doRequest()}>
       Delete Product
     </Button>
   );

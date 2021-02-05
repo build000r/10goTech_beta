@@ -1,4 +1,4 @@
-import { Button, Icon, Card } from "semantic-ui-react";
+import { Button, Icon, Card, Header } from "semantic-ui-react";
 import { buildClient } from "../../../../api/build-client";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -6,7 +6,7 @@ import { Fragment, useState } from "react";
 import VertCenterGrid from "../../../../components/grid/vert-center";
 
 const index = ({ packages }) => {
-  const [active, setActive] = useState("beta");
+  const [active, setActive] = useState("feedback");
   const { site } = useRouter().query;
 
   const activePackage = packages.find((p, i) => {
@@ -24,6 +24,8 @@ const index = ({ packages }) => {
   return (
     <Fragment>
       <VertCenterGrid>
+        <Header textAlign="center">Three Packages Available</Header>
+
         <Button.Group fluid basic attached="top">
           {packages.map((p) => (
             <Button

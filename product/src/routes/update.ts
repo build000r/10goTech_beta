@@ -27,10 +27,14 @@ router.put(
       .not()
       .isEmpty()
       .withMessage("clickOptions must be defined"),
+    body("customerNote")
+      .not()
+      .isEmpty()
+      .withMessage("customerNote must be defined"),
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-    const { title, description, brief, clickOptions } = req.body;
+    const { title, description, brief, clickOptions, customerNote } = req.body;
 
     const { siteTitle, productSlug } = req.params;
 
@@ -51,8 +55,6 @@ router.put(
     }).populate("site");
 
     if (!existingProduct || existingProduct.site!.title !== siteTitle) {
-      console.log("FUCK this");
-
       throw new BadRequestError(
         "The product you are trying to update does not exist"
       );
@@ -70,6 +72,7 @@ router.put(
     existingProduct.brief = brief;
     existingProduct.clickOptions = clickOptions;
     existingProduct.slug = slug;
+    existingProduct.customerNote = customerNote;
 
     // check out the updated publisher if needed
 

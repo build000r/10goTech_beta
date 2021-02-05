@@ -70,6 +70,8 @@ router.put(
       throw new NotAuthorizedError();
     }
 
+    title = title.toLowerCase();
+
     site.set({
       title,
       homeTitle,

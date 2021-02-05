@@ -27,6 +27,7 @@ const AddUpdateProduct = ({ product, site }) => {
     emailSubject: "",
     emailBody: "",
     slug: "",
+    customerNote: "",
   });
 
   // on save create a slug.. lower case & dashes
@@ -43,13 +44,21 @@ const AddUpdateProduct = ({ product, site }) => {
       description: values.description,
       brief: values.brief,
       clickOptions: values.clickOptions,
+      customerNote: values.customerNote,
     },
     onSuccess: () => Router.push(`/user/${site}/services`),
   });
 
   useEffect(() => {
     if (product) {
-      const { title, brief, description, slug, clickOptions } = product;
+      const {
+        title,
+        brief,
+        description,
+        slug,
+        clickOptions,
+        customerNote,
+      } = product;
 
       setValues({
         ...values,
@@ -59,6 +68,7 @@ const AddUpdateProduct = ({ product, site }) => {
         brief,
         description,
         clickOptions,
+        customerNote,
       });
     }
   }, []);
@@ -109,14 +119,15 @@ const AddUpdateProduct = ({ product, site }) => {
       loading,
       emailBody,
       emailSubject,
+      customerNote,
     } = values;
 
     return (
       <Card fluid>
+        {product ? (
+          <DeleteProduct siteTitle={site} productTitle={values.title} />
+        ) : null}
         <Card.Content>
-          {product ? (
-            <DeleteProduct siteTitle={site} productTitle={values.title} />
-          ) : null}
           <Form loading={loading}>
             <Form.Field>
               <label>Title</label>
@@ -143,6 +154,15 @@ const AddUpdateProduct = ({ product, site }) => {
                 onChange={handleChange("description")}
                 className="form-control"
                 value={description}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Custom Note Instructions</label>
+              <TextArea
+                placeholder="Describe additional information you'd like to receive from the customer ordering this service."
+                onChange={handleChange("customerNote")}
+                className="form-control"
+                value={customerNote}
               />
             </Form.Field>
 

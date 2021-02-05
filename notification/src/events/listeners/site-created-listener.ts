@@ -11,6 +11,7 @@ import { siteCreated } from "../../services/email";
 
 import { queueGroupName } from "./queue-group-name";
 import { Email } from "../../models/email";
+import mongoose from "mongoose";
 
 export class SiteCreatedListener extends Listener<SiteCreatedEvent> {
   readonly subject = Subjects.SiteCreated;
@@ -25,21 +26,42 @@ export class SiteCreatedListener extends Listener<SiteCreatedEvent> {
       return;
     }
 
-    //
+    // //
 
-    // create & save site
-    let ownerRef;
-    if (data.title !== "rfp") {
-      ownerRef = await User.findOne({ _id: data.ownerId });
+    // // create & save site
 
-      if (!ownerRef) {
-        throw new BadRequestError("Owner of site not found");
-      }
+    if (data.title === "rfp") {
+      const owner = User.build({
+        email: "robbaratta1@gmail.com",
+        id: mongoose.Types.ObjectId().toHexString(),
+        userOfSite: "rfp-god",
+      });
+
+      await owner.save();
+
+      const site = Site.build({
+        id: data.id,
+        owner,
+        title: data.title,
+      });
+
+      await site.save();
+
+      return msg.ack();
+    }
+
+    const ownerRef =
+      (await User.findOne({ _id: data.ownerId })) ||
+      (await User.findOne({ id: data.ownerId }));
+    // }
+
+    if (!ownerRef) {
+      throw new BadRequestError("Owner of site not found");
     }
 
     const site = Site.build({
       id: data.id,
-      owner: ownerRef || undefined,
+      owner: ownerRef!,
       title: data.title,
     });
 
@@ -48,8 +70,7 @@ export class SiteCreatedListener extends Listener<SiteCreatedEvent> {
     // send email confirmation & next steps to creator that the site has successfully been created.
 
     if (site.owner) {
-      site.populate("owner");
-      await siteCreated(site.owner.email, site.title, site);
+      await siteCreated(ownerRef.email, site.title, site);
     }
 
     console.log(`${site.title} site created`);

@@ -30,7 +30,7 @@ export class SiteCreatedListener extends Listener<SiteCreatedEvent> {
         });
 
         const scale = Package.build({
-          title: "scale",
+          title: "feedback",
           site: data.title,
           sites: 1,
           monthlyPrice: 179,
@@ -41,7 +41,7 @@ export class SiteCreatedListener extends Listener<SiteCreatedEvent> {
         });
 
         const sprint = Package.build({
-          title: "sprint",
+          title: "invest",
           site: data.title,
           sites: 1,
           monthlyPrice: 629,

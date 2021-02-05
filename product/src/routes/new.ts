@@ -29,11 +29,15 @@ router.post(
       .not()
       .isEmpty()
       .withMessage("clickOptions must be defined"),
+    body("customerNote")
+      .not()
+      .isEmpty()
+      .withMessage("customerNote must be defined"),
   ],
   validateRequest,
   async (req: Request, res: Response) => {
     console.log("IM IN THE NEW ROUTE");
-    const { title, description, brief, clickOptions } = req.body;
+    const { title, description, brief, clickOptions, customerNote } = req.body;
 
     const { siteTitle } = req.params;
 
@@ -69,6 +73,7 @@ router.post(
       brief,
       clickOptions,
       slug,
+      customerNote,
     });
 
     await product.save();

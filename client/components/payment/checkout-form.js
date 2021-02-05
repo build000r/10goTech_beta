@@ -57,42 +57,39 @@ const CheckoutForm = ({ packageId }) => {
 
   return (
     <Card centered fluid>
-      {loading ? (
-        <div>loading...</div>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <Card.Content>
-            <CardElement
-              style={{ padding: "10px", margin: "10px" }}
-              options={{
-                style: {
-                  base: {
-                    fontSize: "16px",
-                    color: "#424770",
-                    "::placeholder": {
-                      color: "#aab7c4",
-                    },
-                  },
-                  invalid: {
-                    color: "#9e2146",
+      <form onSubmit={handleSubmit}>
+        <Card.Content>
+          <CardElement
+            style={{ padding: "10px", margin: "10px" }}
+            options={{
+              style: {
+                base: {
+                  fontSize: "16px",
+                  color: "#424770",
+                  "::placeholder": {
+                    color: "#aab7c4",
                   },
                 },
-              }}
-            />
-            <Button
-              attached="bottom"
-              fluid
-              color="linkedin"
-              type="submit"
-              disabled={!stripe}
-              style={{ marginTop: "10px" }}
-              onClick={handleSubmit}
-            >
-              Pay
-            </Button>
-          </Card.Content>
-        </form>
-      )}
+                invalid: {
+                  color: "#9e2146",
+                },
+              },
+            }}
+          />
+          <Button
+            attached="bottom"
+            fluid
+            color="linkedin"
+            type="submit"
+            disabled={!stripe}
+            style={{ marginTop: "10px" }}
+            onClick={handleSubmit}
+            loading={loading}
+          >
+            Pay
+          </Button>
+        </Card.Content>
+      </form>
     </Card>
   );
 };

@@ -5,7 +5,7 @@ import UploadImage from "../../../../../components/util/UploadImage";
 
 const Photo = ({ ownerId, productId, photos }) => {
   return (
-    <div>
+    <div style={{ minHeight: "90vh" }}>
       <UploadImage
         productId={productId}
         path={useRouter().asPath}

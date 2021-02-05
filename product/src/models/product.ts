@@ -8,6 +8,7 @@ interface ProductAttrs {
   brief?: string;
   description?: string;
   slug: string;
+  customerNote?: string;
   clickOptions?: any;
   nextStepEmailSubject?: string;
   nextStepEmailBody?: string;
@@ -19,6 +20,7 @@ interface ProductDoc extends mongoose.Document {
   brief?: string;
   description?: string;
   slug: string;
+  customerNote?: string;
   version: number;
   clickOptions?: any;
   nextStepEmailSubject?: string;
@@ -48,6 +50,9 @@ const productSchema = new mongoose.Schema(
     clickOptions: {},
     nextStepEmailSubject: { type: String },
     nextStepEmailBody: { type: String },
+    customerNote: {
+      type: String,
+    },
     slug: {
       type: String,
       required: true,

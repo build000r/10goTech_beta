@@ -7,11 +7,14 @@ import Checkout from "../../../components/user-site/Checkout";
 import { getCart } from "../../../hooks/cart-helpers";
 import { useRouter } from "next/router";
 import { buildClient } from "../../../api/build-client";
+import { useAuth } from "../../../hooks/use-auth";
 
 const Cart = ({ user }) => {
   const [items, setItems] = useState([]);
   const [success, setSuccess] = useState(false);
   const [run, setRun] = useState(false); // to avoid infinite loop
+
+  const link = useRouter().query.site;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -44,15 +47,13 @@ const Cart = ({ user }) => {
       return (
         <Fragment>
           <Header>Cart Empty</Header>
-          <Link href={`/user/${useRouter().query.site}/services`}>
-            Shop for services
-          </Link>
+          <Link href={`/user/${link}/services`}>Shop for services</Link>
         </Fragment>
       );
     }
   };
 
-  return (
+  const renderIfAuth = () => (
     <div>
       <div>
         <Checkout
@@ -78,6 +79,12 @@ const Cart = ({ user }) => {
       </div>
     </div>
   );
+
+  return useAuth({
+    user,
+    currentUrlSite: link,
+    renderIfAuth,
+  });
 };
 
 Cart.getInitialProps = async (context) => {
