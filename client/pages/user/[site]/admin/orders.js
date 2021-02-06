@@ -140,50 +140,49 @@ const services = ({ orders, siteUsers }) => {
     <Segment basic style={{ minHeight: "90vh" }}>
       <Item.Group divided>
         <Card.Group centered itemsPerRow={useMediaQuery(700) ? 1 : 3}>
-          {orders.map((order) => {
-            if (!order.id) {
+          {orders.length > 0 ? (
+            orders.map((order) => {
+              let { crmStatus, userId, products, id } = order;
+
+              const { name, email, phone, createdAt } = getOrderer(userId)[0];
+
               return (
-                <Header>
-                  When you receive your first order, it will show up here.
-                </Header>
+                <Card>
+                  <Card.Content>
+                    <Card.Header as="h3">
+                      Order created {new Date(createdAt).toLocaleDateString()}{" "}
+                      at {new Date(createdAt).toLocaleTimeString()}
+                    </Card.Header>
+                    <Item>
+                      <Item.Content>
+                        <Divider horizontal>Customer info</Divider>
+                        <Item.Meta>
+                          <span>{name ? name : null}</span>
+                        </Item.Meta>
+                        <Item.Meta>
+                          <span>{email}</span>
+                        </Item.Meta>
+                        <Item.Meta>
+                          <span>{phone ? `Phone #: ${phone} ` : ""}</span>
+                        </Item.Meta>
+                        <Item.Description>
+                          {showProducts(products)}
+                        </Item.Description>
+                      </Item.Content>
+                    </Item>
+                  </Card.Content>
+                  <Card.Content extra>
+                    {updateOrderStatus(id)}
+                    <Label>{crmStatus}</Label>
+                  </Card.Content>
+                </Card>
               );
-            }
-            let { crmStatus, userId, products, id } = order;
-
-            const { name, email, phone, createdAt } = getOrderer(userId)[0];
-
-            return (
-              <Card>
-                <Card.Content>
-                  <Card.Header as="h3">
-                    Order created {new Date(createdAt).toLocaleDateString()} at{" "}
-                    {new Date(createdAt).toLocaleTimeString()}
-                  </Card.Header>
-                  <Item>
-                    <Item.Content>
-                      <Divider horizontal>Customer info</Divider>
-                      <Item.Meta>
-                        <span>{name ? name : null}</span>
-                      </Item.Meta>
-                      <Item.Meta>
-                        <span>{email}</span>
-                      </Item.Meta>
-                      <Item.Meta>
-                        <span>{phone ? `Phone #: ${phone} ` : ""}</span>
-                      </Item.Meta>
-                      <Item.Description>
-                        {showProducts(products)}
-                      </Item.Description>
-                    </Item.Content>
-                  </Item>
-                </Card.Content>
-                <Card.Content extra>
-                  {updateOrderStatus(id)}
-                  <Label>{crmStatus}</Label>
-                </Card.Content>
-              </Card>
-            );
-          })}
+            })
+          ) : (
+            <Header>
+              When you receive your first order, it will show up here.
+            </Header>
+          )}
         </Card.Group>
       </Item.Group>
     </Segment>
