@@ -78,8 +78,6 @@ AppComponent.getInitialProps = async (appContext) => {
 
   const authUserIsAdmin = user && user.id === siteInfo.ownerId;
 
-  // console.log(authUserIsAdmin, user, siteInfo);
-
   return { pageProps, user, siteExists, siteInfo, authUserIsAdmin };
 };
 

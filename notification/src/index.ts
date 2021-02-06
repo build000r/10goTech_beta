@@ -24,12 +24,6 @@ const start = async () => {
   if (!process.env.NATS_CLUSTER_ID) {
     throw new Error("NATS_CLUSTER_ID must be defined.");
   }
-  // if (!process.env.SEND_FROM_EMAIL_DEFAULT) {
-  //   throw new Error("SEND_FROM_EMAIL_DEFAULT must be defined.");
-  // }
-  // if (!process.env.SG_API_KEY_DEFAULT) {
-  //   throw new Error("SG_API_KEY_DEFAULT must be defined.");
-  // }
 
   try {
     await natsWrapper.connect(
