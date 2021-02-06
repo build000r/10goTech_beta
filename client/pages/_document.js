@@ -25,6 +25,7 @@ export default class MyDocument extends Document {
             }}
           />
         </Head>
+        {console.log("why this work")}
         <body>
           <Main />
           <NextScript />
