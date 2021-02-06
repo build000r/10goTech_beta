@@ -11,13 +11,12 @@ router.get(
     let orders;
 
     if (req.currentUser?.userOfSite === "rfp") {
-      orders = await Order.find();
-      orders.filter(
-        (order: OrderDoc) =>
-          order.products[0].site.title === req.params.siteTitle
-      );
+      orders =
+        (await Order.find({
+          "products[0].site.title": req.params.siteTitle,
+        })) || [];
     } else {
-      orders = await Order.find({ userId: req.currentUser!.id });
+      orders = (await Order.find({ userId: req.currentUser!.id })) || [];
     }
 
     res.send(orders);
