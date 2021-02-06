@@ -32,7 +32,6 @@ export class SiteUpdatedListener extends Listener<SiteUpdatedEvent> {
     const users = await User.find({ userOfSite: oldTitle });
 
     users.forEach(async (user: UserDoc) => {
-      console.log("user updating... ", user);
       user.set({ userOfSite: title });
       await user.save();
     });
