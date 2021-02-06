@@ -85,6 +85,9 @@ router.post(
       siteId: site.id,
       siteTitle: site.title,
       version: product.version,
+      clickOptions: product.clickOptions,
+      nextStepEmailBody: product.nextStepEmailBody!,
+      nextStepEmailSubject: product.nextStepEmailBody!,
     });
 
     res.status(201).send(product);
