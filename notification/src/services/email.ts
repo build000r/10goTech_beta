@@ -8,7 +8,7 @@ import { User, UserDoc } from "../models/user";
 // change to env variables...
 
 const sendFrom = "recrecs45@gmail.com";
-const url = "https://rfp.com";
+const url = "http://www.10gotech.com";
 
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -57,10 +57,10 @@ const userSignup = async (email: string, token: string, userOfSite: string) => {
 
   switch (userOfSite) {
     case "rfp":
-      activationLink = `https://rfp.com/admin/${userOfSite}/onboard/${token}`;
+      activationLink = `http://www.10gotech.com/admin/${userOfSite}/onboard/${token}`;
       break;
     default:
-      activationLink = `https://rfp.com/user/${userOfSite}/onboard/${token}`;
+      activationLink = `http://www.10gotech.com/user/${userOfSite}/onboard/${token}`;
       break;
   }
 

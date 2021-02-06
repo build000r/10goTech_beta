@@ -47,7 +47,7 @@ const Footer = ({ siteType }) => {
               Privacy Policy
             </List.Item>
             <List.Item as="a" href="/admin/rfp">
-              Built with rfp.com
+              Built with www.10gotech.com
             </List.Item>
           </List>
         </Container>
