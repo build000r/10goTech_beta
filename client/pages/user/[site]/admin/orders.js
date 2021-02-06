@@ -15,7 +15,8 @@ import { useRequest } from "../../../../hooks/use-request";
 import Router, { useRouter } from "next/router";
 
 const services = ({ orders, siteUsers }) => {
-  if (!orders) {
+  console.log(orders);
+  if (orders.length === 0) {
     return (
       <Header>When you receive your first order, it will show up here.</Header>
     );
@@ -116,8 +117,7 @@ const services = ({ orders, siteUsers }) => {
 
       return (
         <Item>
-          <Divider horizontal>Service Requested</Divider>
-          {console.log()}{" "}
+          <Divider horizontal>Service Requested</Divider>{" "}
           <Item.Content>
             <Item.Header as="h4">{title}</Item.Header>
             <Item.Meta>{brief}</Item.Meta>
@@ -206,52 +206,7 @@ services.getInitialProps = async (context) => {
     return new Date(b.createdAt) - new Date(a.createdAt);
   });
 
-  console.log("SITE USERS", siteUsers);
-
   return { orders, siteUsers };
 };
 
 export default services;
-
-/*
-<Card>
-  <Card.Content>
-    <Card.Header style={{ color: "rgb(7, 102, 219)" }}>
-      {order.status}
-    </Card.Header>
-    <Card.Meta>
-      Created by {order.user.name} {moment(order.createdAt).fromNow()}
-    </Card.Meta>
-    <br />
-    {showStatus(order)}
-    <br />
-    <Item.Description>Email: {order.user.email}</Item.Description>
-    <Item.Description>Phone: {order.user.phone}</Item.Description>
-    <Item.Description>
-      {order.products.length} product(s) in order
-    </Item.Description>
-    <Item.Extra fluid>{order.id}</Item.Extra>
-    <br />
-    <Card.Group centered>
-      {order.products.map((product) => {
-        return (
-          <Card>
-            <Card.Content>
-              <Card.Header as="h4">{product.title}</Card.Header>
-              <Item.Extra>
-                <i class="sticky note outline icon"></i> {product.message}
-              </Item.Extra>
-              {product.selected.map((o, i) => (
-                <Item.Extra key={i}>
-                  <i class="check icon"></i>
-                  {o}
-                </Item.Extra>
-              ))}
-            </Card.Content>
-          </Card>
-        );
-      })}
-    </Card.Group>
-  </Card.Content>
-</Card>;
-*/
