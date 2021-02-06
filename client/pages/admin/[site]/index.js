@@ -1,5 +1,5 @@
 import { buildClient } from "../../../api/build-client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import {
@@ -21,6 +21,10 @@ const index = () => {
   const [active, setActive] = useState("solution");
 
   const { site } = useRouter().query;
+
+  useEffect(() => {
+    window.location.reload();
+  }, []);
 
   const card = (header, subheader, next) => (
     <Fragment>
