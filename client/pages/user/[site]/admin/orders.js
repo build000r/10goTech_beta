@@ -144,7 +144,13 @@ const services = ({ orders, siteUsers }) => {
             orders.map((order) => {
               let { crmStatus, userId, products, id } = order;
 
-              const { name, email, phone, createdAt } = getOrderer(userId)[0];
+              let orderer;
+
+              if (id) {
+                orderer = getOrderer(userId)[0];
+              }
+
+              const { name, email, phone, createdAt } = orderer;
 
               return (
                 <Card>

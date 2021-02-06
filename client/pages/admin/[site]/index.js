@@ -17,19 +17,6 @@ import TinyCard from "../../../components/card/tiny-card";
 import NoSite from "../../../components/error/site-does-not-exist";
 import { useSiteType } from "../../../hooks/use-site-type";
 
-/*
-properties I need to add to backend site for this page:
-
-{
-headline: 
-tagline: 
-viewServicesTitle: 
-viewServicesDescription:
-makeAccountTitle:
-makeAccountDescription:
-}
-*/
-
 const index = () => {
   const [active, setActive] = useState("solution");
 

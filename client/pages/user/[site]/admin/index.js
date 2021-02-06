@@ -6,6 +6,9 @@ import { useAuth } from "../../../../hooks/use-auth";
 
 const index = ({ user, siteOwnerId }) => {
   const { site } = useRouter().query;
+
+  console.log(site);
+
   const isTempTitle = (sitetitle) => sitetitle.includes("Change_This_Title");
 
   const renderIfAuth = () => (
