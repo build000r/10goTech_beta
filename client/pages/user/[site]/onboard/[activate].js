@@ -25,6 +25,11 @@ const activate = () => {
           {" "}
           Activate Account{" "}
         </Button>
+        <Message>
+          By activating your account you consent to receive email notifications
+          and instructions on how to use the website. We take your privacy
+          seriously and will not share your information with 3rd parties.
+        </Message>
       </VertCenterGrid>
     </div>
   );

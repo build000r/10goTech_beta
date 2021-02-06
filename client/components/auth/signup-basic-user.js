@@ -90,6 +90,10 @@ const Signup = ({ createSitePermission }) => {
         <Form.Button fluid onClick={clickSubmit}>
           Sign Up
         </Form.Button>
+        <Message>
+          When you click "signup" you will be sent an email to confirm your
+          account.
+        </Message>
       </Fragment>
     </Form>
   );
