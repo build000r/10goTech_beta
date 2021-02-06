@@ -37,8 +37,8 @@ spec:
 ---
 apiVersion: v1
 kind: Service
-metadata:
-  name: notification-srv
+# metadata:
+#   name: notification-srv
 spec:
   selector:
     app: notification
