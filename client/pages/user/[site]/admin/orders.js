@@ -4,7 +4,7 @@ import {
   Divider,
   Segment,
   Button,
-  Icon,
+  Header,
   Label,
   Card,
   Dropdown,
@@ -141,9 +141,14 @@ const services = ({ orders, siteUsers }) => {
       <Item.Group divided>
         <Card.Group centered itemsPerRow={useMediaQuery(700) ? 1 : 3}>
           {orders.map((order) => {
+            if (!order.id) {
+              return (
+                <Header>
+                  When you receive your first order, it will show up here.
+                </Header>
+              );
+            }
             let { crmStatus, userId, products, id } = order;
-
-            console.log("userId", userId);
 
             const { name, email, phone, createdAt } = getOrderer(userId)[0];
 
