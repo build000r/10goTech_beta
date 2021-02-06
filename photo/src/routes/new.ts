@@ -38,10 +38,6 @@ router.post(
   async (req: Request, res: Response) => {
     const imageUpload = req.file.buffer;
 
-    // current user id
-
-    // const { ownerId, productId } = req.params;
-
     const { ownerId, productId, caption } = req.body;
 
     if (req.currentUser!.id !== ownerId) {
