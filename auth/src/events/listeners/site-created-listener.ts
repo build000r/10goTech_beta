@@ -8,9 +8,9 @@ export class SiteCreatedListener extends Listener<SiteCreatedEvent> {
   queueGroupName = queueGroupName;
 
   async onMessage(data: SiteCreatedEvent["data"], msg: Message) {
-    console.log(`Site has been created: ${data.title}`);
-
     const { id, ownerId, title } = data;
+
+    console.log(`Site has been created: ${data.title}`);
 
     const siteExists = await Site.findOne({ title });
     if (siteExists) {
