@@ -4,7 +4,7 @@ import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
 interface OrderAttrs {
   userId: string;
-  crmStatus: OrderCrmStatus; // CRM crmStatus
+  crmStatus: OrderCrmStatus;
   products: any;
   ownerNote?: string;
 }
