@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  rules:
+    - host: 10gotech.com
+      http:
+        paths:
+          - path: /api/users/?(.*)
+            backend:
+              serviceName: auth-srv
+              servicePort: 3000
+          - path: /api/site/?(.*)
+            backend:
+              serviceName: site-srv
+              servicePort: 3000
+          - path: /api/product/?(.*)
+            backend:
+              serviceName: product-srv
+              servicePort: 3000
+          - path: /api/notification/?(.*)
+            backend:
+              serviceName: notification-srv
+              servicePort: 3000
+          - path: /api/order/?(.*)
+            backend:
+              serviceName: order-srv
+              servicePort: 3000
+          - path: /api/site-subscription/?(.*)
+            backend:
+              serviceName: site-subscription-srv
+              servicePort: 3000
+          - path: /api/photo/?(.*)
+            backend:
+              serviceName: photo-srv
+              servicePort: 3000
+          - path: /?(.*)
+            backend:
+              serviceName: client-srv
+              servicePort: 3000

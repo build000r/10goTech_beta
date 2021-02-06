@@ -38,10 +38,6 @@ spec:
             backend:
               serviceName: photo-srv
               servicePort: 3000
-          - path: /client-master/?(.*)
-            backend:
-              serviceName: client-master-srv
-              servicePort: 3000
           - path: /?(.*)
             backend:
               serviceName: client-srv
