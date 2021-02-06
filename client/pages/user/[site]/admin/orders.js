@@ -8,6 +8,7 @@ import {
   Label,
   Card,
   Dropdown,
+  Container,
 } from "semantic-ui-react";
 import { buildClient } from "../../../../api/build-client";
 import { useMediaQuery } from "../../../../hooks/use-media-query";
@@ -18,7 +19,11 @@ const services = ({ orders, siteUsers }) => {
   console.log(orders);
   if (orders.length === 0) {
     return (
-      <Header>When you receive your first order, it will show up here.</Header>
+      <Container style={{ minHeight: "90vh" }}>
+        <Header>
+          When you receive your first order, it will show up here.
+        </Header>
+      </Container>
     );
   }
 
