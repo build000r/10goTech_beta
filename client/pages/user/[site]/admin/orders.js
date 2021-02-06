@@ -15,9 +15,13 @@ import { useRequest } from "../../../../hooks/use-request";
 import Router, { useRouter } from "next/router";
 
 const services = ({ orders, siteUsers }) => {
-  const path = useRouter().asPath;
+  if (!orders) {
+    return (
+      <Header>When you receive your first order, it will show up here.</Header>
+    );
+  }
 
-  console.log(orders);
+  const path = useRouter().asPath;
 
   const [values, setValues] = useState({
     ownerNote: "Order is currently being reviewed",
@@ -140,55 +144,49 @@ const services = ({ orders, siteUsers }) => {
     <Segment basic style={{ minHeight: "90vh" }}>
       <Item.Group divided>
         <Card.Group centered itemsPerRow={useMediaQuery(700) ? 1 : 3}>
-          {orders.length > 0 ? (
-            orders.map((order) => {
-              let { crmStatus, userId, products, id } = order;
+          {orders.map((order) => {
+            let { crmStatus, userId, products, id } = order;
 
-              let orderer;
+            let orderer;
 
-              if (id) {
-                orderer = getOrderer(userId)[0];
-              }
+            if (id) {
+              orderer = getOrderer(userId)[0];
+            }
 
-              const { name, email, phone, createdAt } = orderer;
+            const { name, email, phone, createdAt } = orderer;
 
-              return (
-                <Card>
-                  <Card.Content>
-                    <Card.Header as="h3">
-                      Order created {new Date(createdAt).toLocaleDateString()}{" "}
-                      at {new Date(createdAt).toLocaleTimeString()}
-                    </Card.Header>
-                    <Item>
-                      <Item.Content>
-                        <Divider horizontal>Customer info</Divider>
-                        <Item.Meta>
-                          <span>{name ? name : null}</span>
-                        </Item.Meta>
-                        <Item.Meta>
-                          <span>{email}</span>
-                        </Item.Meta>
-                        <Item.Meta>
-                          <span>{phone ? `Phone #: ${phone} ` : ""}</span>
-                        </Item.Meta>
-                        <Item.Description>
-                          {showProducts(products)}
-                        </Item.Description>
-                      </Item.Content>
-                    </Item>
-                  </Card.Content>
-                  <Card.Content extra>
-                    {updateOrderStatus(id)}
-                    <Label>{crmStatus}</Label>
-                  </Card.Content>
-                </Card>
-              );
-            })
-          ) : (
-            <Header>
-              When you receive your first order, it will show up here.
-            </Header>
-          )}
+            return (
+              <Card>
+                <Card.Content>
+                  <Card.Header as="h3">
+                    Order created {new Date(createdAt).toLocaleDateString()} at{" "}
+                    {new Date(createdAt).toLocaleTimeString()}
+                  </Card.Header>
+                  <Item>
+                    <Item.Content>
+                      <Divider horizontal>Customer info</Divider>
+                      <Item.Meta>
+                        <span>{name ? name : null}</span>
+                      </Item.Meta>
+                      <Item.Meta>
+                        <span>{email}</span>
+                      </Item.Meta>
+                      <Item.Meta>
+                        <span>{phone ? `Phone #: ${phone} ` : ""}</span>
+                      </Item.Meta>
+                      <Item.Description>
+                        {showProducts(products)}
+                      </Item.Description>
+                    </Item.Content>
+                  </Item>
+                </Card.Content>
+                <Card.Content extra>
+                  {updateOrderStatus(id)}
+                  <Label>{crmStatus}</Label>
+                </Card.Content>
+              </Card>
+            );
+          })}
         </Card.Group>
       </Item.Group>
     </Segment>
