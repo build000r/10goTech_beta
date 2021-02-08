@@ -7,11 +7,12 @@ export default function Custom404() {
   const url = useRouter().pathname;
   console.log(useRouter());
 
-  useEffect(() => {
-    if (onetry) {
-      Router.push(url);
-      setOneTry(false);
-    }
-  }, []);
+  //   useEffect(() => {
+  //     if (onetry) {
+
+  //       Router.push(url);
+  //       setOneTry(false);
+  //     }
+  //   }, []);
   return <h1>404 - Page Not Found</h1>;
 }
