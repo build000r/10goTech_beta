@@ -22,10 +22,6 @@ const index = () => {
 
   const { site } = useRouter().query;
 
-  useEffect(() => {
-    window.location.reload();
-  }, []);
-
   const card = (header, subheader, next) => (
     <Fragment>
       <VertCenterGrid addWidth={200}>
