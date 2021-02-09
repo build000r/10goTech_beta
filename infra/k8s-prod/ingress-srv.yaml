@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - www.10gotech.com
+        - app.10gotech.com
       secretName: echo-tls
   rules:
-    - host: www.10gotech.com
+    - host: app.10gotech.com
       http:
         paths:
           - path: /api/users/?(.*)
@@ -53,7 +53,7 @@ kind: Service
 metadata:
   annotations:
     service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: "true"
-    service.beta.kubernetes.io/do-loadbalancer-hostname: "www.10gotech.com"
+    service.beta.kubernetes.io/do-loadbalancer-hostname: "app.10gotech.com"
   labels:
     helm.sh/chart: ingress-nginx-2.11.1
     app.kubernetes.io/name: ingress-nginx
