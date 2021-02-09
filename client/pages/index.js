@@ -1,12 +1,13 @@
 import { Segment } from "semantic-ui-react";
 
 const index = () => {
+  useEffect(() => {
+    Router.push("/admin/rfp");
+  }, []);
+
   return (
     <Segment>
-      <h1>
-        home home - wher epeople go to actually learn about the tool and
-        purchase maybe?
-      </h1>
+      <h1>redirect </h1>
     </Segment>
   );
 };
