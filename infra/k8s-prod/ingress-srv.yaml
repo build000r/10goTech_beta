@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
-    - host: workaround.10gotech.com
+    - host: "*.10gotech.com"
       http:
         paths:
           - path: /api/users/?(.*)
@@ -48,7 +48,7 @@ kind: Service
 metadata:
   annotations:
     service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: "true"
-    service.beta.kubernetes.io/do-loadbalancer-hostname: "workaround.10gotech.com"
+    service.beta.kubernetes.io/do-loadbalancer-hostname: "*.10gotech.com"
   labels:
     helm.sh/chart: ingress-nginx-2.11.1
     app.kubernetes.io/name: ingress-nginx
