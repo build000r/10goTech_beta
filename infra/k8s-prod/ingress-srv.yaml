@@ -12,9 +12,42 @@ spec:
         - "10gotech.com"
       secretName: 10gotech-tls
   rules:
-    - hosts:
-        - "*.10gotech.com"
-        - "10gotech.com"
+    - host: "*.10gotech.com"
+      http:
+        paths:
+          - path: /api/users/?(.*)
+            backend:
+              serviceName: auth-srv
+              servicePort: 3000
+          - path: /api/site/?(.*)
+            backend:
+              serviceName: site-srv
+              servicePort: 3000
+          - path: /api/product/?(.*)
+            backend:
+              serviceName: product-srv
+              servicePort: 3000
+          - path: /api/notification/?(.*)
+            backend:
+              serviceName: notification-srv
+              servicePort: 3000
+          - path: /api/order/?(.*)
+            backend:
+              serviceName: order-srv
+              servicePort: 3000
+          - path: /api/site-subscription/?(.*)
+            backend:
+              serviceName: site-subscription-srv
+              servicePort: 3000
+          - path: /api/photo/?(.*)
+            backend:
+              serviceName: photo-srv
+              servicePort: 3000
+          - path: /?(.*)
+            backend:
+              serviceName: client-srv
+              servicePort: 3000
+    - host: "10gotech.com"
       http:
         paths:
           - path: /api/users/?(.*)
