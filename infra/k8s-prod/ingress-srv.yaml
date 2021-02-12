@@ -12,7 +12,9 @@ spec:
         - "10gotech.com"
       secretName: 10gotech-tls
   rules:
-    - host: "*.10gotech.com"
+    - hosts:
+        - "*.10gotech.com"
+        - "10gotech.com"
       http:
         paths:
           - path: /api/users/?(.*)
