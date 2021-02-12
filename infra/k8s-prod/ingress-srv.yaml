@@ -8,11 +8,11 @@ metadata:
 spec:
   tls:
     - hosts:
-        - "*.10gotech.com"
+        - "www.10gotech.com"
         - "10gotech.com"
       secretName: 10gotech-tls
   rules:
-    - host: "*.10gotech.com"
+    - host: "www.10gotech.com"
       http:
         paths:
           - path: /api/users/?(.*)
