@@ -57,7 +57,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: controller
   name: ingress-nginx-controller
-  namespace: ingress-nginx
+  namespace: default
 spec:
   type: ClusterIP
   externalTrafficPolicy: Local
