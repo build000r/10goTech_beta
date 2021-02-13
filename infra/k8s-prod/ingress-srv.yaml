@@ -9,7 +9,7 @@ spec:
     - hosts:
         - "www.10gotech.com"
         - "10gotech.com"
-     secretName: 10gotech-tls-manual
+    secretName: 10gotech-tls-manual
   rules:
     - host: "*.10gotech.com"
       http:
