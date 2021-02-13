@@ -30,6 +30,8 @@ $ docker run -it --entrypoint=sh certbot/certbot
 /opt/certbot # certbot certonly -d *.10gotech.com -d 10gotech.com --manual --preferred-challenges=dn
 s
 
+might need to run certbot 2x. typical to get error first time because of the two domains
+
 
 
 IMPORTANT NOTES:
@@ -59,3 +61,21 @@ robbaratta@Robs-MacBook-Pro rfp % cat cert-priv.txt | base64 > cert-priv.pem
 
       robbaratta@Robs-MacBook-Pro rfp % kubectl get secret -o yaml 10gotech-tls
 
+
+priv key is always 
+kubectl apply -f secret.yaml
+
+
+
+/// ingress srv 
+     secretName: 10gotech-tls
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
+
+
+february 13 three months from now
+- issue with cron job approach is DNS. must use token for automated..... which is a security issue with Digital Ocean!
+
+____
+
+cname -> need to remove the path. path must be root path
+SSL cert to cloudflare for tenants
