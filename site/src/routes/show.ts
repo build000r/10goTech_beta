@@ -11,6 +11,7 @@ router.get(
   async (req: Request, res: Response) => {
     let { title } = req.params;
 
+    console.log("title of site trying to reach, ", title);
     // title = title.toLowerCase()
 
     const site = await Site.findOne({ title });
@@ -18,6 +19,7 @@ router.get(
     if (!site) {
       throw new NotFoundError();
     }
+    console.log("title of site trying to reach, ", site);
 
     res.send(site);
   }
