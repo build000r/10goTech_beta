@@ -4,13 +4,14 @@ metadata:
   name: ingress-service
   annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   tls:
     - hosts:
         - "www.10gotech.com"
         - "10gotech.com"
-      secretName: 10gotech-tls
+     # secretName: 10gotech-tls
+     secretName: 10gotech-tls-manual
   rules:
     - host: "*.10gotech.com"
       http:

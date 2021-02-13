@@ -1,0 +1,61 @@
+do not delete loadbalancer
+floating ip to digital ocean not poossible 
+https://www.digitalocean.com/community/questions/how-to-assign-a-floating-ip-to-a-digital-oceans-load-balancer
+
+kubectl get svc -n ingress-nginx
+
+get list of IP address, choose external. if this is deleted, repopulate the external IP everywhere
+- DNS
+
+everywhere this is 164.90.252.252
+- DNS records A
+
+
+
+___
+
+install wildcard DNS
+Wildcard SSL -> need to use DNS01 or manual creation and recreate every 3 months
+dns01 security threat. Not good with digital ocean because of token access. 
+
+AWS
+
+
+
+___
+write every 3 months. we do this to get ssls on all subdomains.
+
+
+$ docker run -it --entrypoint=sh certbot/certbot
+/opt/certbot # certbot certonly -d *.10gotech.com -d 10gotech.com --manual --preferred-challenges=dn
+s
+
+
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/10gotech.com/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/10gotech.com/privkey.pem
+   Your certificate will expire on 2021-05-14. To obtain a new or
+   tweaked version of this certificate in the future, simply run
+   certbot again. To non-interactively renew *all* of your
+   certificates, run "certbot renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+
+/opt/certbot # cat /etc/letsencrypt/live/10gotech.com/fullchain.pem
+
+cat both of them copy and paste into separate Zs5Od3FOnBv5IhR2haa4ldbsTzFID9e1R
+
+
+robbaratta@Robs-MacBook-Pro rfp % cat cert.txt | base64 > cert.pem
+robbaratta@Robs-MacBook-Pro rfp % cat cert-priv.txt | base64 > cert-priv.pem
+
+      secretName: 10gotech-tls
+
+
+      robbaratta@Robs-MacBook-Pro rfp % kubectl get secret -o yaml 10gotech-tls
+
