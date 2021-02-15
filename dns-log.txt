@@ -1,0 +1,910 @@
+  Type    Reason        Age    From          Message
+  ----    ------        ----   ----          -------
+  Normal  OrderCreated  6m32s  cert-manager  Created Order resource default/10gotech-tls-xrwt8-2333201917
+robbaratta@Robs-MacBook-Pro k8s-prod % wget --save-headers -O- 10gotech.com
+
+--2021-02-12 16:16:19--  http://10gotech.com/
+Resolving 10gotech.com (10gotech.com)... 164.90.252.252
+Connecting to 10gotech.com (10gotech.com)|164.90.252.252|:80... connected.
+HTTP request sent, awaiting response... 308 Permanent Redirect
+Location: https://10gotech.com/ [following]
+--2021-02-12 16:16:20--  https://10gotech.com/
+Connecting to 10gotech.com (10gotech.com)|164.90.252.252|:443... connected.
+ERROR: cannot verify 10gotech.com's certificate, issued by ‘CN=Kubernetes Ingress Controller Fake Certificate,O=Acme Co’:
+  Self-signed certificate encountered.
+ERROR: no certificate subject alternative name matches
+	requested host name ‘10gotech.com’.
+To connect to 10gotech.com insecurely, use `--no-check-certificate'.
+robbaratta@Robs-MacBook-Pro k8s-prod % wget --save-headers -O- www.10gotech.com
+
+--2021-02-12 16:16:37--  http://www.10gotech.com/
+Resolving www.10gotech.com (www.10gotech.com)... 164.90.252.252
+Connecting to www.10gotech.com (www.10gotech.com)|164.90.252.252|:80... connected.
+HTTP request sent, awaiting response... 308 Permanent Redirect
+Location: https://www.10gotech.com/ [following]
+--2021-02-12 16:16:38--  https://www.10gotech.com/
+Connecting to www.10gotech.com (www.10gotech.com)|164.90.252.252|:443... connected.
+ERROR: cannot verify www.10gotech.com's certificate, issued by ‘CN=Kubernetes Ingress Controller Fake Certificate,O=Acme Co’:
+  Self-signed certificate encountered.
+ERROR: no certificate subject alternative name matches
+	requested host name ‘www.10gotech.com’.
+To connect to www.10gotech.com insecurely, use `--no-check-certificate'.
+robbaratta@Robs-MacBook-Pro k8s-prod % kubectl describe certificaterequest 10gotech-tls-xrwt8
+Name:         10gotech-tls-xrwt8
+Namespace:    default
+Labels:       <none>
+Annotations:  cert-manager.io/certificate-name: 10gotech-tls
+              cert-manager.io/certificate-revision: 1
+              cert-manager.io/private-key-secret-name: 10gotech-tls-n7mqb
+API Version:  cert-manager.io/v1beta1
+Kind:         CertificateRequest
+Metadata:
+  Creation Timestamp:  2021-02-12T22:08:20Z
+  Generate Name:       10gotech-tls-
+  Generation:          1
+  Managed Fields:
+    API Version:  cert-manager.io/v1alpha2
+    Fields Type:  FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .:
+          f:cert-manager.io/certificate-name:
+          f:cert-manager.io/certificate-revision:
+          f:cert-manager.io/private-key-secret-name:
+        f:generateName:
+        f:ownerReferences:
+          .:
+          k:{"uid":"96632d19-4be5-4e29-b90c-bbce8b6d6d14"}:
+            .:
+            f:apiVersion:
+            f:blockOwnerDeletion:
+            f:controller:
+            f:kind:
+            f:name:
+            f:uid:
+      f:spec:
+        .:
+        f:csr:
+        f:issuerRef:
+          .:
+          f:group:
+          f:kind:
+          f:name:
+      f:status:
+        .:
+        f:conditions:
+    Manager:    controller
+    Operation:  Update
+    Time:       2021-02-12T22:08:20Z
+  Owner References:
+    API Version:           cert-manager.io/v1alpha2
+    Block Owner Deletion:  true
+    Controller:            true
+    Kind:                  Certificate
+    Name:                  10gotech-tls
+    UID:                   96632d19-4be5-4e29-b90c-bbce8b6d6d14
+  Resource Version:        1314872
+  UID:                     32a2f41a-9553-43b9-a903-9c9f06f98f52
+Spec:
+  Issuer Ref:
+    Group:  cert-manager.io
+    Kind:   ClusterIssuer
+    Name:   letsencrypt-prod
+  Request:  LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0KTUlJQ2Z6Q0NBV2NDQVFBd0FEQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQU5UMQpvQzU5UDlsTVlTeG1GNGlBWHhZMzY2MVh6UVI2WEpGc2MvOWxmRXIvUjgzZGdPVTZ1a0RIRWwzaXNNOG5iWm1ECkNzMk02T3pmV2Uza0xSNDlNTHJXczYycU1sNFpWN3V6NzcyVEpXSTdmZDJhdmU3Z1BCUXc0bk5teG4xNnhERjYKeFExUFhXWTVDbXlubmlaYnZGajJpNjJEbXpqN0xxWTVocmN1cjJsSkphNjZybUE3SStHUU45VkMyNUF2cktmMwpuU0VTaXRjYmloZSsxOEtqYlRkRDROR05iRnc3OXBQTS81UjI0cGYrT2VMeHB6NUdodUo4am0xUVMyOEZzQ2R4CmNVeEJlMzVqWGlJcnI3dFdoSitNNk9oSTFBeDdoY1d3dEswZDBXMzZrVmpyVFhVU1AvVkZTL2FTR09VUmYrclAKMVRSZUlENFRjR3Nqb3ZaRmZWRUNBd0VBQWFBNk1EZ0dDU3FHU0liM0RRRUpEakVyTUNrd0p3WURWUjBSQkNBdwpIb0lPS2k0eE1HZHZkR1ZqYUM1amIyMkNEREV3WjI5MFpXTm9MbU52YlRBTkJna3Foa2lHOXcwQkFRc0ZBQU9DCkFRRUF0ZGorZGRRTjZwQzNHa290N0I5bVJteWtvSmZ2TFI3S3lLTnd3RGs4ZGllQ2hPazBFbkUwWVFKSmFtb1QKazdQK2xmNUlndXk5dndiWWNRTGJUZEE3VXFPTHpSVjVZMGo2Z2kwakxLZTNaZTYzYmRNazlIdUMrcWhKbGxnbgpQODNiMjk4R0VNQWtKdzgwQ0l1a1BLRlJ4Y3kyNThGQnA5SWVvWkpZalMvWU5DMkhTdEFGckdyeWpXTUVHN1loCnZNanlsQVhuL0xPdGJldUU1YVVKdm40OUVMRmlCd05VRjZ6RkZzOWllc1hSVWcwR1hHdDhtTlRKYkZ1eUFHMWQKaXI4emtiQmUvZ2Q0RXMvRllFdGE4czNINkFBUzRqbDIwL0tQVjNCL2VUVXk3Yk8yeXM1WGhNQjczQmFMa2N1ZwpOaEVLa3FHek0rT1g0L2JBbHd0ZzJocDIwUT09Ci0tLS0tRU5EIENFUlRJRklDQVRFIFJFUVVFU1QtLS0tLQo=
+Status:
+  Conditions:
+    Last Transition Time:  2021-02-12T22:08:20Z
+    Message:               Waiting on certificate issuance from order default/10gotech-tls-xrwt8-2333201917: "pending"
+    Reason:                Pending
+    Status:                False
+    Type:                  Ready
+Events:
+  Type    Reason        Age   From          Message
+  ----    ------        ----  ----          -------
+  Normal  OrderCreated  10m   cert-manager  Created Order resource default/10gotech-tls-xrwt8-2333201917
+robbaratta@Robs-MacBook-Pro k8s-prod % kubectl get order
+NAME                            STATE     AGE
+10gotech-tls-xrwt8-2333201917   pending   10m
+robbaratta@Robs-MacBook-Pro k8s-prod % kubectl describe order 10gotech-tls-xrwt8-2333201917
+Name:         10gotech-tls-xrwt8-2333201917
+Namespace:    default
+Labels:       <none>
+Annotations:  cert-manager.io/certificate-name: 10gotech-tls
+              cert-manager.io/certificate-revision: 1
+              cert-manager.io/private-key-secret-name: 10gotech-tls-n7mqb
+API Version:  acme.cert-manager.io/v1beta1
+Kind:         Order
+Metadata:
+  Creation Timestamp:  2021-02-12T22:08:20Z
+  Generation:          1
+  Managed Fields:
+    API Version:  acme.cert-manager.io/v1alpha2
+    Fields Type:  FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .:
+          f:cert-manager.io/certificate-name:
+          f:cert-manager.io/certificate-revision:
+          f:cert-manager.io/private-key-secret-name:
+        f:ownerReferences:
+          .:
+          k:{"uid":"32a2f41a-9553-43b9-a903-9c9f06f98f52"}:
+            .:
+            f:apiVersion:
+            f:blockOwnerDeletion:
+            f:controller:
+            f:kind:
+            f:name:
+            f:uid:
+      f:spec:
+        .:
+        f:csr:
+        f:dnsNames:
+        f:issuerRef:
+          .:
+          f:group:
+          f:kind:
+          f:name:
+      f:status:
+        .:
+        f:authorizations:
+        f:finalizeURL:
+        f:state:
+        f:url:
+    Manager:    controller
+    Operation:  Update
+    Time:       2021-02-12T22:08:21Z
+  Owner References:
+    API Version:           cert-manager.io/v1alpha2
+    Block Owner Deletion:  true
+    Controller:            true
+    Kind:                  CertificateRequest
+    Name:                  10gotech-tls-xrwt8
+    UID:                   32a2f41a-9553-43b9-a903-9c9f06f98f52
+  Resource Version:        1314873
+  UID:                     f96520e8-bc34-4d0b-afdf-f3ed5da1997f
+Spec:
+  Dns Names:
+    *.10gotech.com
+    10gotech.com
+  Issuer Ref:
+    Group:  cert-manager.io
+    Kind:   ClusterIssuer
+    Name:   letsencrypt-prod
+  Request:  LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0KTUlJQ2Z6Q0NBV2NDQVFBd0FEQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQU5UMQpvQzU5UDlsTVlTeG1GNGlBWHhZMzY2MVh6UVI2WEpGc2MvOWxmRXIvUjgzZGdPVTZ1a0RIRWwzaXNNOG5iWm1ECkNzMk02T3pmV2Uza0xSNDlNTHJXczYycU1sNFpWN3V6NzcyVEpXSTdmZDJhdmU3Z1BCUXc0bk5teG4xNnhERjYKeFExUFhXWTVDbXlubmlaYnZGajJpNjJEbXpqN0xxWTVocmN1cjJsSkphNjZybUE3SStHUU45VkMyNUF2cktmMwpuU0VTaXRjYmloZSsxOEtqYlRkRDROR05iRnc3OXBQTS81UjI0cGYrT2VMeHB6NUdodUo4am0xUVMyOEZzQ2R4CmNVeEJlMzVqWGlJcnI3dFdoSitNNk9oSTFBeDdoY1d3dEswZDBXMzZrVmpyVFhVU1AvVkZTL2FTR09VUmYrclAKMVRSZUlENFRjR3Nqb3ZaRmZWRUNBd0VBQWFBNk1EZ0dDU3FHU0liM0RRRUpEakVyTUNrd0p3WURWUjBSQkNBdwpIb0lPS2k0eE1HZHZkR1ZqYUM1amIyMkNEREV3WjI5MFpXTm9MbU52YlRBTkJna3Foa2lHOXcwQkFRc0ZBQU9DCkFRRUF0ZGorZGRRTjZwQzNHa290N0I5bVJteWtvSmZ2TFI3S3lLTnd3RGs4ZGllQ2hPazBFbkUwWVFKSmFtb1QKazdQK2xmNUlndXk5dndiWWNRTGJUZEE3VXFPTHpSVjVZMGo2Z2kwakxLZTNaZTYzYmRNazlIdUMrcWhKbGxnbgpQODNiMjk4R0VNQWtKdzgwQ0l1a1BLRlJ4Y3kyNThGQnA5SWVvWkpZalMvWU5DMkhTdEFGckdyeWpXTUVHN1loCnZNanlsQVhuL0xPdGJldUU1YVVKdm40OUVMRmlCd05VRjZ6RkZzOWllc1hSVWcwR1hHdDhtTlRKYkZ1eUFHMWQKaXI4emtiQmUvZ2Q0RXMvRllFdGE4czNINkFBUzRqbDIwL0tQVjNCL2VUVXk3Yk8yeXM1WGhNQjczQmFMa2N1ZwpOaEVLa3FHek0rT1g0L2JBbHd0ZzJocDIwUT09Ci0tLS0tRU5EIENFUlRJRklDQVRFIFJFUVVFU1QtLS0tLQo=
+Status:
+  Authorizations:
+    Challenges:
+      Token:        gmznOH0BUT541knc47wMOrINO8hzAKc7j6CIFJ-DMnw
+      Type:         http-01
+      URL:          https://acme-v02.api.letsencrypt.org/acme/chall-v3/10731711467/XQ_o4Q
+    Identifier:     10gotech.com
+    Initial State:  valid
+    URL:            https://acme-v02.api.letsencrypt.org/acme/authz-v3/10731711467
+    Wildcard:       false
+    Challenges:
+      Token:        PHrnHLm3xpDIYa_IXmI1-94wMi_D-bX89lvMKpaaCoA
+      Type:         dns-01
+      URL:          https://acme-v02.api.letsencrypt.org/acme/chall-v3/10814811927/qal1GQ
+    Identifier:     10gotech.com
+    Initial State:  pending
+    URL:            https://acme-v02.api.letsencrypt.org/acme/authz-v3/10814811927
+    Wildcard:       true
+  Finalize URL:     https://acme-v02.api.letsencrypt.org/acme/finalize/112177638/7871589312
+  State:            pending
+  URL:              https://acme-v02.api.letsencrypt.org/acme/order/112177638/7871589312
+Events:
+  Type     Reason  Age   From          Message
+  ----     ------  ----  ----          -------
+  Warning  Solver  11m   cert-manager  Failed to determine a valid solver configuration for the set of domains on the Order: no configured challenge solvers can be used for this challenge
+robbaratta@Robs-MacBook-Pro k8s-prod % cd ../../
+robbaratta@Robs-MacBook-Pro rfp % git add .
+robbaratta@Robs-MacBook-Pro rfp % git commit -m "u"
+[main 88ede6b] u
+ Committer: Rob Baratta <robbaratta@Robs-MacBook-Pro.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+robbaratta@Robs-MacBook-Pro rfp % git push -u origin main
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 468 bytes | 468.00 KiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/rbaratta/10goTech_beta.git
+   120c8eb..88ede6b  main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+robbaratta@Robs-MacBook-Pro rfp % kubectl describe order 10gotech-tls-xrwt8-2333201917
+Error from server (NotFound): orders.acme.cert-manager.io "10gotech-tls-xrwt8-2333201917" not found
+robbaratta@Robs-MacBook-Pro rfp % kubectl get order
+NAME                            STATE   AGE
+10gotech-tls-2glvq-1340594368   valid   36s
+robbaratta@Robs-MacBook-Pro rfp % kubectl describe order 10gotech-tls-2glvq-1340594368
+Name:         10gotech-tls-2glvq-1340594368
+Namespace:    default
+Labels:       <none>
+Annotations:  cert-manager.io/certificate-name: 10gotech-tls
+              cert-manager.io/certificate-revision: 1
+              cert-manager.io/private-key-secret-name: 10gotech-tls-n7mqb
+API Version:  acme.cert-manager.io/v1beta1
+Kind:         Order
+Metadata:
+  Creation Timestamp:  2021-02-12T22:23:33Z
+  Generation:          1
+  Managed Fields:
+    API Version:  acme.cert-manager.io/v1alpha2
+    Fields Type:  FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .:
+          f:cert-manager.io/certificate-name:
+          f:cert-manager.io/certificate-revision:
+          f:cert-manager.io/private-key-secret-name:
+        f:ownerReferences:
+          .:
+          k:{"uid":"75b97cb1-52d0-46d1-b260-698a028a0455"}:
+            .:
+            f:apiVersion:
+            f:blockOwnerDeletion:
+            f:controller:
+            f:kind:
+            f:name:
+            f:uid:
+      f:spec:
+        .:
+        f:csr:
+        f:dnsNames:
+        f:issuerRef:
+          .:
+          f:group:
+          f:kind:
+          f:name:
+      f:status:
+        .:
+        f:authorizations:
+        f:certificate:
+        f:finalizeURL:
+        f:state:
+        f:url:
+    Manager:    controller
+    Operation:  Update
+    Time:       2021-02-12T22:23:35Z
+  Owner References:
+    API Version:           cert-manager.io/v1alpha2
+    Block Owner Deletion:  true
+    Controller:            true
+    Kind:                  CertificateRequest
+    Name:                  10gotech-tls-2glvq
+    UID:                   75b97cb1-52d0-46d1-b260-698a028a0455
+  Resource Version:        1317539
+  UID:                     9c3df2d1-f5c2-44e1-9f51-7e57f04fc6d3
+Spec:
+  Dns Names:
+    www.10gotech.com
+    10gotech.com
+  Issuer Ref:
+    Group:  cert-manager.io
+    Kind:   ClusterIssuer
+    Name:   letsencrypt-prod
+  Request:  LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0KTUlJQ2dUQ0NBV2tDQVFBd0FEQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQU5UMQpvQzU5UDlsTVlTeG1GNGlBWHhZMzY2MVh6UVI2WEpGc2MvOWxmRXIvUjgzZGdPVTZ1a0RIRWwzaXNNOG5iWm1ECkNzMk02T3pmV2Uza0xSNDlNTHJXczYycU1sNFpWN3V6NzcyVEpXSTdmZDJhdmU3Z1BCUXc0bk5teG4xNnhERjYKeFExUFhXWTVDbXlubmlaYnZGajJpNjJEbXpqN0xxWTVocmN1cjJsSkphNjZybUE3SStHUU45VkMyNUF2cktmMwpuU0VTaXRjYmloZSsxOEtqYlRkRDROR05iRnc3OXBQTS81UjI0cGYrT2VMeHB6NUdodUo4am0xUVMyOEZzQ2R4CmNVeEJlMzVqWGlJcnI3dFdoSitNNk9oSTFBeDdoY1d3dEswZDBXMzZrVmpyVFhVU1AvVkZTL2FTR09VUmYrclAKMVRSZUlENFRjR3Nqb3ZaRmZWRUNBd0VBQWFBOE1Eb0dDU3FHU0liM0RRRUpEakV0TUNzd0tRWURWUjBSQkNJdwpJSUlRZDNkM0xqRXdaMjkwWldOb0xtTnZiWUlNTVRCbmIzUmxZMmd1WTI5dE1BMEdDU3FHU0liM0RRRUJDd1VBCkE0SUJBUUFnU0QrU3ZQYlh2dTExWHhYeklrNXhhK1dCVXcxRi80Z2FEcHdsVmpTV3hqU2tHY0FXRkJDSlljYUUKZktOWDM3ZVVNKzBGVjMxR1U3UDhsVGRneko5TWVTRGxXVkFJTmZnMnN6Y2YzaVQvTUZLbUhkdFNRWnN4KzVIYgpYeXgzamFJZVk1UnpJdWNXVHAvVUlzTURmVUVjRllpbzNoSE1ibDFHVmVEeTZKQldPekpid0RnNlBvaWlIRGpLCjhqNEdjUjYvNXZvQzV6OFVNdnU3QmFLenpTc2lZK1h1eFRMcXhBMHZpSjhYK3dBeWRiWTJ3RVdaYUEwUE5vSjgKMElFN1p4em1NckQ4MkFPWmhxZ2VybG93V0NNNWdtdzhjdEJhVG1rOTVodWhCTEwwc0Z4UDhNQUxpb1NEOGdOcgpGOHh4RU1VdnY2Nm12YVVkazNIc1Qzc3NoeEZYCi0tLS0tRU5EIENFUlRJRklDQVRFIFJFUVVFU1QtLS0tLQo=
+Status:
+  Authorizations:
+    Challenges:
+      Token:        gmznOH0BUT541knc47wMOrINO8hzAKc7j6CIFJ-DMnw
+      Type:         http-01
+      URL:          https://acme-v02.api.letsencrypt.org/acme/chall-v3/10731711467/XQ_o4Q
+    Identifier:     10gotech.com
+    Initial State:  valid
+    URL:            https://acme-v02.api.letsencrypt.org/acme/authz-v3/10731711467
+    Wildcard:       false
+    Challenges:
+      Token:        o-Jh7nhidTu8mSIHMaBKe3kOHYnulcy7SJgnNNDaZRw
+      Type:         http-01
+      URL:          https://acme-v02.api.letsencrypt.org/acme/chall-v3/10731711468/Yo7lVg
+    Identifier:     www.10gotech.com
+    Initial State:  valid
+    URL:            https://acme-v02.api.letsencrypt.org/acme/authz-v3/10731711468
+    Wildcard:       false
+  Certificate:      LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUZORENDQkJ5Z0F3SUJBZ0lTQkdyVlk5L01zSVhGUnVXSUJiY2FrVVRoTUEwR0NTcUdTSWIzRFFFQkN3VUEKTURJeEN6QUpCZ05WQkFZVEFsVlRNUll3RkFZRFZRUUtFdzFNWlhRbmN5QkZibU55ZVhCME1Rc3dDUVlEVlFRRApFd0pTTXpBZUZ3MHlNVEF5TVRJeU1USXpNelZhRncweU1UQTFNVE15TVRJek16VmFNQnN4R1RBWEJnTlZCQU1UCkVIZDNkeTR4TUdkdmRHVmphQzVqYjIwd2dnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUIKQVFEVTlhQXVmVC9aVEdFc1poZUlnRjhXTit1dFY4MEVlbHlSYkhQL1pYeEsvMGZOM1lEbE9ycEF4eEpkNHJEUApKMjJaZ3dyTmpPanMzMW50NUMwZVBUQzYxck90cWpKZUdWZTdzKys5a3lWaU8zM2RtcjN1NER3VU1PSnpac1o5CmVzUXhlc1VOVDExbU9RcHNwNTRtVzd4WTlvdXRnNXM0K3k2bU9ZYTNMcTlwU1NXdXVxNWdPeVBoa0RmVlF0dVEKTDZ5bjk1MGhFb3JYRzRvWHZ0ZkNvMjAzUStEUmpXeGNPL2FUelArVWR1S1gvam5pOGFjK1JvYmlmSTV0VUV0dgpCYkFuY1hGTVFYdCtZMTRpSzYrN1ZvU2ZqT2pvU05RTWU0WEZzTFN0SGRGdCtwRlk2MDExRWovMVJVdjJraGpsCkVYL3F6OVUwWGlBK0UzQnJJNkwyUlgxUkFnTUJBQUdqZ2dKWk1JSUNWVEFPQmdOVkhROEJBZjhFQkFNQ0JhQXcKSFFZRFZSMGxCQll3RkFZSUt3WUJCUVVIQXdFR0NDc0dBUVVGQndNQ01Bd0dBMVVkRXdFQi93UUNNQUF3SFFZRApWUjBPQkJZRUZKTDhZb0QyUXY4eXpwdnpvV3RRazRmbXg5ak5NQjhHQTFVZEl3UVlNQmFBRkJRdXN4ZTNXRmJMCnJsQUpRT1lmcjUyTEZNTEdNRlVHQ0NzR0FRVUZCd0VCQkVrd1J6QWhCZ2dyQmdFRkJRY3dBWVlWYUhSMGNEb3YKTDNJekxtOHViR1Z1WTNJdWIzSm5NQ0lHQ0NzR0FRVUZCekFDaGhab2RIUndPaTh2Y2pNdWFTNXNaVzVqY2k1dgpjbWN2TUNrR0ExVWRFUVFpTUNDQ0RERXdaMjkwWldOb0xtTnZiWUlRZDNkM0xqRXdaMjkwWldOb0xtTnZiVEJNCkJnTlZIU0FFUlRCRE1BZ0dCbWVCREFFQ0FUQTNCZ3NyQmdFRUFZTGZFd0VCQVRBb01DWUdDQ3NHQVFVRkJ3SUIKRmhwb2RIUndPaTh2WTNCekxteGxkSE5sYm1OeWVYQjBMbTl5WnpDQ0FRUUdDaXNHQVFRQjFua0NCQUlFZ2ZVRQpnZklBOEFCMUFGemNRNUwrNXF0RlJMRmVtdFJXNWhBMys5WDZSOXloYzVTeVh1YjJ4dzdLQUFBQmQ1aFhuNW9BCkFBUURBRVl3UkFJZlZQWEpxSVBzb0QwK2ZmaDA2SGlWYXhlMldKdS9UTWhtNFNkaTZTaVZRZ0loQVBvM3FxdzYKanIzbjFBWW1GazNRYjh6Z1k5emsvbzFDd1p2MElvYkpXenhtQUhjQTlseVVMOUYzTUNJVVZCZ0lNSlJXanVOTgpFeGt6djk4TUx5QUx6RTd4Wk9NQUFBRjNtRmVmZ2dBQUJBTUFTREJHQWlFQWdqbXIwTTdGMHRoemVJK3E0Rzd5CkhCcjBsZWVad0EyalRjVm8yc25LT1owQ0lRRGtFbTJmWjBRbUtCVEVHVWkyektnaEhYdHBYRHpQT2Q5WjFIQjMKMUNOSUNEQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFiSmV2dmlWemRqMDdTSDByY3pybk9qRU85eS9XMkN1RQpyalE5eUJLY2dqeVZ2MUhZWFZ3dmFtL1JwYkJheUlzZnVHWFZ2TUEycC84UjNqSnFyV2tlUVdHMXNadW1tMFhQCjlleUltb2YrSXl3em1PUVhDY3BPQkxnR095aHVJMkhzOWpuZmxxcm93UDZhK3NvbUU0aEJpMHkwZXVYQWFHVjQKWEVCQ0tnams2bDRSL2pGU0pYakpjYlArQzI3TGQ4QUdZQkJTdXFDcEVqdHRCZG1yZDNrc2pwRWxEQWRvOEFtRgpPYnFFVnZLck8vMjBKalY5dGVXUmMvTGw0TW1YREx3MzhDa2cvVnZhdDQ0dm1SZ1FKS0dFdlVDdlZyaVhHWmRGCjRHR3dSejBCcHREc2t2bC9wckpQNTRhc0UxbFVkL3VkZFByanhOdUIwNm5QWlBFUnM2OEk3QT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0KLS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVaVENDQTAyZ0F3SUJBZ0lRUUFGMUJJTVVwTWdoaklTcERCYk4zekFOQmdrcWhraUc5dzBCQVFzRkFEQS8KTVNRd0lnWURWUVFLRXh0RWFXZHBkR0ZzSUZOcFoyNWhkSFZ5WlNCVWNuVnpkQ0JEYnk0eEZ6QVZCZ05WQkFNVApEa1JUVkNCU2IyOTBJRU5CSUZnek1CNFhEVEl3TVRBd056RTVNakUwTUZvWERUSXhNRGt5T1RFNU1qRTBNRm93Ck1qRUxNQWtHQTFVRUJoTUNWVk14RmpBVUJnTlZCQW9URFV4bGRDZHpJRVZ1WTNKNWNIUXhDekFKQmdOVkJBTVQKQWxJek1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBdXdJVktNejJvSlRURHhMcwpqVldTdy9pQzhabW1la0tJcDEwbXFyVXJ1Y1ZNc2ErT2EvbDF5S1BYRDBlVUZGVTFWNHllcUtJNUdmV0NQRUtwClRtNzFPOE11MjQzQXNGenpXVGpuN2M5cDhGb0xHNzdBbENRbGgvbzNjYk1UNXh5czRadnYyK1E3UlZKRmxxbkIKVTg0MHlGTHV0YTd0ajk1Z2NPS2xWS3UyYlE2WHBVQTBheXZUdkdiclpqUjgrbXVMajFjcG1mZ3dGMTI2Y20vNwpnY1d0MG9aWVBSZkg1d203OFN2M2h0ekIybkZkMUVianpLMGx3WWk4WUdkMVpyUHhHUGVpWE9aVC96cUl0a2VsCi94TVk2cGdKZHorZFUvblBBZVgxcG5BWEZLOWpwUCtaczVPZDNGT25CdjVJaFIyaGFhNGxkYnNUekZJRDllMVIKb1l2YkZRSURBUUFCbzRJQmFEQ0NBV1F3RWdZRFZSMFRBUUgvQkFnd0JnRUIvd0lCQURBT0JnTlZIUThCQWY4RQpCQU1DQVlZd1N3WUlLd1lCQlFVSEFRRUVQekE5TURzR0NDc0dBUVVGQnpBQ2hpOW9kSFJ3T2k4dllYQndjeTVwClpHVnVkSEoxYzNRdVkyOXRMM0p2YjNSekwyUnpkSEp2YjNSallYZ3pMbkEzWXpBZkJnTlZIU01FR0RBV2dCVEUKcDdHa2V5eHgrdHZoUzVCMS84UVZZSVdKRURCVUJnTlZIU0FFVFRCTE1BZ0dCbWVCREFFQ0FUQS9CZ3NyQmdFRQpBWUxmRXdFQkFUQXdNQzRHQ0NzR0FRVUZCd0lCRmlKb2RIUndPaTh2WTNCekxuSnZiM1F0ZURFdWJHVjBjMlZ1ClkzSjVjSFF1YjNKbk1Ed0dBMVVkSHdRMU1ETXdNYUF2b0MyR0syaDBkSEE2THk5amNtd3VhV1JsYm5SeWRYTjAKTG1OdmJTOUVVMVJTVDA5VVEwRllNME5TVEM1amNtd3dIUVlEVlIwT0JCWUVGQlF1c3hlM1dGYkxybEFKUU9ZZgpyNTJMRk1MR01CMEdBMVVkSlFRV01CUUdDQ3NHQVFVRkJ3TUJCZ2dyQmdFRkJRY0RBakFOQmdrcWhraUc5dzBCCkFRc0ZBQU9DQVFFQTJVemd5ZldFaURjeDI3c1Q0clA4aTJ0aUVteFl0MGwrUEFLM3FCOG9ZZXZPNEM1ejcwa0gKZWpXRUh4MnRhUERZL2xhQkwyMS9XS1p1TlRZUUhIUEQ1YjF0WGdIWGJuTDdLcUM0MDFkazVWdkNhZFRRc3ZkOApTOE1Yam9oeWM5ejkvRzI5NDhrTGptRTZGbGg5ZERZclZZQTl4Mk8raEVQR09hRU9hMWVlUHluQmdQYXl2VWZMCnFqQnN0ekxoV1ZRTEdBa1hYbU5zKzVablBCeHpESk9MeGhGMkpJYmVRQWNINUgwdFpyVWxvNVpZeU9xQTdzOXAKTzViODVvM0FNL09KK0NrdEZCUXRmdkJoY0pWZDl3dmx3UHNrK3V5T3kySEk3bU54S0tnc0JUdDM3NXRlQTJUdwpVZEhraFZOY3NBS1gxSDdHTk5MT0VBRGtzZDg2d3VvWHZnPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  Finalize URL:     https://acme-v02.api.letsencrypt.org/acme/finalize/112177638/7871893418
+  State:            valid
+  URL:              https://acme-v02.api.letsencrypt.org/acme/order/112177638/7871893418
+Events:
+  Type    Reason    Age   From          Message
+  ----    ------    ----  ----          -------
+  Normal  Complete  45s   cert-manager  Order completed successfully
+robbaratta@Robs-MacBook-Pro rfp % curl https://10gotech.com -v
+*   Trying 164.90.252.252...
+* TCP_NODELAY set
+* Connected to 10gotech.com (164.90.252.252) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* successfully set certificate verify locations:
+*   CAfile: /etc/ssl/cert.pem
+  CApath: none
+* TLSv1.2 (OUT), TLS handshake, Client hello (1):
+* TLSv1.2 (IN), TLS handshake, Server hello (2):
+* TLSv1.2 (IN), TLS handshake, Certificate (11):
+* TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+* TLSv1.2 (IN), TLS handshake, Server finished (14):
+* TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+* TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
+* TLSv1.2 (OUT), TLS handshake, Finished (20):
+* TLSv1.2 (IN), TLS change cipher, Change cipher spec (1):
+* TLSv1.2 (IN), TLS handshake, Finished (20):
+* SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: CN=www.10gotech.com
+*  start date: Feb 12 21:23:35 2021 GMT
+*  expire date: May 13 21:23:35 2021 GMT
+*  subjectAltName: host "10gotech.com" matched cert's "10gotech.com"
+*  issuer: C=US; O=Let's Encrypt; CN=R3
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7ffa7a808200)
+> GET / HTTP/2
+> Host: 10gotech.com
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+* Connection state changed (MAX_CONCURRENT_STREAMS == 128)!
+< HTTP/2 200
+< server: nginx/1.19.1
+< date: Fri, 12 Feb 2021 22:24:47 GMT
+< content-type: text/html; charset=utf-8
+< content-length: 2300
+< vary: Accept-Encoding
+< cache-control: no-store, must-revalidate
+< x-powered-by: Next.js
+< etag: "8fc-lmbGaNsaRMEMMAy+7qGoJ+YJbSc"
+< vary: Accept-Encoding
+< strict-transport-security: max-age=15724800; includeSubDomains
+<
+<!DOCTYPE html><html><head><style data-next-hide-fouc="true">body{display:none}</style><noscript data-next-hide-fouc="true"><style>body{display:block}</style></noscript><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-188841405-1"></script><script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'UA-188841405-1', {
+                page_path: window.location.pathname,
+              });
+* Connection #0 to host 10gotech.com left intact
+          </script><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="next-head-count" content="2"/><noscript data-n-css=""></noscript><link rel="preload" href="/_next/static/chunks/main.js?ts=1613168676928" as="script"/><link rel="preload" href="/_next/static/chunks/webpack.js?ts=1613168676928" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app.js?ts=1613168676928" as="script"/><link rel="preload" href="/_next/static/chunks/pages/index.js?ts=1613168676928" as="script"/><noscript id="__next_css__DO_NOT_USE__"></noscript></head><body><div id="__next"><div><div style="min-height:90vh" class="ui one column grid"><div class="centered middle aligned row"><div style="max-width:350px;padding:0" class="stretched column"><div style="margin-top:-100px" class="ui basic segment"><div class="ui negative message"><div class="header">404 page not found</div></div></div></div></div></div></div></div><script src="/_next/static/chunks/react-refresh.js?ts=1613168676928"></script><script id="__NEXT_DATA__" type="application/json">{"props":{"siteExists":false},"page":"/","query":{},"buildId":"development","isFallback":false,"appGip":true}</script><script nomodule="" src="/_next/static/chunks/polyfills.js?ts=1613168676928"></script><script src="/_next/static/chunks/main.js?ts=1613168676928"></script><script src="/_next/static/chunks/webpack.js?ts=1613168676928"></script><script src="/_next/static/chunks/pages/_app.js?ts=1613168676928"></script><script src="/_next/static/chunks/pages/index.js?ts=1613168676928"></script><script src="/_next/static/development/_buildManifest.js?ts=1613168676928"></script><script src="/_next/static/development/_ssgManifest.js?ts=1613168676928"></script></body></html>* Closing connection 0
+robbaratta@Robs-MacBook-Pro rfp % curl https://www.10gotech.com -v
+*   Trying 164.90.252.252...
+* TCP_NODELAY set
+* Connected to www.10gotech.com (164.90.252.252) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* successfully set certificate verify locations:
+*   CAfile: /etc/ssl/cert.pem
+  CApath: none
+* TLSv1.2 (OUT), TLS handshake, Client hello (1):
+* TLSv1.2 (IN), TLS handshake, Server hello (2):
+* TLSv1.2 (IN), TLS handshake, Certificate (11):
+* TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+* TLSv1.2 (IN), TLS handshake, Server finished (14):
+* TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+* TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
+* TLSv1.2 (OUT), TLS handshake, Finished (20):
+* TLSv1.2 (IN), TLS change cipher, Change cipher spec (1):
+* TLSv1.2 (IN), TLS handshake, Finished (20):
+* SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: CN=www.10gotech.com
+*  start date: Feb 12 21:23:35 2021 GMT
+*  expire date: May 13 21:23:35 2021 GMT
+*  subjectAltName: host "www.10gotech.com" matched cert's "www.10gotech.com"
+*  issuer: C=US; O=Let's Encrypt; CN=R3
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7fa091008800)
+> GET / HTTP/2
+> Host: www.10gotech.com
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+* Connection state changed (MAX_CONCURRENT_STREAMS == 128)!
+< HTTP/2 200
+< server: nginx/1.19.1
+< date: Fri, 12 Feb 2021 22:25:45 GMT
+< content-type: text/html; charset=utf-8
+< content-length: 2300
+< vary: Accept-Encoding
+< cache-control: no-store, must-revalidate
+< x-powered-by: Next.js
+< etag: "8fc-7y2TRtZUT9hHSSA96dGsc0L5LIc"
+< vary: Accept-Encoding
+< strict-transport-security: max-age=15724800; includeSubDomains
+<
+<!DOCTYPE html><html><head><style data-next-hide-fouc="true">body{display:none}</style><noscript data-next-hide-fouc="true"><style>body{display:block}</style></noscript><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-188841405-1"></script><script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'UA-188841405-1', {
+                page_path: window.location.pathname,
+              });
+* Connection #0 to host www.10gotech.com left intact
+          </script><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="next-head-count" content="2"/><noscript data-n-css=""></noscript><link rel="preload" href="/_next/static/chunks/main.js?ts=1613168735497" as="script"/><link rel="preload" href="/_next/static/chunks/webpack.js?ts=1613168735497" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app.js?ts=1613168735497" as="script"/><link rel="preload" href="/_next/static/chunks/pages/index.js?ts=1613168735497" as="script"/><noscript id="__next_css__DO_NOT_USE__"></noscript></head><body><div id="__next"><div><div style="min-height:90vh" class="ui one column grid"><div class="centered middle aligned row"><div style="max-width:350px;padding:0" class="stretched column"><div style="margin-top:-100px" class="ui basic segment"><div class="ui negative message"><div class="header">404 page not found</div></div></div></div></div></div></div></div><script src="/_next/static/chunks/react-refresh.js?ts=1613168735497"></script><script id="__NEXT_DATA__" type="application/json">{"props":{"siteExists":false},"page":"/","query":{},"buildId":"development","isFallback":false,"appGip":true}</script><script nomodule="" src="/_next/static/chunks/polyfills.js?ts=1613168735497"></script><script src="/_next/static/chunks/main.js?ts=1613168735497"></script><script src="/_next/static/chunks/webpack.js?ts=1613168735497"></script><script src="/_next/static/chunks/pages/_app.js?ts=1613168735497"></script><script src="/_next/static/chunks/pages/index.js?ts=1613168735497"></script><script src="/_next/static/development/_buildManifest.js?ts=1613168735497"></script><script src="/_next/static/development/_ssgManifest.js?ts=1613168735497"></script></body></html>* Closing connection 0
+robbaratta@Robs-MacBook-Pro rfp % git add .
+robbaratta@Robs-MacBook-Pro rfp % git commit -m "h"
+[main 89f9647] h
+ Committer: Rob Baratta <robbaratta@Robs-MacBook-Pro.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+robbaratta@Robs-MacBook-Pro rfp % git push -u origin main
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 407 bytes | 407.00 KiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/rbaratta/10goTech_beta.git
+   88ede6b..89f9647  main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+robbaratta@Robs-MacBook-Pro rfp % git add .
+robbaratta@Robs-MacBook-Pro rfp % git commit -m "secure"
+[main ef0e2f5] secure
+ Committer: Rob Baratta <robbaratta@Robs-MacBook-Pro.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+robbaratta@Robs-MacBook-Pro rfp % git push -u oigin main
+fatal: 'oigin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+robbaratta@Robs-MacBook-Pro rfp % git push -u origin main
+Enumerating objects: 44, done.
+Counting objects: 100% (44/44), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (23/23), done.
+Writing objects: 100% (23/23), 1.90 KiB | 1.90 MiB/s, done.
+Total 23 (delta 21), reused 0 (delta 0)
+remote: Resolving deltas: 100% (21/21), completed with 20 local objects.
+To https://github.com/rbaratta/10goTech_beta.git
+   89f9647..ef0e2f5  main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+robbaratta@Robs-MacBook-Pro rfp % kubectl get pods
+NAME                                     READY   STATUS        RESTARTS   AGE
+auth-depl-55c84d549-9brhf                0/1     Terminating   0          2d12h
+auth-depl-888c86fcf-w5b62                1/1     Running       0          27s
+client-depl-6b9dd7f5dd-ps5v8             1/1     Running       0          117m
+nats-depl-c688b8776-qhqbp                1/1     Running       0          6d9h
+notification-depl-6555d4df9f-2wznr       1/1     Running       0          33s
+order-depl-5f6cbdf5d-hzp8v               0/1     Terminating   0          2d12h
+order-depl-8565c9c5d9-hr9ct              1/1     Running       0          30s
+photo-depl-6687ddbf6c-j8ktb              1/1     Running       0          28s
+photo-depl-7b6bcfc94c-4n596              0/1     Terminating   3          2d12h
+product-depl-58c779bf5c-fk654            1/1     Terminating   0          2d12h
+product-depl-7b74bf8977-hldjm            1/1     Running       0          24s
+site-depl-77588d9b79-qxqfn               1/1     Running       0          22s
+site-depl-c5fd79466-2gdkp                0/1     Terminating   3          2d12h
+site-subscription-depl-d4f9d98dd-pbl77   1/1     Running       0          29s
+robbaratta@Robs-MacBook-Pro rfp % kubectl logs site-depl-77588d9b79-qxqfn
+^[
+> site@1.0.0 start
+> ts-node-dev src/index.ts
+
+[INFO] 00:29:04 ts-node-dev ver. 1.1.1 (using ts-node ver. 9.1.1, typescript ver. 4.1.5)
+robbaratta@Robs-MacBook-Pro rfp % kubectl logs site-depl-c5fd79466-2gdkp
+Error from server (NotFound): pods "site-depl-c5fd79466-2gdkp" not found
+robbaratta@Robs-MacBook-Pro rfp % kubectl get pods
+NAME                                     READY   STATUS        RESTARTS   AGE
+auth-depl-888c86fcf-w5b62                1/1     Running       0          75s
+client-depl-6b9dd7f5dd-ps5v8             1/1     Running       0          118m
+nats-depl-c688b8776-qhqbp                1/1     Running       0          6d9h
+notification-depl-6555d4df9f-2wznr       1/1     Running       0          81s
+order-depl-8565c9c5d9-hr9ct              1/1     Running       0          78s
+photo-depl-6687ddbf6c-j8ktb              1/1     Running       0          76s
+product-depl-58c779bf5c-fk654            0/1     Terminating   0          2d12h
+product-depl-7b74bf8977-hldjm            1/1     Running       0          72s
+site-depl-77588d9b79-qxqfn               1/1     Running       0          70s
+site-subscription-depl-d4f9d98dd-pbl77   1/1     Running       0          77s
+robbaratta@Robs-MacBook-Pro rfp % kubectl get pods
+NAME                                     READY   STATUS        RESTARTS   AGE
+auth-depl-888c86fcf-w5b62                1/1     Running       0          77s
+client-depl-6b9dd7f5dd-ps5v8             1/1     Running       0          118m
+nats-depl-c688b8776-qhqbp                1/1     Running       0          6d9h
+notification-depl-6555d4df9f-2wznr       1/1     Running       0          83s
+order-depl-8565c9c5d9-hr9ct              1/1     Running       0          80s
+photo-depl-6687ddbf6c-j8ktb              1/1     Running       0          78s
+product-depl-58c779bf5c-fk654            0/1     Terminating   0          2d12h
+product-depl-7b74bf8977-hldjm            1/1     Running       0          74s
+site-depl-77588d9b79-qxqfn               1/1     Running       0          72s
+site-subscription-depl-d4f9d98dd-pbl77   1/1     Running       0          79s
+robbaratta@Robs-MacBook-Pro rfp % kubectl get pods
+NAME                                     READY   STATUS        RESTARTS   AGE
+auth-depl-888c86fcf-w5b62                1/1     Running       0          78s
+client-depl-6b9dd7f5dd-ps5v8             1/1     Running       0          118m
+nats-depl-c688b8776-qhqbp                1/1     Running       0          6d9h
+notification-depl-6555d4df9f-2wznr       1/1     Running       0          84s
+order-depl-8565c9c5d9-hr9ct              1/1     Running       0          81s
+photo-depl-6687ddbf6c-j8ktb              1/1     Running       0          79s
+product-depl-58c779bf5c-fk654            0/1     Terminating   0          2d12h
+product-depl-7b74bf8977-hldjm            1/1     Running       0          75s
+site-depl-77588d9b79-qxqfn               1/1     Running       0          73s
+site-subscription-depl-d4f9d98dd-pbl77   1/1     Running       0          80s
+robbaratta@Robs-MacBook-Pro rfp % git add .
+robbaratta@Robs-MacBook-Pro rfp % git commit -m "secure"
+[main 3cadb4d] secure
+ Committer: Rob Baratta <robbaratta@Robs-MacBook-Pro.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+robbaratta@Robs-MacBook-Pro rfp % kubectl describe ingress ingress-service
+Name:             ingress-service
+Namespace:        default
+Address:          15workdasgse.10gotech.com
+Default backend:  default-http-backend:80 (<error: endpoints "default-http-backend" not found>)
+TLS:
+  10gotech-tls terminates www.10gotech.com,10gotech.com
+Rules:
+  Host              Path  Backends
+  ----              ----  --------
+  www.10gotech.com
+                    /api/users/?(.*)               auth-srv:3000 (10.244.1.68:3000)
+                    /api/site/?(.*)                site-srv:3000 (10.244.1.153:3000)
+                    /api/product/?(.*)             product-srv:3000 (10.244.0.191:3000)
+                    /api/notification/?(.*)        notification-srv:3000 (10.244.1.151:3000)
+                    /api/order/?(.*)               order-srv:3000 (10.244.1.35:3000)
+                    /api/site-subscription/?(.*)   site-subscription-srv:3000 (10.244.0.223:3000)
+                    /api/photo/?(.*)               photo-srv:3000 (10.244.0.135:3000)
+                    /?(.*)                         client-srv:3000 (10.244.1.133:3000)
+  10gotech.com
+                    /api/users/?(.*)               auth-srv:3000 (10.244.1.68:3000)
+                    /api/site/?(.*)                site-srv:3000 (10.244.1.153:3000)
+                    /api/product/?(.*)             product-srv:3000 (10.244.0.191:3000)
+                    /api/notification/?(.*)        notification-srv:3000 (10.244.1.151:3000)
+                    /api/order/?(.*)               order-srv:3000 (10.244.1.35:3000)
+                    /api/site-subscription/?(.*)   site-subscription-srv:3000 (10.244.0.223:3000)
+                    /api/photo/?(.*)               photo-srv:3000 (10.244.0.135:3000)
+                    /?(.*)                         client-srv:3000 (10.244.1.133:3000)
+Annotations:        cert-manager.io/cluster-issuer: letsencrypt-prod
+                    nginx.ingress.kubernetes.io/use-regex: true
+Events:             <none>
+robbaratta@Robs-MacBook-Pro rfp % kubectl get svc
+NAME                    TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE
+auth-srv                ClusterIP   10.245.146.117   <none>        3000/TCP            6d20h
+client-srv              ClusterIP   10.245.202.221   <none>        3000/TCP            6d20h
+kubernetes              ClusterIP   10.245.0.1       <none>        443/TCP             6d21h
+nats-srv                ClusterIP   10.245.37.69     <none>        4222/TCP,8222/TCP   6d20h
+notification-srv        ClusterIP   10.245.217.74    <none>        3000/TCP            6d20h
+order-srv               ClusterIP   10.245.61.91     <none>        3000/TCP            6d20h
+photo-srv               ClusterIP   10.245.64.201    <none>        3000/TCP            6d20h
+product-srv             ClusterIP   10.245.199.3     <none>        3000/TCP            6d20h
+site-srv                ClusterIP   10.245.46.194    <none>        3000/TCP            6d20h
+site-subscription-srv   ClusterIP   10.245.44.41     <none>        3000/TCP            6d20h
+robbaratta@Robs-MacBook-Pro rfp % git add .
+robbaratta@Robs-MacBook-Pro rfp % git commit -m "t"
+[main bd798df] t
+ Committer: Rob Baratta <robbaratta@Robs-MacBook-Pro.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 1 insertion(+), 3 deletions(-)
+ create mode 100644 dns.txt
+robbaratta@Robs-MacBook-Pro rfp % git push -u origin main
+Enumerating objects: 20, done.
+Counting objects: 100% (20/20), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (12/12), 1.00 KiB | 1.00 MiB/s, done.
+Total 12 (delta 8), reused 0 (delta 0)
+remote: Resolving deltas: 100% (8/8), completed with 7 local objects.
+To https://github.com/rbaratta/10goTech_beta.git
+   ef0e2f5..bd798df  main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+robbaratta@Robs-MacBook-Pro rfp % docker run -it certbot/certbot sh
+Unable to find image 'certbot/certbot:latest' locally
+latest: Pulling from certbot/certbot
+801bfaa63ef2: Already exists
+7678dd7631a2: Pull complete
+4c6139ab40d8: Pull complete
+ff5ef8cd8062: Pull complete
+cefde9442c97: Pull complete
+75077d3d5c26: Pull complete
+5f56a95649c4: Pull complete
+70db9e70bd0b: Pull complete
+1369e8589892: Pull complete
+a00c3b290f52: Pull complete
+4c657d1c5eac: Pull complete
+8410fa093244: Pull complete
+f6479610343a: Pull complete
+dcb91cb8d361: Pull complete
+Digest: sha256:9867da9d3345444b37bf2edc8126f04bf1fc093d693edf5555103c04fd71ba49
+Status: Downloaded newer image for certbot/certbot:latest
+usage:
+  certbot [SUBCOMMAND] [options] [-d DOMAIN] [-d DOMAIN] ...
+
+Certbot can obtain and install HTTPS/TLS/SSL certificates.  By default,
+it will attempt to use a webserver both for obtaining and installing the
+certificate.
+certbot: error: unrecognized arguments: sh
+robbaratta@Robs-MacBook-Pro rfp % docker run -it certbot/certbot - sh
+usage:
+  certbot [SUBCOMMAND] [options] [-d DOMAIN] [-d DOMAIN] ...
+
+Certbot can obtain and install HTTPS/TLS/SSL certificates.  By default,
+it will attempt to use a webserver both for obtaining and installing the
+certificate.
+certbot: error: unrecognized arguments: - sh
+robbaratta@Robs-MacBook-Pro rfp % docker run -it certbot/certbot -- sh
+usage:
+  certbot [SUBCOMMAND] [options] [-d DOMAIN] [-d DOMAIN] ...
+
+Certbot can obtain and install HTTPS/TLS/SSL certificates.  By default,
+it will attempt to use a webserver both for obtaining and installing the
+certificate.
+certbot: error: unrecognized arguments: -- sh
+robbaratta@Robs-MacBook-Pro rfp % docker run -it certbot/certbot --sh
+usage:
+  certbot [SUBCOMMAND] [options] [-d DOMAIN] [-d DOMAIN] ...
+
+Certbot can obtain and install HTTPS/TLS/SSL certificates.  By default,
+it will attempt to use a webserver both for obtaining and installing the
+certificate.
+certbot: error: unrecognized arguments: --sh
+robbaratta@Robs-MacBook-Pro rfp % docker run -it --entrypoint=sh certbot/certbot
+/opt/certbot # certbot certonly -d *.10gotech.com -d 10gotech.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+How would you like to authenticate with the ACME CA?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: Spin up a temporary webserver (standalone)
+2: Place files in webroot directory (webroot)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel): ^[c^CExiting due to user request.
+/opt/certbot # certbot certonly -d *.10gotech.com -d 10gotech.com --manual --preferred-challenges=dn
+s
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator manual, Installer None
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): rob@10gotech.com
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please read the Terms of Service at
+https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf. You must
+agree in order to register with the ACME server. Do you agree?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: y
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Would you be willing, once your first certificate is successfully issued, to
+share your email address with the Electronic Frontier Foundation, a founding
+partner of the Let's Encrypt project and the non-profit organization that
+develops Certbot? We'd like to send you email about our work encrypting the web,
+EFF news, campaigns, and ways to support digital freedom.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: n
+Account registered.
+Requesting a certificate for *.10gotech.com and 10gotech.com
+Performing the following challenges:
+dns-01 challenge for 10gotech.com
+dns-01 challenge for 10gotech.com
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please deploy a DNS TXT record under the name
+_acme-challenge.10gotech.com with the following value:
+
+WfAFd9LAz4e8_FUN_-ou4i3L78Tm6llC6p8AezCgWJo
+
+Before continuing, verify the record is deployed.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Press Enter to Continue
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please deploy a DNS TXT record under the name
+_acme-challenge.10gotech.com with the following value:
+
+9qKbE_SQz14K13fgs3ZWHnCQ2Y6vww4U6oXGYxX5MRA
+
+Before continuing, verify the record is deployed.
+(This must be set up in addition to the previous challenges; do not remove,
+replace, or undo the previous challenge tasks yet. Note that you might be
+asked to create multiple distinct TXT records with the same name. This is
+permitted by DNS standards.)
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Press Enter to Continue
+Waiting for verification...
+Challenge failed for domain 10gotech.com
+dns-01 challenge for 10gotech.com
+Cleaning up challenges
+Some challenges have failed.
+
+IMPORTANT NOTES:
+ - The following errors were reported by the server:
+
+   Domain: 10gotech.com
+   Type:   unauthorized
+   Detail: Incorrect TXT record
+   "9qKbE_SQz14K13fgs3ZWHnCQ2Y6vww4U6oXGYxX5MRA" found at
+   _acme-challenge.10gotech.com
+
+   To fix these errors, please make sure that your domain name was
+   entered correctly and the DNS A/AAAA record(s) for that domain
+   contain(s) the right IP address.
+/opt/certbot # certbot certonly -d *.10gotech.com -d 10gotech.com --manual --preferred-challenges=dn
+s
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator manual, Installer None
+Requesting a certificate for *.10gotech.com and 10gotech.com
+Performing the following challenges:
+dns-01 challenge for 10gotech.com
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please deploy a DNS TXT record under the name
+_acme-challenge.10gotech.com with the following value:
+
+PvQyHcU-ACcNa1CswWnAwgMjiLXDURCs99RtcRnFFDI
+
+Before continuing, verify the record is deployed.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Press Enter to Continue
+Waiting for verification...
+Cleaning up challenges
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/10gotech.com/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/10gotech.com/privkey.pem
+   Your certificate will expire on 2021-05-14. To obtain a new or
+   tweaked version of this certificate in the future, simply run
+   certbot again. To non-interactively renew *all* of your
+   certificates, run "certbot renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+
+/opt/certbot # cat /etc/letsencrypt/live/10gotech.com/fullchain.pem
+-----BEGIN CERTIFICATE-----
+MIIFLzCCBBegAwIBAgISBIHl9v7MMOlbIe5ZveyJq/AjMA0GCSqGSIb3DQEBCwUA
+MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD
+EwJSMzAeFw0yMTAyMTMxNDA2MDBaFw0yMTA1MTQxNDA2MDBaMBkxFzAVBgNVBAMM
+DiouMTBnb3RlY2guY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA
+6l3/OP5NwS0xNcN3bFXf8nHdM8dkcGO7fseIOeaR2yd+krt3AHdD8mURdZAq2kZV
+Tih2rAiNDTE9NWqKg/w7pQxGDMTq+QNiRDnnEEeagpldCVxn3ib/QlbVFT/hW+lu
+V1i+D+hbA8AMtMzyWVcz+ZjJy/ht3w3rAiemZlde26KfIwvpycTmhNYjMkqMtSTt
+s2L+kDXhcputikOHS5og3nLAMRiAq44NChiqlDeL2tjLES1co8aTNEIz8RRQkA+u
+cdGAdVkH55v3wzrosMzEjZCXSUoEghKseK5gnbwvbSNiCH181CP4w78sV88J68ag
+2gHYiJcbAxoHz6sjz3HjFQIDAQABo4ICVjCCAlIwDgYDVR0PAQH/BAQDAgWgMB0G
+A1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0GA1Ud
+DgQWBBSfv/B2kgH6yGoGKVEKnyzNkh0H/TAfBgNVHSMEGDAWgBQULrMXt1hWy65Q
+CUDmH6+dixTCxjBVBggrBgEFBQcBAQRJMEcwIQYIKwYBBQUHMAGGFWh0dHA6Ly9y
+My5vLmxlbmNyLm9yZzAiBggrBgEFBQcwAoYWaHR0cDovL3IzLmkubGVuY3Iub3Jn
+LzAnBgNVHREEIDAegg4qLjEwZ290ZWNoLmNvbYIMMTBnb3RlY2guY29tMEwGA1Ud
+IARFMEMwCAYGZ4EMAQIBMDcGCysGAQQBgt8TAQEBMCgwJgYIKwYBBQUHAgEWGmh0
+dHA6Ly9jcHMubGV0c2VuY3J5cHQub3JnMIIBAwYKKwYBBAHWeQIEAgSB9ASB8QDv
+AHUA9lyUL9F3MCIUVBgIMJRWjuNNExkzv98MLyALzE7xZOMAAAF3m+1dCQAABAMA
+RjBEAiAFw6b0Y8gcSzYRQL3ZrcN8VKhthXs+S8rrgg8cwujoXgIgSkZIGIXq5FvR
+ujJg/rZyao7rMfCaCwrHcMOlwNn7kRsAdgBc3EOS/uarRUSxXprUVuYQN/vV+kfc
+oXOUsl7m9scOygAAAXeb7V8XAAAEAwBHMEUCIQDi69warfG1Mkbdgpz2rzxNrS5p
+PDLrLw6b4MgosrUO6QIgLip+jZxmrxR5y4/j4Tln8w8Y48Js2FSqqqwoPMZ3tx4w
+DQYJKoZIhvcNAQELBQADggEBAKlGZE6bumtIlw9eAtWF9D1PV6tnw5Q01du4KxOl
+KZc/a9RCBbux5y96y3x+LNYq1h0B2CT0xfhAJWL954S92io0wtg0gqOm2PdUtxYd
+YPkvgh+ABM0FVCyV8FWc20XMRRLNUAxGEavDyPt2ax+KIDkIz6HSMWni3kfgq+38
+vzzvIhhzkkXOH+2xVw/0iAOlWSploxXFK3gnuYOlsDmk5OQEDCF7JdKanXOzUVH9
+CuIc7DpFYprQZTyz15dw+iBxHVdL4QcKwWPPnvia0oQAUMqfoxc6Xrnz+HXoOL2s
+gz23L+HURnzpWaDpfaSDP/dgiTewuJWoXrm9W4iE6jr6a3A=
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+MIIEZTCCA02gAwIBAgIQQAF1BIMUpMghjISpDBbN3zANBgkqhkiG9w0BAQsFADA/
+MSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMT
+DkRTVCBSb290IENBIFgzMB4XDTIwMTAwNzE5MjE0MFoXDTIxMDkyOTE5MjE0MFow
+MjELMAkGA1UEBhMCVVMxFjAUBgNVBAoTDUxldCdzIEVuY3J5cHQxCzAJBgNVBAMT
+AlIzMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuwIVKMz2oJTTDxLs
+jVWSw/iC8ZmmekKIp10mqrUrucVMsa+Oa/l1yKPXD0eUFFU1V4yeqKI5GfWCPEKp
+Tm71O8Mu243AsFzzWTjn7c9p8FoLG77AlCQlh/o3cbMT5xys4Zvv2+Q7RVJFlqnB
+U840yFLuta7tj95gcOKlVKu2bQ6XpUA0ayvTvGbrZjR8+muLj1cpmfgwF126cm/7
+gcWt0oZYPRfH5wm78Sv3htzB2nFd1EbjzK0lwYi8YGd1ZrPxGPeiXOZT/zqItkel
+/xMY6pgJdz+dU/nPAeX1pnAXFK9jpP+Zs5Od3FOnBv5IhR2haa4ldbsTzFID9e1R
+oYvbFQIDAQABo4IBaDCCAWQwEgYDVR0TAQH/BAgwBgEB/wIBADAOBgNVHQ8BAf8E
+BAMCAYYwSwYIKwYBBQUHAQEEPzA9MDsGCCsGAQUFBzAChi9odHRwOi8vYXBwcy5p
+ZGVudHJ1c3QuY29tL3Jvb3RzL2RzdHJvb3RjYXgzLnA3YzAfBgNVHSMEGDAWgBTE
+p7Gkeyxx+tvhS5B1/8QVYIWJEDBUBgNVHSAETTBLMAgGBmeBDAECATA/BgsrBgEE
+AYLfEwEBATAwMC4GCCsGAQUFBwIBFiJodHRwOi8vY3BzLnJvb3QteDEubGV0c2Vu
+Y3J5cHQub3JnMDwGA1UdHwQ1MDMwMaAvoC2GK2h0dHA6Ly9jcmwuaWRlbnRydXN0
+LmNvbS9EU1RST09UQ0FYM0NSTC5jcmwwHQYDVR0OBBYEFBQusxe3WFbLrlAJQOYf
+r52LFMLGMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjANBgkqhkiG9w0B
+AQsFAAOCAQEA2UzgyfWEiDcx27sT4rP8i2tiEmxYt0l+PAK3qB8oYevO4C5z70kH
+ejWEHx2taPDY/laBL21/WKZuNTYQHHPD5b1tXgHXbnL7KqC401dk5VvCadTQsvd8
+S8MXjohyc9z9/G2948kLjmE6Flh9dDYrVYA9x2O+hEPGOaEOa1eePynBgPayvUfL
+qjBstzLhWVQLGAkXXmNs+5ZnPBxzDJOLxhF2JIbeQAcH5H0tZrUlo5ZYyOqA7s9p
+O5b85o3AM/OJ+CktFBQtfvBhcJVd9wvlwPsk+uyOy2HI7mNxKKgsBTt375teA2Tw
+UdHkhVNcsAKX1H7GNNLOEADksd86wuoXvg==
+-----END CERTIFICATE-----
+/opt/certbot # cat /etc/letsencrypt/live/10gotech.com/privkey.pem
+-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDqXf84/k3BLTE1
+w3dsVd/ycd0zx2RwY7t+x4g55pHbJ36Su3cAd0PyZRF1kCraRlVOKHasCI0NMT01
+aoqD/DulDEYMxOr5A2JEOecQR5qCmV0JXGfeJv9CVtUVP+Fb6W5XWL4P6FsDwAy0
+zPJZVzP5mMnL+G3fDesCJ6ZmV17bop8jC+nJxOaE1iMySoy1JO2zYv6QNeFym62K
+Q4dLmiDecsAxGICrjg0KGKqUN4va2MsRLVyjxpM0QjPxFFCQD65x0YB1WQfnm/fD
+OuiwzMSNkJdJSgSCEqx4rmCdvC9tI2IIfXzUI/jDvyxXzwnrxqDaAdiIlxsDGgfP
+qyPPceMVAgMBAAECggEBAI2IEC3B3QDQoswd64uf3GrT+kpfmjcI81xfcNPOeryH
+ADfqP7YnUAAcqst9MXO5T6CwbOH9E/koiBcu7NFBzF8ip1bkwCV6tqgO84vwQc2m
+gfm6NPuCP1o3h9yaRCS2Ni1HaRfAMN515vZ0YdI0CC4t54dm0isGg6o8eY+KKb2m
+Mmy+Dn77Hrl4MY4I2IKBdOIrKbEtIFpEMPjJFMCsMsTFfC88RAt6NRU22RF+T0Jw
+4Ku1XrA+VM9ie+eEstcYAxmhN3LOC+KM75vKy6ACBvb1NZVQ/0xi18Skav2oU3NA
+tIejreQXEm+yCVtdidvyYYrlkdXeFHgp1+rEDiaQ2u0CgYEA9nYKZoCkhWzzuNvV
+IyigtA5PX/kTOM/umnqttb48ToFX4092oItOETwhix8wli22cnftCtLqcmHVHFbw
+1sD6GvznaHYwEjuw3QcxRS/IbGG5I948HT001mVhElrB/mbu5gV8nY+l45RmCUzf
+Qgb9+Oohge5/C2uuSvu+1kruPxMCgYEA83Ag707ISBHX7hC2trpEio3V2oY/YAF0
+PdSCSx74dyjOZm1kZ4mFhZQtU4aMMousFwtGp/OdToXo1LSzTg7YI0pZrFYjLczt
+hCBAAL9NsJgsXVM/MEt4SatJ8cuZ0xRyiy8zXharqy0A6ft6U3wzfCg1e84r8U4K
+j/CLwYZBEjcCgYBaHreW25tNHpXQFrJM9OIudL0Zft5Ee+PnoMw8FJ/ApRMaD0h1
+U/rr2mz5jiIaCAUavjdzKcSIprVic3gFTvMlQyzqyayyPhlh+OtPPTWwS9uC/hRF
+LMhRTSi9qWoeOE1K1t7GTmx+VxkodW99mUjs58/wzuCtsGY/DOavPR74+QKBgH/M
+PK4E+OXE4EvtYE5bSQJH5Z3b3kdjXAfdmS0grCW6OWjSQuSL8JmoqYbw2obqhkRu
+ugAPx2RirlGEL6Fp75PPQ3ZSnhM8QvCbEZ6Sz5FGwfuYaVLMO/DIyH/0d+O1F1D0
+TY42bpblgFZVm+laCZlDbph5Kt56LtdT27qT5XNPAoGBAL/kg1TeYyzLT6rDzMn3
+E1n2U87C8NBeUQHG1tk/rwAL3NkhGHkwnei8i/nTLjr+QiirbIOUglWxXwWVY2gg
+vatvyEoTP2M7DECZ8hGKWoYKcYfAEqTFdLDZddWIoMKi6XL5/t9TokjfvSsBqB+o
+mcMNXkgy7uJ48839l5cQ2ns1
+-----END PRIVATE KEY-----
+/opt/certbot #
