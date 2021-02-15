@@ -91,39 +91,6 @@ const firmActivated = async (
 
   sgMail.setApiKey(apiKey);
 
-  // const emailData = {
-  //   from: sendFrom,
-  //   to: email,
-  //   subject: `Welcome to 10goTech!`,
-  //   html: `<p>Your account has been activated.</p>
-  //   <hr />
-  //   <p>Hi,</p>
-  //   <br/>
-  //   <p class="p1">I&rsquo;m Rob Baratta, the Founder of 10goTech. During my time as a Product Manager at a Seed-Stage Venture Capital firm, I became an expert at 1) identifying investable business opportunities and 2) building &ldquo;version one&rdquo; of the product.<span class="Apple-converted-space">&nbsp;</span></p>
-  //   <p class="p2"><br></p>
-  //   <p class="p1">It was my job to work directly with the Founder/CEO&rsquo;s our fund just invested in (~$250,000) to produce a Minimum Viable Product (MVP).<span class="Apple-converted-space">&nbsp;</span></p>
-  //   <p class="p2"><br></p>
-  //   <p class="p1">A successful MVP consumes minimal time &amp; money, and enables the founders to maximize learning while interacting with customers:<span class="Apple-converted-space">&nbsp;</span></p>
-  //   <ul class="ul1">
-  //       <li class="li1">Revenue. Is your target customer willing to pay for this?</li>
-  //       <li class="li1">Feedback. What would you like the product/service to do?<span class="Apple-converted-space">&nbsp; &nbsp;</span></li>
-  //   </ul>
-  //   <p class="p2"><br></p>
-  //   <p class="p1">This learning is then leveraged to create versions 2, 3, 4, etc. of the product. In the early stages, these learnings typically result in MASSIVE pivots, which costs time and money.</p>
-  //   <p class="p2"><br></p>
-  //   <p class="p1">Spending more time or money than necessary is bad business! Efficiency is key. Which leads me to why I build this platform.</p>
-  //   <p class="p2"><br></p>
-  //   <p class="p1">I built 10goTech for Founders to maximize learning while spending the least amount of time and money. You won&rsquo;t need $250,000 to build that MVP. You won&rsquo;t prematurely accumulate marketing/technology debt. Used correctly, you&rsquo;ll be able to iterate your way to a highly investable business.<span class="Apple-converted-space">&nbsp;</span></p>
-  //   <p class="p2"><br></p>
-  //   <p class="p1">If you haven&rsquo;t done so already, 1) pick a package (7 day free trial) 2) build your site, and 3) get talking to customers! For strategic guidance from me, select one of the packages that includes consultations.</p>
-  //   <p class="p2"><br></p>
-  //   <p class="p1">What are you waiting for? Get going!</p>
-  //   <p class="p1">___________</p>
-  //   <p class="p1">Rob Baratta</p>
-  //   <p class="p1">Founder</p>
-  //   <p class="p1">10goTech.com</p>
-  //   `,
-  // };
   const emailData = {
     from: sendFrom,
     to: email,
@@ -134,51 +101,16 @@ const firmActivated = async (
     <br/>
     <p class="p1">Spending more time or money than necessary is bad business! Efficiency is key. Which leads me to why I built this platform.</p>
     <p class="p2"><br></p>
-    <p class="p1">I built 10goTech for Founders to maximize learning while spending the least amount of time and money. You won&rsquo;t need $250,000 to build that MVP. You won&rsquo;t prematurely accumulate marketing/technology debt. Used correctly, you&rsquo;ll be able to iterate your way to a highly investable business.<span class="Apple-converted-space">&nbsp;</span></p>
+    <p class="p1">Maximize learning while spending the least amount of time and money. You won&rsquo;t need $250,000 to build that MVP. You won&rsquo;t prematurely accumulate marketing/technology debt. Used correctly, you&rsquo;ll be able to iterate your way to a highly investable business.<span class="Apple-converted-space">&nbsp;</span></p>
     <p class="p2"><br></p>
     <p class="p1">If you haven&rsquo;t done so already, 1) pick a package (7 day free trial) 2) build your site, and 3) get talking to customers! For strategic guidance from me, select one of the packages that includes consultations.</p>
     <p class="p2"><br></p>
     <p class="p1">What are you waiting for? Get going!</p>
     <p class="p1">___________</p>
     <p class="p1">Rob Baratta</p>
-    <p class="p1">Founder</p>
     <p class="p1">10goTech.com</p>
     `,
   };
-
-  // const emailData = {
-  //   from: sendFrom,
-  //   to: email,
-  //   subject: `Welcome to 10goTech!`,
-  //   html: `<p>Your account has been activated.</p>
-  //   <hr />
-  //   <p>Hi,</p>
-  //   <br/>
-  //   <p class="p1">I&rsquo;m Rob Baratta, the Founder of 10goTech. During my time as a Product Manager at a Seed-Stage Venture Capital firm, I became an expert at 1) identifying investable business opportunities and 2) building &ldquo;version one&rdquo; of the product.<span class="Apple-converted-space">&nbsp;</span></p>
-  //   <p class="p2"><br></p>
-  //   <p class="p1">It was my job to work directly with the Founder/CEO&rsquo;s our fund just invested in (~$250,000) to produce a Minimum Viable Product (MVP).<span class="Apple-converted-space">&nbsp;</span></p>
-  //   <p class="p2"><br></p>
-  //   <p class="p1">A successful MVP consumes minimal time &amp; money, and enables the founders to maximize learning while interacting with customers:<span class="Apple-converted-space">&nbsp;</span></p>
-  //   <ul class="ul1">
-  //       <li class="li1">Revenue. Is your target customer willing to pay for this?</li>
-  //       <li class="li1">Feedback. What would you like the product/service to do?<span class="Apple-converted-space">&nbsp; &nbsp;</span></li>
-  //   </ul>
-  //   <p class="p2"><br></p>
-  //   <p class="p1">This learning is then leveraged to create versions 2, 3, 4, etc. of the product. In the early stages, these learnings typically result in MASSIVE pivots, which costs time and money.</p>
-  //   <p class="p2"><br></p>
-  //   <p class="p1">Spending more time or money than necessary is bad business! Efficiency is key. Which leads me to why I build this platform.</p>
-  //   <p class="p2"><br></p>
-  //   <p class="p1">I built 10goTech for Founders to maximize learning while spending the least amount of time and money. You won&rsquo;t need $250,000 to build that MVP. You won&rsquo;t prematurely accumulate marketing/technology debt. Used correctly, you&rsquo;ll be able to iterate your way to a highly investable business.<span class="Apple-converted-space">&nbsp;</span></p>
-  //   <p class="p2"><br></p>
-  //   <p class="p1">If you haven&rsquo;t done so already, 1) pick a package (7 day free trial) 2) build your site, and 3) get talking to customers! For strategic guidance from me, select one of the packages that includes consultations.</p>
-  //   <p class="p2"><br></p>
-  //   <p class="p1">What are you waiting for? Get going!</p>
-  //   <p class="p1">___________</p>
-  //   <p class="p1">Rob Baratta</p>
-  //   <p class="p1">Founder</p>
-  //   <p class="p1">10goTech.com</p>
-  //   `,
-  // };
 
   const sent = await sgMail.send(emailData);
 
