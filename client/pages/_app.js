@@ -54,9 +54,9 @@ function AppComponent({
   );
 
   // mon 8:42 change
-  // return layout();
+  return layout();
 
-  return siteExists ? layout() : <NoSite />;
+  // return siteExists ? layout() : <NoSite />;
 }
 
 AppComponent.getInitialProps = async (appContext) => {
