@@ -79,3 +79,8 @@ ____
 
 cname -> need to remove the path. path must be root path
 SSL cert to cloudflare for tenants
+
+
+
+questions for mike:
+1. will I lose my ip address?

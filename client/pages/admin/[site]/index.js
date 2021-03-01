@@ -1,21 +1,9 @@
-import { buildClient } from "../../../api/build-client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import {
-  Button,
-  Card,
-  Container,
-  Grid,
-  Header,
-  Segment,
-  Icon,
-} from "semantic-ui-react";
+import { Button, Header } from "semantic-ui-react";
 import VertCenterGrid from "../../../components/grid/vert-center";
 import { Fragment } from "react";
-import TinyCard from "../../../components/card/tiny-card";
-import NoSite from "../../../components/error/site-does-not-exist";
-import { useSiteType } from "../../../hooks/use-site-type";
 
 const index = () => {
   const [active, setActive] = useState("solution");

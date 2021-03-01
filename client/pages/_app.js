@@ -53,6 +53,9 @@ function AppComponent({
     </div>
   );
 
+  // mon 8:42 change
+  // return layout();
+
   return siteExists ? layout() : <NoSite />;
 }
 
@@ -77,6 +80,10 @@ AppComponent.getInitialProps = async (appContext) => {
   }
 
   const authUserIsAdmin = user && user.id === siteInfo.ownerId;
+
+  // if (appContext.ctx.req) {
+  //   console.log(appContext.ctx.req.headers.host);
+  // }
 
   return { pageProps, user, siteExists, siteInfo, authUserIsAdmin };
 };

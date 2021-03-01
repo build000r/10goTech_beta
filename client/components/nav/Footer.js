@@ -13,7 +13,9 @@ import Router from "next/router";
 
 const Footer = ({ siteType }) => {
   const { site } = useRouter().query;
-  const isTempTitle = (sitetitle) => sitetitle.includes("Change_This_Title");
+
+  let isTempTitle = (sitetitle) =>
+    sitetitle ? sitetitle.includes("Change_This_Title") : "";
 
   return (
     <div>

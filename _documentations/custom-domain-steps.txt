@@ -1,0 +1,6 @@
+1. cloudflare setup for https for custom domain (my acct is rob@10gotech)
+requires access to purchaser to input custom nameserver dns... e.g.
+molly.ns.cloudflare.com
+
+
+2. add domain to k8s-prod/ingress-srv.yaml
