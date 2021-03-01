@@ -4,7 +4,7 @@ const buildClient = ({ req }) => {
   if (typeof window === "undefined") {
     // On the server
 
-    const baseURL = req.headers.host + "/";
+    const baseURL = "https://" + req.headers.host + "/";
 
     // console.log("this the build clitent");
     // if (typeof window !== "undefined") {
@@ -12,8 +12,8 @@ const buildClient = ({ req }) => {
     // }
 
     return axios.create({
-      // baseURL,
-      baseURL: "https://www.10gotech.com/",
+      baseURL,
+      // baseURL: "https://www.10gotech.com/",
       // FOR DEVELOPMENT MODE:
       // baseURL:
       //   "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local",
