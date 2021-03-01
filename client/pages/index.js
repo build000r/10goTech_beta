@@ -37,7 +37,8 @@ const index = () => {
         Router.push(link);
         break;
       default:
-        Router.push(`/user/${subdomain}`);
+        const link = lookupSubdomainForCustomUrl(url);
+        Router.push("https://www." + subdomain + ".com" + link);
         break;
     }
   }, [subdomain]);
