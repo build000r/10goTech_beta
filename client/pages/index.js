@@ -16,13 +16,13 @@ const index = () => {
 
     switch (url) {
       case "hairytask":
-        return base + url + "/user/vacation";
+        return base + url + ".com/user/vacation";
       case "robbaratta":
-        return base + url + "/user/baratta";
+        return base + url + ".com/user/baratta";
       case "wivud":
-        return base + url + "/user/vacation";
+        return base + url + ".com/user/vacation";
       default:
-        return base + url + "/admin/rfp";
+        return base + url + ".com/admin/rfp";
     }
   };
 
