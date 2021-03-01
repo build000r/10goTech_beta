@@ -12,17 +12,15 @@ const index = () => {
       : "";
 
   const lookupSubdomainForCustomUrl = (url) => {
-    const base = "https://www.";
-
     switch (url) {
       case "hairytask":
-        return base + url + ".com/user/vacation";
+        return "/user/vacation";
       case "robbaratta":
-        return base + url + ".com/user/baratta";
+        return "/user/baratta";
       case "wivud":
-        return base + url + ".com/user/vacation";
+        return "/user/vacation";
       default:
-        return base + url + ".com/admin/rfp";
+        return "/admin/rfp";
     }
   };
 
