@@ -9,10 +9,12 @@ const index = () => {
   const url =
     typeof window !== "undefined"
       ? window.location.host.split(".")[1].split(".")[0]
-      : "";
+      : undefined;
 
   const lookupSubdomainForCustomUrl = (url) => {
-    if (url) {
+    if (typeof url !== "undefined") {
+      console.log("URL received, ", url);
+
       switch (url) {
         case "hairytask" || "www.hairytask.com":
           return "/user/vacation";
@@ -21,7 +23,6 @@ const index = () => {
         case "wivud" || "www.wivud.com":
           return "/user/vacation";
         default:
-          console.log("URL received, ", url);
           return "/admin/rfp";
       }
     }
