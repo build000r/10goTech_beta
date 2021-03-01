@@ -48,7 +48,7 @@ const Footer = ({ siteType }) => {
             <List.Item as="a" href={`/${siteType}/${site}/privacy-policy`}>
               Privacy Policy
             </List.Item>
-            <List.Item as="a" href="/admin/rfp">
+            <List.Item as="a" href="https://www.10gotech.com">
               Built with www.10gotech.com
             </List.Item>
           </List>

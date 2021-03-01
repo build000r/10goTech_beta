@@ -4,3 +4,7 @@ molly.ns.cloudflare.com
 
 
 2. add domain to k8s-prod/ingress-srv.yaml
+
+
+issues:
+- 

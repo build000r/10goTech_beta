@@ -15,8 +15,10 @@ const index = () => {
     switch (url) {
       case "hairytask":
         return "/user/vacation";
-      case "baratta":
+      case "robbaratta":
         return "/user/baratta";
+      case "wivud":
+        return "/user/vacation";
       default:
         return "/admin/rfp";
     }
