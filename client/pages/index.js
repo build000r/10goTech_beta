@@ -11,7 +11,7 @@ const index = () => {
       ? window.location.host.split(".")[1].split(".")[0]
       : "";
 
-  const lookupSubdomainForCustomUrl = () => {
+  const lookupSubdomainForCustomUrl = (url) => {
     switch (url) {
       case "hairytask":
         return "/user/vacation";
@@ -20,12 +20,13 @@ const index = () => {
       case "wivud":
         return "/user/vacation";
       default:
+        console.log("URL received, ", url);
         return "/admin/rfp";
     }
   };
 
   useEffect(() => {
-    const link = lookupSubdomainForCustomUrl();
+    let link;
 
     switch (subdomain) {
       case "rfp":
@@ -35,9 +36,11 @@ const index = () => {
         Router.push(`/admin/rfp`);
         break;
       case "www":
+        link = lookupSubdomainForCustomUrl(url);
         Router.push(link);
         break;
       default:
+        link = lookupSubdomainForCustomUrl(url);
         Router.push("https://www." + subdomain + ".com" + link);
         break;
     }

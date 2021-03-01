@@ -81,11 +81,15 @@ AppComponent.getInitialProps = async (appContext) => {
 
   const authUserIsAdmin = user && user.id === siteInfo.ownerId;
 
+  let domainUrl;
+
   if (appContext.ctx.req) {
-    console.log(appContext.ctx.req.headers.host);
+    domainUrl = appContext.ctx.req.headers.host;
   }
 
-  return { pageProps, user, siteExists, siteInfo, authUserIsAdmin };
+  console.log("domainUrl, ", domainUrl);
+
+  return { pageProps, user, siteExists, siteInfo, authUserIsAdmin, domainUrl };
 };
 
 export default AppComponent;
