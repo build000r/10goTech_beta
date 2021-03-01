@@ -13,11 +13,11 @@ const index = () => {
 
   const lookupSubdomainForCustomUrl = (url) => {
     switch (url) {
-      case "hairytask":
+      case "hairytask" || "www.hairytask.com":
         return "/user/vacation";
-      case "robbaratta":
+      case "robbaratta" || "www.robbaratta.com":
         return "/user/baratta";
-      case "wivud":
+      case "wivud" || "www.wivud.com":
         return "/user/vacation";
       default:
         console.log("URL received, ", url);
