@@ -5,11 +5,11 @@ import Router from "next/router";
 const index = () => {
   const lookupSubdomainForCustomUrl = (url) => {
     switch (url) {
-      case "hairytask" || "www.hairytask.com":
+      case "hairytask":
         return "/user/vacation";
-      case "robbaratta" || "www.robbaratta.com":
+      case "robbaratta":
         return "/user/baratta";
-      case "wivud" || "www.wivud.com":
+      case "wivud":
         return "/user/vacation";
       default:
         return "/admin/rfp";
@@ -45,6 +45,10 @@ const index = () => {
           break;
         case "www":
           link = lookupSubdomainForCustomUrl(url);
+          Router.push(link);
+          break;
+        case "com":
+          link = lookupSubdomainForCustomUrl(subdomain);
           Router.push(link);
           break;
         default:
