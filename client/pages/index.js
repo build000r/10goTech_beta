@@ -4,6 +4,7 @@ import Router from "next/router";
 
 const index = () => {
   const lookupSubdomainForCustomUrl = (url) => {
+    console.log("url pushed to", url);
     switch (url) {
       case "hairytask":
         return "/user/vacation";
@@ -47,13 +48,9 @@ const index = () => {
           link = lookupSubdomainForCustomUrl(url);
           Router.push(link);
           break;
-        case "com":
+        default:
           link = lookupSubdomainForCustomUrl(subdomain);
           Router.push(link);
-          break;
-        default:
-          link = lookupSubdomainForCustomUrl(url);
-          Router.push("https://www." + subdomain + ".com" + link);
           break;
       }
     }
