@@ -6,14 +6,23 @@ const index = () => {
   const lookupSubdomainForCustomUrl = (url) => {
     console.log("url pushed to", url);
     switch (url) {
+      // custom domains
       case "hairytask":
         return "/user/vacation";
       case "robbaratta":
         return "/user/baratta";
       case "wivud":
         return "/user/vacation";
-      default:
+      // end custom domains
+      case "www":
         return "/admin/rfp";
+      case "10gotech":
+        return "/admin/rfp";
+      case "rfp":
+        return "/admin/rfp";
+      // domains without customizations yet
+      default:
+        return `/user/${url}`;
     }
   };
 
@@ -33,8 +42,8 @@ const index = () => {
     const subdomain = getSubdomain();
     const url = getUrl();
 
-    console.log(subdomain, "subdomain");
-    console.log(url, "url");
+    // console.log(subdomain, "subdomain");
+    // console.log(url, "url");
 
     if (typeof subdomain === "string") {
       switch (subdomain) {
