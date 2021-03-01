@@ -12,16 +12,18 @@ const index = () => {
       : "";
 
   const lookupSubdomainForCustomUrl = (url) => {
-    switch (url) {
-      case "hairytask" || "www.hairytask.com":
-        return "/user/vacation";
-      case "robbaratta" || "www.robbaratta.com":
-        return "/user/baratta";
-      case "wivud" || "www.wivud.com":
-        return "/user/vacation";
-      default:
-        console.log("URL received, ", url);
-        return "/admin/rfp";
+    if (url) {
+      switch (url) {
+        case "hairytask" || "www.hairytask.com":
+          return "/user/vacation";
+        case "robbaratta" || "www.robbaratta.com":
+          return "/user/baratta";
+        case "wivud" || "www.wivud.com":
+          return "/user/vacation";
+        default:
+          console.log("URL received, ", url);
+          return "/admin/rfp";
+      }
     }
   };
 
