@@ -24,6 +24,7 @@ export default class MyDocument extends Document {
           `,
             }}
           />
+          <link href="../icons/favicon.ico" rel="icon" type="image/x-icon" />
         </Head>
 
         <body>
