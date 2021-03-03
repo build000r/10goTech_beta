@@ -8,6 +8,7 @@ import { checkExistenceOfSite } from "../hooks/use-site-existence";
 import NoSite from "../components/error/site-does-not-exist";
 import { useEffect } from "react";
 import * as gtag from "../components/util/gtag";
+import Layout from "../components/layouts";
 
 function AppComponent({
   Component,
@@ -43,6 +44,8 @@ function AppComponent({
     );
   };
 
+  const renderComponent = () => <Component {...pageProps} />;
+
   const layout = () => (
     <div>
       {renderHeader()}
@@ -54,6 +57,7 @@ function AppComponent({
   );
 
   // mon 8:42 change
+  // return <Layout layout={layout()} children={layout}></Layout>;
   return layout();
 
   // return siteExists ? layout() : <NoSite />;
