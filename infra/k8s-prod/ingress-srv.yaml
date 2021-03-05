@@ -291,3 +291,73 @@ spec:
             backend:
               serviceName: client-srv
               servicePort: 3000
+    - host: "www.campbellcoaccounting.com"
+      http:
+        paths:
+          - path: /api/users/?(.*)
+            backend:
+              serviceName: auth-srv
+              servicePort: 3000
+          - path: /api/site/?(.*)
+            backend:
+              serviceName: site-srv
+              servicePort: 3000
+          - path: /api/product/?(.*)
+            backend:
+              serviceName: product-srv
+              servicePort: 3000
+          - path: /api/notification/?(.*)
+            backend:
+              serviceName: notification-srv
+              servicePort: 3000
+          - path: /api/order/?(.*)
+            backend:
+              serviceName: order-srv
+              servicePort: 3000
+          - path: /api/site-subscription/?(.*)
+            backend:
+              serviceName: site-subscription-srv
+              servicePort: 3000
+          - path: /api/photo/?(.*)
+            backend:
+              serviceName: photo-srv
+              servicePort: 3000
+          - path: /?(.*)
+            backend:
+              serviceName: client-srv
+              servicePort: 3000
+    - host: "campbellcoaccounting.com"
+      http:
+        paths:
+          - path: /api/users/?(.*)
+            backend:
+              serviceName: auth-srv
+              servicePort: 3000
+          - path: /api/site/?(.*)
+            backend:
+              serviceName: site-srv
+              servicePort: 3000
+          - path: /api/product/?(.*)
+            backend:
+              serviceName: product-srv
+              servicePort: 3000
+          - path: /api/notification/?(.*)
+            backend:
+              serviceName: notification-srv
+              servicePort: 3000
+          - path: /api/order/?(.*)
+            backend:
+              serviceName: order-srv
+              servicePort: 3000
+          - path: /api/site-subscription/?(.*)
+            backend:
+              serviceName: site-subscription-srv
+              servicePort: 3000
+          - path: /api/photo/?(.*)
+            backend:
+              serviceName: photo-srv
+              servicePort: 3000
+          - path: /?(.*)
+            backend:
+              serviceName: client-srv
+              servicePort: 3000

@@ -59,12 +59,12 @@ const Header = ({ user, authUserIsAdmin }) => {
         Services
       </Menu.Item>
 
-      <Menu.Item
+      {/* <Menu.Item
         onClick={() => navigate(`/user/${site}/services`)}
         active={useRouter().pathname === "/user/[site]/services"}
       >
         'custom-portfolio'
-      </Menu.Item>
+      </Menu.Item> */}
 
       {authUserIsAdmin ? null : (
         <Menu.Item
@@ -132,7 +132,6 @@ const Header = ({ user, authUserIsAdmin }) => {
 
   return (
     <div>
-      click
       <Visibility
         onPassing={stickTopMenu}
         onBottomVisible={unStickTopMenu}
@@ -156,9 +155,9 @@ const Header = ({ user, authUserIsAdmin }) => {
             : null}
           {useMediaQuery(600) ? (
             <Menu.Item
-              style={{ height: "36px " }}
+              style={{ height: "36px" }}
               onClick={() => setMobile(!mobile)}
-              fluid={mobile}
+              fluid={mobile.toString()}
               icon
             >
               <Icon name={!mobile ? "angle double down" : "angle double up"} />

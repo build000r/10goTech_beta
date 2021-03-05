@@ -9,6 +9,8 @@ const index = () => {
       // custom domains
       case "hairytask":
         return "/user/vacation";
+      case "campbellcoaccounting":
+        return "/user/campbell";
       case "robbaratta":
         return "/user/baratta";
       case "wivud":
