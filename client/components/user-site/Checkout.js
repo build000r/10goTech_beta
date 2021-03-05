@@ -53,9 +53,9 @@ const Checkout = ({
       );
     } else if (products.length > 0) {
       return (
-        <Container basic centered style={{ maxWidth: "300px" }}>
+        <Container basic centered style={{ maxWidth: "200px" }}>
           <Button fluid color="green" onClick={buy}>
-            Submit Request For Proposal
+            Submit Order
           </Button>
         </Container>
       );

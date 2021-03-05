@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useMediaQuery } from "../../../../hooks/use-media-query";
 import Slideshow from "../../../../components/util/Slideshow";
+import Layout from "../../../../components/layouts";
 
-const index = ({ products, isAdmin, siteTitle }) => {
+const index = ({ products, isAdmin, siteTitle, site }) => {
   const adminLinks = (slug) =>
     isAdmin ? (
       <div>
@@ -62,7 +63,16 @@ const index = ({ products, isAdmin, siteTitle }) => {
   );
 
   return (
-    <Segment basic style={{ minHeight: "90vh" }}>
+    <Layout
+      smallLeaderboard
+      leaderboardData={{
+        header: site.servicesPageHeadline || "Capabilities",
+        subHeader:
+          site.servicesPageSubheadline ||
+          "Discover, plan, and build a software company",
+        dividerText: "Select Service(s)",
+      }}
+    >
       {isAdmin ? (
         <div>
           <Message floating>
@@ -84,7 +94,7 @@ const index = ({ products, isAdmin, siteTitle }) => {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    </Segment>
+    </Layout>
   );
 };
 
@@ -102,6 +112,8 @@ index.getInitialProps = async (context) => {
     `/api/site/${context.query.site}`
   );
 
+  console.log(site);
+
   let isAdmin;
 
   if (user) {
@@ -112,7 +124,7 @@ index.getInitialProps = async (context) => {
 
   const siteTitle = site.title;
 
-  return { products, isAdmin, siteTitle };
+  return { products, isAdmin, siteTitle, site };
 };
 
 export default index;

@@ -12,6 +12,7 @@ import {
 import VertCenterGrid from "../../../components/grid/vert-center";
 import { Fragment } from "react";
 import TinyCard from "../../../components/card/tiny-card";
+import Layout from "../../../components/layouts";
 
 const index = ({ currentUser, siteExists, siteInfo }) => {
   const { site } = useRouter().query;
@@ -33,20 +34,21 @@ const index = ({ currentUser, siteExists, siteInfo }) => {
     </div>
   );
 
-  const aboutBlurb = () => <p style={{ padding: "50px" }}>{aboutUsBlurb}</p>;
+  const aboutBlurb = () => (
+    <p style={{ padding: "0 0 25px 10px" }}>{aboutUsBlurb}</p>
+  );
 
   const existingSite = () => (
-    <Fragment>
-      <VertCenterGrid>
-        <Header as="h2" textAlign="center">
-          {homeTitle}
-        </Header>
-        <Header as="h3" textAlign="center">
-          {tagline}
-        </Header>
-      </VertCenterGrid>
-
-      <Container centered>
+    <Layout
+      fullPageLeaderboard
+      leaderboardData={{
+        header: homeTitle,
+        subHeader: tagline,
+        btnText: "Let's work together",
+        btnPath: `/user/${title}/services`,
+      }}
+    >
+      <Container centered style={{ marginBottom: "3rem" }}>
         <Segment>
           <Header textAlign="center">{aboutUsTitle}</Header>
           {aboutBlurb()}
@@ -56,13 +58,13 @@ const index = ({ currentUser, siteExists, siteInfo }) => {
                 <Card.Group centered>
                   <TinyCard
                     header="View Services"
-                    description="Specific & upfront details on the services we offer."
+                    // description="Specific & upfront details on the services we offer."
                     linkTo={`/user/${title}/services`}
                   />
 
                   <TinyCard
                     header="Create Account"
-                    description="Create an account to begin your service order."
+                    // description="Create an account to begin your service order."
                     linkTo={`/user/${title}/auth/signup`}
                   />
                 </Card.Group>
@@ -71,7 +73,7 @@ const index = ({ currentUser, siteExists, siteInfo }) => {
           </Grid>
         </Segment>
       </Container>
-    </Fragment>
+    </Layout>
   );
 
   const saasPage = () => (

@@ -1,8 +1,20 @@
 import { buildClient } from "../../../../api/build-client";
+import Layout from "../../../../components/layouts";
 import CheckoutCard from "../../../../components/user-site/CheckoutCard";
 
 const services = ({ product, isAdmin }) => {
-  return <CheckoutCard product={product} isAdmin={isAdmin} />;
+  return (
+    <Layout
+      smallLeaderboard
+      leaderboardData={{
+        header: product.title,
+        subHeader: product.brief,
+        dividerText: "Details",
+      }}
+    >
+      <CheckoutCard product={product} isAdmin={isAdmin} />
+    </Layout>
+  );
 };
 
 services.getInitialProps = async (context) => {

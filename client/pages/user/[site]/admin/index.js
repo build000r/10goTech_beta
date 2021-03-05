@@ -1,8 +1,17 @@
 import Link from "next/link";
-import { Button, Container, Grid, Header, Segment } from "semantic-ui-react";
+import {
+  Button,
+  Container,
+  Grid,
+  Header,
+  Icon,
+  Item,
+  Segment,
+} from "semantic-ui-react";
 import { useRouter } from "next/router";
 import { buildClient } from "../../../../api/build-client";
 import { useAuth } from "../../../../hooks/use-auth";
+import Layout from "../../../../components/layouts";
 
 const index = ({ user, siteOwnerId }) => {
   const { site } = useRouter().query;
@@ -11,80 +20,48 @@ const index = ({ user, siteOwnerId }) => {
 
   const isTempTitle = (sitetitle) => sitetitle.includes("Change_This_Title");
 
+  const showItem = (href, link, meta) => (
+    <Item>
+      <Item.Content>
+        <Item.Header as="a">
+          <Link href={href}>{link}</Link>
+          {/* <Icon name="hand point right" /> */}
+        </Item.Header>
+        <Item.Meta>{meta}</Item.Meta>
+      </Item.Content>
+    </Item>
+  );
+
   const renderIfAuth = () => (
-    <Container style={{ minHeight: "90vh" }}>
-      <Segment>
-        <Header as="h1" textAlign="center">
-          Admin Account Menu
-        </Header>
-
-        <Grid columns={1} style={{ height: "80vh" }}>
-          <Grid.Row verticalAlign="middle">
-            <Grid.Column stretched>
-              <Button.Group
-                vertical
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  marginTop: "-50px",
-                }}
-              >
-                <Link href={`/user/${site}/admin/update`}>
-                  <Button
-                    size="huge"
-                    style={{ marginBottom: "15px", width: "250px" }}
-                  >
-                    Update Site
-                  </Button>
-                </Link>
-                <Link href={`/admin/${user.userOfSite}/account/${site}`}>
-                  <Button
-                    size="huge"
-                    style={{ marginBottom: "15px", width: "250px" }}
-                  >
-                    Manage Subscription
-                  </Button>
-                </Link>
-
-                <Link href={`/user/${site}/admin/create-service`}>
-                  <Button
-                    size="huge"
-                    style={{ marginBottom: "15px", width: "250px" }}
-                  >
-                    Create New Service
-                  </Button>
-                </Link>
-                <Link href={`/user/${site}/admin/orders`}>
-                  <Button
-                    size="huge"
-                    style={{ marginBottom: "15px", width: "250px" }}
-                  >
-                    View Orders
-                  </Button>
-                </Link>
-                <Link href={`/user/${site}/admin/users`}>
-                  <Button
-                    size="huge"
-                    style={{ marginBottom: "15px", width: "250px" }}
-                  >
-                    View Users
-                  </Button>
-                </Link>
-                <Link href={`/user/${site}/auth/signout`}>
-                  <Button
-                    size="huge"
-                    style={{ marginBottom: "15px", width: "250px" }}
-                  >
-                    Sign Out
-                  </Button>
-                </Link>
-              </Button.Group>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Segment>
-    </Container>
+    <Layout
+      smallLeaderboard
+      leaderboardData={{
+        header: "Admin Account Menu",
+        subHeader: "Update the content and configuration of your website",
+        dividerText: "What would you like to do?",
+      }}
+    >
+      <Item.Group>
+        {showItem(
+          `/user/${site}/admin/update`,
+          "Update Site",
+          "Site Content & Email Configuration"
+        )}
+        {showItem(
+          `/admin/${user.userOfSite}/account/${site}`,
+          "Manage Subscription",
+          "Update your payment method & adjust or cancel your subscription"
+        )}
+        {showItem(
+          `/user/${site}/admin/create-service`,
+          "Create New Service",
+          "Update your payment method & adjust or cancel your subscription"
+        )}
+        {showItem(`/user/${site}/admin/orders`, "View Orders", "orders")}
+        {showItem(`/user/${site}/admin/users`, "View Users", "orders")}
+        {showItem(`/user/${site}/auth/signout`, "Sign out", "")}
+      </Item.Group>
+    </Layout>
   );
 
   return useAuth({

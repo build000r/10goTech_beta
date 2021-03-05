@@ -1,11 +1,19 @@
+import { Card, Grid, Segment } from "semantic-ui-react";
 import { Signup } from "../../../../components/auth/signup-basic-user";
-import VertCenterGrid from "../../../../components/grid/vert-center";
+import Layout from "../../../../components/layouts";
 
 const signup = () => {
   return (
-    <VertCenterGrid>
+    <Layout
+      smallLeaderboard
+      leaderboardData={{
+        header: "Sign Up",
+        subHeader: "To accelerate conversations about your project",
+        dividerText: "New user sign up",
+      }}
+    >
       <Signup />
-    </VertCenterGrid>
+    </Layout>
   );
 };
 

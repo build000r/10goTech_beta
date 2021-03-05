@@ -2,14 +2,7 @@ import axios from "axios";
 
 const buildClient = ({ req }) => {
   if (typeof window === "undefined") {
-    // On the server
-
     const baseURL = "https://" + req.headers.host + "/";
-
-    // console.log("this the build clitent");
-    // if (typeof window !== "undefined") {
-    //   console.log("this the build clitent", window.location.origin + "/");
-    // }
 
     return axios.create({
       baseURL,

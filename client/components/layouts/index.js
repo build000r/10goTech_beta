@@ -1,4 +1,21 @@
-const Layout = ({ children, layout }) => {
+import { Fragment } from "react";
+import {
+  Container,
+  Segment,
+  Header,
+  Grid,
+  Button,
+  Divider,
+} from "semantic-ui-react";
+import Router from "next/router";
+
+const Layout = ({
+  children,
+  fullPageLeaderboard,
+  smallLeaderboard,
+  leaderboardData,
+  heightOverride,
+}) => {
   // fullpageleaderboard
   // smallleaderboard
 
@@ -6,9 +23,81 @@ const Layout = ({ children, layout }) => {
 
   // mobile menu button is 36px
 
-  const x = () => <div style={{ height: "calc(100vh - 36px)" }}>{layout}</div>;
+  const showLeaderboard = ({
+    header,
+    subHeader,
+    btnText,
+    btnPath,
+    dividerText,
+  }) => (
+    <Segment
+      basic
+      style={
+        fullPageLeaderboard
+          ? {
+              minHeight: "calc(100vh - 2rem)",
+            }
+          : {
+              minHeight: "33vh",
+            }
+      }
+    >
+      <Grid
+        columns={1}
+        centered
+        style={
+          fullPageLeaderboard
+            ? {
+                minHeight: "calc(100vh - 2rem)",
+              }
+            : {
+                minHeight: "33vh",
+              }
+        }
+      >
+        <Grid.Row verticalAlign="middle">
+          <Grid.Column>
+            <Header as="h2" textAlign="center">
+              {header}
 
-  return <div>{children}</div>;
+              <Header.Subheader as="h3" textAlign="center">
+                {subHeader}
+              </Header.Subheader>
+
+              {btnPath && btnText && (
+                <Button
+                  style={{ marginTop: "1rem" }}
+                  onClick={() => Router.push(btnPath)}
+                >
+                  {btnText}
+                </Button>
+              )}
+            </Header>
+
+            <Header as="h3" textAlign="center"></Header>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+      {!smallLeaderboard ? "" : <Divider horizontal>{dividerText}</Divider>}
+    </Segment>
+  );
+
+  return (
+    <Fragment>
+      {showLeaderboard(leaderboardData)}
+      <Container
+        style={
+          smallLeaderboard
+            ? {
+                minHeight: heightOverride || "67vh",
+              }
+            : { minHeight: heightOverride || null }
+        }
+      >
+        {children}
+      </Container>
+    </Fragment>
+  );
 };
 
 export default Layout;

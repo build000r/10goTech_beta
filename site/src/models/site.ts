@@ -16,6 +16,8 @@ interface SiteAttrs {
   aboutUsBlurb?: string;
   privacyPolicy?: string;
   termsOfService?: string;
+  servicesPageHeadline?: string;
+  servicesPageSubheadline?: string;
 }
 
 interface SiteDoc extends mongoose.Document {
@@ -35,6 +37,8 @@ interface SiteDoc extends mongoose.Document {
   aboutUsBlurb: string;
   privacyPolicy: string;
   termsOfService: string;
+  servicesPageHeadline: string;
+  servicesPageSubheadline: string;
 }
 
 interface SiteModel extends mongoose.Model<SiteDoc> {
@@ -105,6 +109,14 @@ const siteSchema = new mongoose.Schema(
       type: String,
       default:
         "By using this website, you agree to a retroactive terms of service that will be made in some point in the future. We are not responsible for any loss of data. You agree that we are not liable for any damages. You agree to hold us harmless from any and all claims. ",
+    },
+    servicesPageHeadline: {
+      type: String,
+      default: "Services",
+    },
+    servicesPageSubheadline: {
+      type: String,
+      default: "Learn more and inquire about our services",
     },
   },
   {

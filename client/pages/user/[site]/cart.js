@@ -8,6 +8,7 @@ import { getCart } from "../../../hooks/cart-helpers";
 import { useRouter } from "next/router";
 import { buildClient } from "../../../api/build-client";
 import { useAuth } from "../../../hooks/use-auth";
+import Layout from "../../../components/layouts";
 
 const Cart = ({ user }) => {
   const [items, setItems] = useState([]);
@@ -23,9 +24,7 @@ const Cart = ({ user }) => {
 
   const showItems = () => (
     <Fragment>
-      <Header>
-        There are {`${items.length}`} items in your request for proposal:
-      </Header>
+      <Header>There are {`${items.length}`} item(s) in your order:</Header>
       {items.map((product, i) => (
         <Card
           key={i}
@@ -54,7 +53,14 @@ const Cart = ({ user }) => {
   };
 
   const renderIfAuth = () => (
-    <div>
+    <Layout
+      smallLeaderboard
+      leaderboardData={{
+        header: `Service Cart`,
+        subHeader: "Shop for services, and submit the details when ready.",
+        dividerText: "Items",
+      }}
+    >
       <div>
         <Checkout
           products={items.map((i) => i.item)}
@@ -77,7 +83,7 @@ const Cart = ({ user }) => {
       >
         {items.length > 0 ? showItems(items) : noItemsMessage()}
       </div>
-    </div>
+    </Layout>
   );
 
   return useAuth({

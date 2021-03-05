@@ -1,14 +1,19 @@
 import { buildClient } from "../../../api/build-client";
 import { Segment, Header } from "semantic-ui-react";
+import Layout from "../../../components/layouts";
 
 const tos = ({ tos }) => {
   return (
-    <Segment basic style={{ minHeight: "90vh" }}>
-      <Header as="h2" textAlign="center">
-        Privacy Policy
-      </Header>
+    <Layout
+      smallLeaderboard
+      leaderboardData={{
+        header: "Terms of Service",
+        subHeader: "",
+        dividerText: "",
+      }}
+    >
       {tos}
-    </Segment>
+    </Layout>
   );
 };
 

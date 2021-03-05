@@ -49,9 +49,9 @@ function AppComponent({
   const layout = () => (
     <div>
       {renderHeader()}
-      <div style={{ paddingTop: "70px" }}>
-        <Component {...pageProps} />
-      </div>
+
+      <Component {...pageProps} />
+
       <Footer siteType={isAdmin ? "admin" : "user"} />
     </div>
   );

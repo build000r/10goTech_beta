@@ -111,32 +111,34 @@ const CheckoutCard = ({ product, isAdmin }) => {
 
   const checkoutCard = () => {
     return (
-      <Segment basic style={{ minHeight: "90vh" }}>
+      <Item.Group centered>
         {adminLinks()}
-        <Item.Group centered>
-          <Item centered>
-            <Item.Content style={{ marginTop: "10px" }}>
-              <Item.Header>{product.title}</Item.Header>
-              <Item.Description>{product.description}</Item.Description>
-              <Item.Extra fluid></Item.Extra>
+        <Item centered>
+          <Item.Content style={{ marginTop: "10px" }}>
+            <Item.Description>{product.description}</Item.Description>
+            <Item.Extra
+              fluid
+              style={product.clickOptions.length > 1 ? {} : { display: "none" }}
+            >
               {Checkbox(product.clickOptions, handleClickOptions)}
-              {showCustomTextArea()}
-            </Item.Content>
-          </Item>
-          <Item>
-            <Item.Extra fluid>
-              {isAdmin ? (
-                <Button active={false} fluid color="green">
-                  Add to cart (disabled while administrator is logged in)
-                </Button>
-              ) : (
-                showAddToCart(showAddToCartButton)
-              )}
             </Item.Extra>
-          </Item>
-          <br />
-        </Item.Group>
-      </Segment>
+
+            {showCustomTextArea()}
+          </Item.Content>
+        </Item>
+        <Item>
+          <Item.Extra fluid>
+            {isAdmin ? (
+              <Button active={false} fluid color="green">
+                Add to cart (disabled while administrator is logged in)
+              </Button>
+            ) : (
+              showAddToCart(showAddToCartButton)
+            )}
+          </Item.Extra>
+        </Item>
+        <br />
+      </Item.Group>
     );
   };
 

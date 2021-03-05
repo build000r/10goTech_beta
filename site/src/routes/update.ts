@@ -45,6 +45,12 @@ router.put(
     body("sendgridApiKey")
       .notEmpty()
       .withMessage("The sendgrid api key must be provided."),
+    body("servicesPageSubheadline")
+      .notEmpty()
+      .withMessage("The servicesPageSubheadline must be provided."),
+    body("servicesPageHeadline")
+      .notEmpty()
+      .withMessage("The servicesPageHeadline  must be provided."),
   ],
   validateRequest,
   async (req: Request, res: Response) => {
@@ -58,6 +64,8 @@ router.put(
       termsOfService,
       sendFromEmail,
       sendgridApiKey,
+      servicesPageSubheadline,
+      servicesPageHeadline,
     } = req.body;
 
     const site = await Site.findOne({ title: req.params.oldTitle });
@@ -82,6 +90,8 @@ router.put(
       termsOfService,
       sendFromEmail,
       sendgridApiKey,
+      servicesPageSubheadline,
+      servicesPageHeadline,
     });
 
     await site.save();

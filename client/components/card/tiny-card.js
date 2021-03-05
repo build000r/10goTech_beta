@@ -9,7 +9,8 @@ const TinyCard = ({ header, description, linkTo }) => (
       <Card.Header as="h3" textAlign="center">
         {header}
       </Card.Header>
-      <Card.Description>{description}</Card.Description>
+      {description ? <Card.Description>{description}</Card.Description> : ""}
+      {/* <Card.Description>{description}</Card.Description> */}
     </Card.Content>
     <Link href={linkTo}>
       <Button fluid color="linkedin">

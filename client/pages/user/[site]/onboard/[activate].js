@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useRequest } from "../../../../hooks/use-request";
-import { Button } from "semantic-ui-react";
-import VertCenterGrid from "../../../../components/grid/vert-center";
+import { Button, Message } from "semantic-ui-react";
+import Layout from "../../../../components/layouts";
 import Router from "next/router";
 
 const activate = () => {
@@ -19,7 +19,13 @@ const activate = () => {
 
   return (
     <div>
-      <VertCenterGrid>
+      <Layout
+        smallLeaderboard
+        leaderboardData={{
+          header: "Welcome!",
+          subHeader: "Activate your account by clicking the button below",
+        }}
+      >
         {errors}
         <Button size="massive" fluid onClick={activateAccount}>
           {" "}
@@ -30,7 +36,7 @@ const activate = () => {
           and instructions on how to use the website. We take your privacy
           seriously and will not share your information with 3rd parties.
         </Message>
-      </VertCenterGrid>
+      </Layout>
     </div>
   );
 };
