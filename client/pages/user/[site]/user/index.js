@@ -2,55 +2,54 @@ import Link from "next/link";
 import { Button, Grid, Header } from "semantic-ui-react";
 import { useRouter } from "next/router";
 import { buildClient } from "../../../../api/build-client";
+import Layout from "../../../../components/layouts";
 
 const index = () => {
   const { site } = useRouter().query;
   const isTempTitle = (sitetitle) => sitetitle.includes("Change_This_Title");
 
-  return (
-    <div>
-      <Header as="h1" textAlign="center">
-        User Dashboard
-        <br />
-        for
-        <br />
-        {isTempTitle(site) ? "Your New Site" : site}
-      </Header>
-      ;
-      <Grid columns={1} style={{ height: "80vh" }}>
-        <Grid.Row verticalAlign="middle">
-          <Grid.Column stretched>
-            <Button.Group
-              vertical
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                marginTop: "-50px",
-              }}
-            >
-              <Link href={`/user/${site}/user/orders`}>
-                <Button
-                  size="huge"
-                  style={{ marginBottom: "15px", width: "250px" }}
-                >
-                  orders
-                </Button>
-              </Link>
+  const showItem = (href, link, meta) => (
+    <Item>
+      <Item.Content>
+        <Item.Header as="a">
+          <Link href={href}>{link}</Link>
+          {/* <Icon name="hand point right" /> */}
+        </Item.Header>
+        <Item.Meta>{meta}</Item.Meta>
+      </Item.Content>
+    </Item>
+  );
 
-              <Link href={`/user/${site}/auth/signout`}>
-                <Button
-                  size="huge"
-                  style={{ marginBottom: "15px", width: "250px" }}
-                >
-                  Sign Out
-                </Button>
-              </Link>
-            </Button.Group>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </div>
+  return (
+    <Layout
+      smallLeaderboard
+      leaderboardData={{
+        header: "Client Portal",
+        subHeader: "Place order",
+        dividerText: "What would you like to do?",
+      }}
+    >
+      <Button.Group
+        vertical
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginTop: "-50px",
+        }}
+      >
+        <Item.Group>
+          {showItem(
+            `/user/${site}/user/orders`,
+            "Orders",
+            "A history of your orders"
+          )}
+          {showItem(`/user/${site}/services`, "Browse Services", "")}
+          {showItem(`/user/${site}/cart`, "View Cart", "")}
+          {showItem(`/user/${site}/auth/signout`, "Sign Out", "")}
+        </Item.Group>
+      </Button.Group>
+    </Layout>
   );
 };
 
