@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { Button, Header } from "semantic-ui-react";
-import VertCenterGrid from "../../../components/grid/vert-center";
+import { Button, Divider, Header } from "semantic-ui-react";
+import Layout from "../../../components/layouts";
 import { Fragment } from "react";
 
 const index = () => {
@@ -11,13 +11,14 @@ const index = () => {
   const { site } = useRouter().query;
 
   const card = (header, subheader, next) => (
-    <Fragment>
-      <VertCenterGrid addWidth={200}>
-        <Header as="h1" textAlign="center">
-          {header}
-          <Header.Subheader>{subheader}</Header.Subheader>
-        </Header>
-
+    <Layout
+      smallLeaderboard
+      leaderboardData={{
+        header,
+        subHeader: subheader,
+      }}
+    >
+      <Fragment>
         <Button.Group fluid attached="top">
           <Button
             onClick={() => {
@@ -51,8 +52,8 @@ const index = () => {
             Start Free Trial
           </Button>
         </Link>
-      </VertCenterGrid>
-    </Fragment>
+      </Fragment>
+    </Layout>
   );
 
   const who = (next) =>

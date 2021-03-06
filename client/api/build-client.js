@@ -6,8 +6,6 @@ const buildClient = ({ req }) => {
 
     return axios.create({
       baseURL,
-      // baseURL: "https://www.10gotech.com/",
-      // FOR DEVELOPMENT MODE:
       // baseURL:
       //   "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local",
       headers: req.headers,

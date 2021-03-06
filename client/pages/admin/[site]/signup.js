@@ -1,11 +1,18 @@
 import { Signup } from "../../../components/auth/signup-basic";
-import VertCenterGrid from "../../../components/grid/vert-center";
+import Layout from "../../../components/layouts";
 
 const signup = () => {
   return (
-    <VertCenterGrid>
+    <Layout
+      smallLeaderboard
+      leaderboardData={{
+        header: "Welcome to 10goTech",
+        subHeader: "",
+        dividerText: "New user sign up",
+      }}
+    >
       <Signup createSitePermission="true" />
-    </VertCenterGrid>
+    </Layout>
   );
 };
 

@@ -1,11 +1,18 @@
 import { Signin } from "../../../components/auth/signin";
-import VertCenterGrid from "../../../components/grid/vert-center";
+import Layout from "../../../components/layouts";
 
 const signin = () => {
   return (
-    <VertCenterGrid>
+    <Layout
+      smallLeaderboard
+      leaderboardData={{
+        header: "Sign In",
+        subHeader: "Welcome back",
+        dividerText: "Existing User Sign in",
+      }}
+    >
       <Signin siteType="admin" />
-    </VertCenterGrid>
+    </Layout>
   );
 };
 

@@ -66,6 +66,7 @@ const Layout = ({
 
               {btnPath && btnText && (
                 <Button
+                  color="linkedin"
                   style={{ marginTop: "1rem" }}
                   onClick={() => Router.push(btnPath)}
                 >
@@ -73,8 +74,6 @@ const Layout = ({
                 </Button>
               )}
             </Header>
-
-            <Header as="h3" textAlign="center"></Header>
           </Grid.Column>
         </Grid.Row>
       </Grid>

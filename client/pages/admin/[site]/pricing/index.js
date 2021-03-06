@@ -3,7 +3,7 @@ import { buildClient } from "../../../../api/build-client";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment, useState } from "react";
-import VertCenterGrid from "../../../../components/grid/vert-center";
+import Layout from "../../../../components/layouts";
 
 const index = ({ packages }) => {
   const [active, setActive] = useState("feedback");
@@ -23,7 +23,14 @@ const index = ({ packages }) => {
 
   return (
     <Fragment>
-      <VertCenterGrid>
+      <Layout
+        smallLeaderboard
+        leaderboardData={{
+          header: "Sign Up",
+          subHeader: "To accelerate conversations about your project",
+          dividerText: "New user sign up",
+        }}
+      >
         <Header textAlign="center">Three Packages Available</Header>
 
         <Button.Group fluid basic attached="top">
@@ -69,7 +76,7 @@ const index = ({ packages }) => {
             Create an account to get started
           </Button>
         </Link>
-      </VertCenterGrid>
+      </Layout>
     </Fragment>
   );
 };

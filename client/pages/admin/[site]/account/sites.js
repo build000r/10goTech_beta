@@ -7,7 +7,7 @@ import {
   Header,
 } from "semantic-ui-react";
 import { buildClient } from "../../../../api/build-client";
-import VertCenterGrid from "../../../../components/grid/vert-center";
+import Layout from "../../../../components/layouts";
 import Link from "next/link";
 import { Fragment } from "react";
 import { useAuth } from "../../../../hooks/use-auth";
@@ -20,59 +20,50 @@ const sites = ({ user, sites }) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  const createSite = () => (
-    <div>
-      <Message floating>
-        <Message.Content>
-          <Link href={`/admin/${user.userOfSite}/onboard/select-package`}>
-            <Button color="linkedin" fluid>
-              Create New Website
-            </Button>
-          </Link>
-        </Message.Content>
-      </Message>
-    </div>
-  );
-
   const renderIfAuth = () => {
     return (
-      <Container style={{ minHeight: "90vh" }}>
-        <div>{createSite()}</div>
-        <Segment>
-          <Header>Your Websites</Header>
-          <Card.Group>
-            {sites.length > 0
-              ? sites.map((s) => (
-                  <Card key={s.title}>
-                    <Card.Content>
-                      <Card.Header as="h3">
-                        {isTempTitle(s.title)
-                          ? "Your New Site!"
-                          : capitalizeFirstLetter(s.title) + " Site"}
-                      </Card.Header>
-                    </Card.Content>
-                    <Card.Content extra>
-                      <div className="ui two buttons">
-                        <Link
-                          href={`/admin/${user.userOfSite}/account/${s.title}`}
-                        >
-                          <Button basic color="blue">
-                            Subscription
-                          </Button>
-                        </Link>
-                        <Link href={`/user/${s.title}/admin`}>
-                          <Button basic color="green">
-                            Site
-                          </Button>
-                        </Link>
-                      </div>
-                    </Card.Content>
-                  </Card>
-                ))
-              : "no sites created yet"}
-          </Card.Group>
-        </Segment>
-      </Container>
+      <Layout
+        smallLeaderboard
+        leaderboardData={{
+          header: "Manage your Websites & Subscriptions",
+          subHeader: "",
+          btnPath: `/admin/${user.userOfSite}/onboard/select-package`,
+          btnText: "Create New Website",
+          dividerText: "Your Current Websites",
+        }}
+      >
+        <Card.Group centered>
+          {sites.length > 0
+            ? sites.map((s) => (
+                <Card key={s.title}>
+                  <Card.Content>
+                    <Card.Header as="h3">
+                      {isTempTitle(s.title)
+                        ? "Your New Site!"
+                        : capitalizeFirstLetter(s.title) + " Site"}
+                    </Card.Header>
+                  </Card.Content>
+                  <Card.Content extra>
+                    <div className="ui two buttons">
+                      <Link
+                        href={`/admin/${user.userOfSite}/account/${s.title}`}
+                      >
+                        <Button basic color="blue">
+                          Subscription
+                        </Button>
+                      </Link>
+                      <Link href={`/user/${s.title}/admin`}>
+                        <Button basic color="green">
+                          Site
+                        </Button>
+                      </Link>
+                    </div>
+                  </Card.Content>
+                </Card>
+              ))
+            : "no sites created yet"}
+        </Card.Group>
+      </Layout>
     );
   };
 
