@@ -6,7 +6,10 @@ import Layout from "../../../../../components/layouts";
 
 const Photo = ({ ownerId, productId, photos }) => {
   return (
-    <Layout leaderboardData={{ header: "Upload an Image", subHeader: "" }}>
+    <Layout
+      smallLeaderboard
+      leaderboardData={{ header: "Upload an Image", subHeader: "" }}
+    >
       <UploadImage
         productId={productId}
         path={useRouter().asPath}
