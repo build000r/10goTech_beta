@@ -3,11 +3,10 @@ import axios from "axios";
 const buildClient = ({ req }) => {
   if (typeof window === "undefined") {
     const baseURL = "https://" + req.headers.host + "/";
+    // const baseURL = "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local";
 
     return axios.create({
       baseURL,
-      // baseURL:
-      //   "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local",
       headers: req.headers,
     });
   } else {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button, Grid, Header } from "semantic-ui-react";
+import { Button, Item } from "semantic-ui-react";
 import { useRouter } from "next/router";
 import { buildClient } from "../../../../api/build-client";
 import Layout from "../../../../components/layouts";
