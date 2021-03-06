@@ -2,17 +2,18 @@ import { buildClient } from "../../../../../api/build-client";
 import ViewPhotos from "../../../../../components/user-site/ViewPhotos";
 import { useRouter } from "next/router";
 import UploadImage from "../../../../../components/util/UploadImage";
+import Layout from "../../../../../components/layouts";
 
 const Photo = ({ ownerId, productId, photos }) => {
   return (
-    <div style={{ minHeight: "90vh" }}>
+    <Layout leaderboardData={{ header: "Upload an Image", subHeader: "" }}>
       <UploadImage
         productId={productId}
         path={useRouter().asPath}
         ownerId={ownerId}
       />
       <ViewPhotos photos={photos} />
-    </div>
+    </Layout>
   );
 };
 
