@@ -29,26 +29,16 @@ const index = () => {
         dividerText: "What would you like to do?",
       }}
     >
-      <Button.Group
-        vertical
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          marginTop: "-50px",
-        }}
-      >
-        <Item.Group>
-          {showItem(
-            `/user/${site}/user/orders`,
-            "Orders",
-            "A history of your orders"
-          )}
-          {showItem(`/user/${site}/services`, "Browse Services", "")}
-          {showItem(`/user/${site}/cart`, "View Cart", "")}
-          {showItem(`/user/${site}/auth/signout`, "Sign Out", "")}
-        </Item.Group>
-      </Button.Group>
+      <Item.Group>
+        {showItem(
+          `/user/${site}/user/orders`,
+          "Orders",
+          "A history of your orders"
+        )}
+        {showItem(`/user/${site}/services`, "Browse Services", "")}
+        {showItem(`/user/${site}/cart`, "View Cart", "")}
+        {showItem(`/user/${site}/auth/signout`, "Sign Out", "")}
+      </Item.Group>
     </Layout>
   );
 };

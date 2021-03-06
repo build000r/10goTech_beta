@@ -77,8 +77,6 @@ const Cart = ({ user }) => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginTop: "50px",
-          minHeight: "90vh",
         }}
       >
         {items.length > 0 ? showItems(items) : noItemsMessage()}

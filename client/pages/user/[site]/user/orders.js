@@ -1,11 +1,19 @@
 import { Segment, Header, Card, Item } from "semantic-ui-react";
 import { buildClient } from "../../../../api/build-client";
 import moment from "moment";
+import Layout from "../../../../components/layouts";
 
 const orders = ({ orders }) => {
   const purchaseHistoryCard = (history) => {
     return (
-      <Segment basic style={{ minHeight: "90vh" }}>
+      <Layout
+        smallLeaderboard
+        leaderboardData={{
+          header: "Client Portal",
+          subHeader: "Place order",
+          dividerText: "What would you like to do?",
+        }}
+      >
         <Header textAlign="center">
           Requests Submitted
           <Header.Subheader>
@@ -47,7 +55,7 @@ const orders = ({ orders }) => {
             });
           })}
         </Card.Group>
-      </Segment>
+      </Layout>
     );
   };
 
@@ -58,6 +66,7 @@ orders.getInitialProps = async (context) => {
   const client = buildClient(context);
 
   const { data: currentUser } = await client.get("/api/users/currentuser");
+
   const user = currentUser.currentUser;
 
   const { data: orders } = await client.get(`/api/orders/${user.userOfSite}`);
