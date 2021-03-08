@@ -13,7 +13,7 @@ import Layout from "../../../components/layouts";
 import { Fragment } from "react";
 
 const index = () => {
-  const [active, setActive] = useState("who");
+  const [active, setActive] = useState("what");
   const [jargon, setJargon] = useState("Off");
 
   const { site } = useRouter().query;
@@ -79,10 +79,10 @@ const index = () => {
                   jargon === "Off"
                     ? "Shorter Sales Cycles"
                     : "Sell More, Faster",
-                subheader: "Professional Websites Shorten Sales Cycles",
+                subheader: "Service forms, email automation, and a CRM",
                 paragraph1:
-                  "1) Get more specific qualifying infomation from prosepcts. 2) Automate the next steps follow up email. 3) Track your deals in a CRM. ",
-                paragraph2: "Ease sales discovery ",
+                  "Articulate the service you provide, and receive detailed inquiries from prospective customers. Customize and automate the next steps of the conversation, so you can respond quickly without having to constantly check your email. Keep tabs on your sales funnel in the customer relationship management section of the administrator dashboard. ",
+                // paragraph2: "Ease sales discovery ",
               },
               {
                 header: "Leverage Customer & Order Data",
@@ -103,9 +103,10 @@ const index = () => {
                 header: "Premature Investments in Technology & Marketing",
                 subheader: "Poisons minds and drains wallets",
                 paragraph1:
-                  "Invest prematurely in technology or marketing and your wallet will feel the wrath of change orders. All business must be willing to listen to customers, and provide them with the services they want.... premature investments result in a counterproductive mindset. The more you invest, the more you bury your head in the sand.",
+                  "We must be very careful in the methods we use to build a credible online presence. Symptoms of premature investments may include 1) an unwillingness to listen to customer feedback 2) change order invoices 3) more hours tinkering on website builders.",
+                // "Invest prematurely in technology or marketing and your wallet will feel the wrath of change orders. All business must be willing to listen to customers, and provide them with the services they want.... premature investments result in a counterproductive mindset. The more you invest, the more you bury your head in the sand.",
                 paragraph2:
-                  "Maintain a credible image while pushing brand and technology investments off until a) they are less likely to change, b) you are comfortable with the time and financial investment. ",
+                  "The name of the game is maintaining a credible image while pushing larger investments off until there is a lower risk of change.",
               },
 
               {
