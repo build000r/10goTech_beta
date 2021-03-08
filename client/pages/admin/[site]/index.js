@@ -70,9 +70,9 @@ const index = () => {
                 subheader: "Execute on the Lean Startup Methodology",
                 // "You won't have to defend your first idea to the grave",
                 paragraph1:
-                  "Plan for change. Reduce mental barriers. Save money. Pride of idea ownership snowballs the more money and time you invest.",
+                  "Plan for positive change. Avoid building mental barriers by investing to much time and money too early.",
                 paragraph2:
-                  "Built with the underlying assumption that you will learn, get better, and want to make changes quickly and inexpensively. This core assumption has led to the eliminiation of several inefficiencies in your traditional web building process.",
+                  "The only web application builder that assumes and plans for your learning, improvement, and updates. This core assumption has led to the eliminiation of several inefficiencies in your traditional web building process.",
               },
               {
                 header:
@@ -136,42 +136,45 @@ const index = () => {
                 // subheader: "Without sacrificing credibility",
                 // poisons minds and wallets
                 subheader: "Complex & evolving services websites made simple.",
-                paragraph1: "demo -> robbaratta.com",
+                paragraph1: "demo ->",
                 paragraph2: "",
               },
               {
                 header: "Agencies",
                 // subheader: "Without sacrificing credibility",
                 // poisons minds and wallets
-                subheader: "Describe and take orders",
-                paragraph1: "demo -> campbellcoaccounting.com",
+                subheader:
+                  "Rapidly update your services to capatalize on the newest trends in your industry",
+                paragraph1: "demo -> ",
                 paragraph2: "",
               },
 
               {
                 header: "Sweaty Startups",
                 subheader:
-                  "Be the most professional pooper scooper on the block",
+                  "Communicate your services clearly and credibly, and spend less time selling",
                 paragraph1: "demo ->",
                 paragraph2: "",
               },
               {
                 header: "Skilled Trades",
-                subheader:
-                  "Help people understand the specific services you can provide",
-                paragraph1: "demo -> mechanic",
+                subheader: "Give a clear picture of your capabilities",
+                paragraph1: "demo -> ",
+                // cut out the middlemen
                 paragraph2: "",
               },
               {
-                header: "Concierge Services",
-                subheader: "Quickly move from idea to execution",
-                paragraph1: "demo -> hairytask.com",
+                header: "Software as a Service Founders",
+                subheader: "Validate your hypothesis earlier than ever",
+                paragraph1: "demo -> ",
+                // hairytask.com",
                 paragraph2: "",
               },
               {
                 // header: "Deal Makers",
-                header: "Networkers",
-                subheader: "constructions.. etc",
+                header: "Deal Makers",
+                subheader:
+                  "Clearly articulate your offers for more releavant and specific conversations",
                 paragraph1: "demo ->",
                 // "demo - ...com. Focus conversations surrounding deals and topics that matter",
                 paragraph2: "",
@@ -180,7 +183,7 @@ const index = () => {
               {
                 header: "Angel Investors",
                 subheader:
-                  "Leverage your network to accelerate your investments",
+                  "Showcase your investment portfolio to help your founders win",
                 paragraph1: "demo ->",
                 // "De-risk your service before investing in the software. This is also good to tell your new investments",
                 // paragraph2: "whos an angel investor group without a website",
