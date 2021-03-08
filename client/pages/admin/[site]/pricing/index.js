@@ -26,13 +26,11 @@ const index = ({ packages }) => {
       <Layout
         smallLeaderboard
         leaderboardData={{
-          header: "Sign Up",
-          subHeader: "To accelerate conversations about your project",
-          dividerText: "New user sign up",
+          header: "Flexible Packages",
+          subHeader: "Cancel anytime & enjoy a 7 day free trial",
+          dividerText: "Select One",
         }}
       >
-        <Header textAlign="center">Three Packages Available</Header>
-
         <Button.Group fluid basic attached="top">
           {packages.map((p) => (
             <Button
