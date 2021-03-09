@@ -114,8 +114,10 @@ const CheckoutCard = ({ product, isAdmin }) => {
       <Item.Group centered>
         {adminLinks()}
         <Item centered>
-          <Item.Content style={{ marginTop: "10px" }}>
-            <Item.Description>{product.description}</Item.Description>
+          <Item.Content style={{ marginTop: "1rem" }}>
+            <Item.Description style={{ marginBottom: "3rem" }}>
+              {product.description}
+            </Item.Description>
             <Item.Extra
               fluid
               style={product.clickOptions.length > 1 ? {} : { display: "none" }}

@@ -18,13 +18,16 @@ const index = () => {
 
   const { site } = useRouter().query;
 
-  const showItem = ({ header, subheader, paragraph1, paragraph2 }) => (
+  const showItem = ({ header, subheader, paragraph1, demo1, paragraph2 }) => (
     <Item>
       <Item.Content>
         <Item.Header>{header}</Item.Header>
         <Item.Meta>{subheader}</Item.Meta>
         <Item.Description>
-          <p>{paragraph1}</p>
+          <a href={`https://${demo1}`} target="_blank">
+            {demo1}
+          </a>
+          {paragraph1}
         </Item.Description>
         <Item.Description>
           <p>{paragraph2}</p>
@@ -136,58 +139,63 @@ const index = () => {
                 header: "Consultants",
                 // subheader: "Without sacrificing credibility",
                 // poisons minds and wallets
-                subheader: "Complex & evolving services websites made simple.",
-                paragraph1: "demo ->",
+                subheader: "Simplify a complex & evolving set of services",
+                demo1: "RobBaratta.com",
+                paragraph1: ` defines Product Management & Full Stack Engineering services to potential clients.`,
                 paragraph2: "",
               },
               {
-                header: "Agencies",
-                // subheader: "Without sacrificing credibility",
-                // poisons minds and wallets
-                subheader:
-                  "Rapidly update your services to capatalize on the newest trends in your industry",
-                paragraph1: "demo -> ",
-                paragraph2: "",
-              },
+                header: "Agencies & Influencers",
+                subheader: "Capatalize on the newest trends in your industry",
+                demo1: "Wivud.com",
 
+                paragraph1:
+                  " showcases brand collaboration opportunities available across this influencers social media platforms.",
+                paragraph2: "",
+              },
               {
-                header: "Sweaty Startups",
+                header: "Skilled Trades & Sweaty Startups",
                 subheader:
-                  "Communicate your services clearly and credibly, and spend less time selling",
-                paragraph1: "demo ->",
-                paragraph2: "",
-              },
-              {
-                header: "Skilled Trades",
-                subheader: "Give a clear picture of your capabilities",
-                paragraph1: "demo -> ",
-                // cut out the middlemen
-                paragraph2: "",
-              },
-              {
-                header: "Software as a Service Founders",
-                subheader: "Validate your hypothesis earlier than ever",
-                paragraph1: "demo -> ",
-                // hairytask.com",
+                  "Spend more time doing and less time explaining what you can do",
+                demo1: "Plummah.com",
+                paragraph1:
+                  " is the easiest website this plumber never wanted to make, but knew he should.",
                 paragraph2: "",
               },
               {
                 // header: "Deal Makers",
                 header: "Deal Makers",
                 subheader:
-                  "Clearly articulate your offers for more releavant and specific conversations",
-                paragraph1: "demo ->",
-                // "demo - ...com. Focus conversations surrounding deals and topics that matter",
+                  "Focus your audiences attention on specific opportunities",
+                // Clearly articulate your offers for more releavant and specific conversations
+                demo1: "WorkFromBathroom.com",
+                paragraph1:
+                  // "demo ->",
+                  " helps this recruiter fill roles faster.",
                 paragraph2: "",
                 // "Lead generators, Real estate agents, vulture capital, economic developers (feature your local businesses)",
               },
               {
                 header: "Angel Investors",
-                subheader:
-                  "Showcase your investment portfolio to help your founders win",
-                paragraph1: "demo ->",
+                subheader: "Help your founders win",
+                // Showcase your investment portfolio to help your founders win
+                demo1: "ilitic.com",
+
+                paragraph1:
+                  // "demo ->",
+                  " crowdsources what their portfolio companies need help with.",
+
                 // "De-risk your service before investing in the software. This is also good to tell your new investments",
                 // paragraph2: "whos an angel investor group without a website",
+              },
+              {
+                header: "Founders",
+                subheader: "Validate your hypothesis earlier than ever",
+                demo1: "LunchMeintheFace.com",
+                paragraph1:
+                  " enabled these startup bros to test out their `Uber for x App` idea, while investing the minimum amount of time and money.",
+                // isn't sure whether or not their idea is worth investing more resources into. They are using us to gauge demand before deciding whether or not they want to spend more money on marketing and custom technology for their `uber for lunch` app idea.",
+                paragraph2: "",
               },
             ]}
           />

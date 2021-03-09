@@ -14,6 +14,7 @@ import { buildClient } from "../../../../api/build-client";
 import { useMediaQuery } from "../../../../hooks/use-media-query";
 import { useRequest } from "../../../../hooks/use-request";
 import Router, { useRouter } from "next/router";
+import Layout from "../../../../components/layouts";
 
 const services = ({ orders, siteUsers }) => {
   console.log(orders);
@@ -146,7 +147,14 @@ const services = ({ orders, siteUsers }) => {
     siteUsers.filter((u) => u.id === id || u._id === id);
 
   return (
-    <Segment basic style={{ minHeight: "90vh" }}>
+    <Layout
+      smallLeaderboard
+      leaderboardData={{
+        header: "Order History",
+        subHeader: "View and update orders",
+        dividerText: "What would you like to do?",
+      }}
+    >
       <Item.Group divided>
         <Card.Group centered itemsPerRow={useMediaQuery(700) ? 1 : 3}>
           {orders.map((order) => {
@@ -194,7 +202,7 @@ const services = ({ orders, siteUsers }) => {
           })}
         </Card.Group>
       </Item.Group>
-    </Segment>
+    </Layout>
   );
 };
 
