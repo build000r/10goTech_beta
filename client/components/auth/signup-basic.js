@@ -1,7 +1,8 @@
 import { useState, Fragment, useEffect } from "react";
 import { Form, Message } from "semantic-ui-react";
 import { useRequest } from "../../hooks/use-request";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Signup = ({ createSitePermission }) => {
   const [values, setValues] = useState({
@@ -9,9 +10,10 @@ const Signup = ({ createSitePermission }) => {
     password: "",
     success: false,
     loading: false,
+    agreeTos: false,
   });
 
-  const { email, password, success, loading } = values;
+  const { email, password, success, loading, agreeTos } = values;
 
   const { doRequest, errors } = useRequest({
     url: `/api/users/signup/${useRouter().query.site}`, // MUST CHANGE
@@ -60,10 +62,23 @@ const Signup = ({ createSitePermission }) => {
           placeholder="Password"
           type="Password"
         />
+        <Form.Checkbox
+          label={`I agree to the Terms and Conditions`}
+          onChange={() => setValues({ agreeTos: !agreeTos })}
+        >
+          {" "}
+        </Form.Checkbox>
+
         {errors}
-        <Form.Button fluid onClick={clickSubmit}>
+        <Form.Button disabled={!agreeTos} fluid onClick={clickSubmit}>
           Sign Up
         </Form.Button>
+        <Message>
+          We will not share your information with 3rd parties. Upon signup, you
+          will receive an email to activate your account. For additional
+          information, please review our{" "}
+          <Link href="/admin/rfp/tos">Terms and Conditions</Link>.
+        </Message>
       </Fragment>
     </Form>
   );

@@ -43,7 +43,8 @@ const AddUpdateProduct = ({ product, site }) => {
       title: values.title,
       description: values.description,
       brief: values.brief,
-      clickOptions: values.clickOptions,
+      clickOptions:
+        values.clickOptions.length > 0 ? values.clickOptions : [{ name: "" }],
       customerNote: values.customerNote,
     },
     onSuccess: () => Router.push(`/user/${site}/services`),

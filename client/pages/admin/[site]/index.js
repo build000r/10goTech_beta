@@ -100,33 +100,58 @@ const index = () => {
         );
       case "why":
         return (
+          // <ActiveContentTemplate
+          //   items={[
+          //     {
+          //       header: "Premature Investments in Technology & Marketing",
+          //       subheader: "Poisons minds and drains wallets",
+          //       paragraph1:
+          //         "We must be very careful in the methods we use to build a credible online presence. Symptoms of premature investments may include 1) an unwillingness to listen to customer feedback 2) change order invoices 3) more hours tinkering on website builders.",
+          //       // "Invest prematurely in technology or marketing and your wallet will feel the wrath of change orders. All business must be willing to listen to customers, and provide them with the services they want.... premature investments result in a counterproductive mindset. The more you invest, the more you bury your head in the sand.",
+          //       paragraph2:
+          //         "The name of the game is maintaining a credible image while pushing larger investments off until there is a lower risk of change.",
+          //     },
+
+          //     {
+          //       header: "Artsy Fartsy Website Builders",
+          //       subheader: "Manipulated us into tinkering their buttons",
+          //       paragraph1:
+          //         "Somewhere along the way, wordpress, wix, weebly, godaddy, clickfunnels, and every other website builder out there decided that we are all very special starflowers, who want to tinker around for as long as it takes to make a pretty pretty website as unique as our mommy's told us we were.",
+          //       paragraph2:
+          //         "The few of us with our heads out of our asses can now laser focus on money, efficiency, and learning from customers ... not artistic representations of ourselves and our businesses.",
+          //     },
+          //     {
+          //       header: "Napkin Ideas Are Bad for the Environment",
+          //       subheader: "Quickly move from idea to execution",
+          //       paragraph1:
+          //         "Shift the perception of your business from 'oh s/he's not ready yet' to 'oh wow, this is a real business' and get more out of brainstorming sessions at the bar, networking events, and conversations with initial users. ",
+          //       paragraph2:
+          //         "Build a 10goTech website in 10 minutes, and be taken seriously.",
+          //     },
+          //   ]}
+          // />
           <ActiveContentTemplate
             items={[
               {
-                header: "Premature Investments in Technology & Marketing",
-                subheader: "Poisons minds and drains wallets",
-                paragraph1:
-                  "We must be very careful in the methods we use to build a credible online presence. Symptoms of premature investments may include 1) an unwillingness to listen to customer feedback 2) change order invoices 3) more hours tinkering on website builders.",
-                // "Invest prematurely in technology or marketing and your wallet will feel the wrath of change orders. All business must be willing to listen to customers, and provide them with the services they want.... premature investments result in a counterproductive mindset. The more you invest, the more you bury your head in the sand.",
-                paragraph2:
-                  "The name of the game is maintaining a credible image while pushing larger investments off until there is a lower risk of change.",
-              },
-
-              {
-                header: "Artsy Fartsy Website Builders",
-                subheader: "Manipulated us into tinkering their buttons",
-                paragraph1:
-                  "Somewhere along the way, wordpress, wix, weebly, godaddy, clickfunnels, and every other website builder out there decided that we are all very special starflowers, who want to tinker around for as long as it takes to make a pretty pretty website as unique as our mommy's told us we were.",
-                paragraph2:
-                  "The few of us with our heads out of our asses can now laser focus on money, efficiency, and learning from customers ... not artistic representations of ourselves and our businesses.",
+                header: "Clarity",
+                subheader:
+                  "Website visitors should know exactly how to proceed with the services you offer.",
+                paragraph1: "",
+                paragraph2: "",
               },
               {
-                header: "Napkin Ideas Are Bad for the Environment",
-                subheader: "Quickly move from idea to execution",
-                paragraph1:
-                  "Shift the perception of your business from 'oh s/he's not ready yet' to 'oh wow, this is a real business' and get more out of brainstorming sessions at the bar, networking events, and conversations with initial users. ",
-                paragraph2:
-                  "Build a 10goTech website in 10 minutes, and be taken seriously.",
+                header: "Simplicity",
+                subheader:
+                  "Building a website shouldn't require so many decisions.",
+                paragraph1: "",
+                paragraph2: "",
+              },
+              {
+                header: "Change",
+                subheader:
+                  "Your website should anticipate your desire to quickly reflect the learnings and growth of your business.",
+                paragraph1: "",
+                paragraph2: "",
               },
             ]}
           />
@@ -282,8 +307,8 @@ const index = () => {
   //   );
   const why = (next) =>
     card(
-      "Do the least. Sell the most. Look the best.",
-      "Establish credibility earlier than ever."
+      "Websites should require less to convert more.",
+      "Connect audiences to focused topics, with clear next steps."
     );
 
   switch (active) {

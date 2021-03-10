@@ -120,7 +120,7 @@ const CheckoutCard = ({ product, isAdmin }) => {
             </Item.Description>
             <Item.Extra
               fluid
-              style={product.clickOptions.length > 1 ? {} : { display: "none" }}
+              style={product.clickOptions[0]?.name ? {} : { display: "none" }}
             >
               {Checkbox(product.clickOptions, handleClickOptions)}
             </Item.Extra>
