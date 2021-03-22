@@ -26,7 +26,6 @@ const Signup = ({ createSitePermission }) => {
   });
 
   const handleChange = (name) => (e) => {
-    console.log(name, e.target.value);
     setValues({ ...values, [name]: e.target.value });
   };
 
