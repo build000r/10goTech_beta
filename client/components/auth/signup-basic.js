@@ -26,11 +26,14 @@ const Signup = ({ createSitePermission }) => {
   });
 
   const handleChange = (name) => (e) => {
+    console.log(name, e.target.value);
     setValues({ ...values, [name]: e.target.value });
   };
 
   const clickSubmit = async (event) => {
     event.preventDefault(); // keep browser from reloading when btn click
+
+    console.log(values);
 
     setValues({ ...values, loading: true });
 
@@ -64,7 +67,7 @@ const Signup = ({ createSitePermission }) => {
         />
         <Form.Checkbox
           label={`I agree to the Terms and Conditions`}
-          onChange={() => setValues({ agreeTos: !agreeTos })}
+          onChange={() => setValues({ ...values, agreeTos: !agreeTos })}
         >
           {" "}
         </Form.Checkbox>
