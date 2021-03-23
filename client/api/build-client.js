@@ -2,7 +2,8 @@ import axios from "axios";
 
 const buildClient = ({ req }) => {
   if (typeof window === "undefined") {
-    const baseURL = "https://" + req.headers.host + "/";
+    // const baseURL = "https://" + req.headers.host + "/";
+    const baseURL = "https://www.10gotech.com/";
     // const baseURL =
     //   "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local";
 
