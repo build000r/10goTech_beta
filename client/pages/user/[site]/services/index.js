@@ -70,7 +70,7 @@ const index = ({ products, isAdmin, siteTitle, site }) => {
         subHeader:
           site.servicesPageSubheadline ||
           "Discover, plan, and build a software company",
-        dividerText: "Select Service(s)",
+        dividerText: "Browse & Select",
       }}
     >
       {isAdmin ? (

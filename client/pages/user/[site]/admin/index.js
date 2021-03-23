@@ -55,7 +55,7 @@ const index = ({ user, siteOwnerId }) => {
         {showItem(
           `/user/${site}/admin/create-service`,
           "Create New Service",
-          "Update your payment method & adjust or cancel your subscription"
+          "Create new order-able items for your website users to view."
         )}
         {showItem(`/user/${site}/admin/orders`, "View Orders", "orders")}
         {showItem(`/user/${site}/admin/users`, "View Users", "orders")}

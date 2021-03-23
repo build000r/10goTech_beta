@@ -17,7 +17,6 @@ import Router, { useRouter } from "next/router";
 import Layout from "../../../../components/layouts";
 
 const services = ({ orders, siteUsers }) => {
-  console.log(orders);
   if (orders.length === 0) {
     return (
       <Container style={{ minHeight: "90vh" }}>
@@ -151,8 +150,8 @@ const services = ({ orders, siteUsers }) => {
       smallLeaderboard
       leaderboardData={{
         header: "Order History",
-        subHeader: "View and update orders",
-        dividerText: "What would you like to do?",
+        subHeader: "Keep track of clients, and the status of their projects.",
+        dividerText: "Service Requests",
       }}
     >
       <Item.Group divided>

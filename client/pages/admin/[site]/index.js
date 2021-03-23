@@ -133,24 +133,28 @@ const index = () => {
           <ActiveContentTemplate
             items={[
               {
+                header: "Change",
+                subheader:
+                  "A website building process that anticipates your desire to quickly reflect the learnings and growth of your business.",
+                paragraph1:
+                  "Marketing debt accumulates as the obligatory arts and crafts stage is performed by you, or a website designer. Logo. Colors. Theme. Brand. Hours * Money later, you’re ready for business. Then, customer X comes along and makes you aware of a huge opportunity. Back to arts and crafts. Wait a second! Could customer X been sold without accumulating all of that marketing debt? Probably.",
+                paragraph2: "",
+              },
+              {
                 header: "Clarity",
                 subheader:
-                  "Website visitors should know exactly how to proceed with the services you offer.",
-                paragraph1: "",
-                paragraph2: "",
+                  "For business minded website creators, and their visitors.",
+                paragraph1:
+                  "Website visitors should know how, and be confident in their decision, to hire a service provider.",
+                paragraph2:
+                  "Business people should stay focused on their goal of honing conversations in on specific services that they provide.",
               },
               {
                 header: "Simplicity",
                 subheader:
                   "Building a website shouldn't require so many decisions.",
-                paragraph1: "",
-                paragraph2: "",
-              },
-              {
-                header: "Change",
-                subheader:
-                  "Your website should anticipate your desire to quickly reflect the learnings and growth of your business.",
-                paragraph1: "",
+                paragraph1:
+                  "Business people should be able to build a website, on their own domains, as easy as creating a linkedin profile.",
                 paragraph2: "",
               },
             ]}
@@ -173,7 +177,6 @@ const index = () => {
                 header: "Agencies & Influencers",
                 subheader: "Capatalize on the newest trends in your industry",
                 demo1: "Wivud.com",
-
                 paragraph1:
                   " showcases brand collaboration opportunities available across this influencers social media platforms.",
                 paragraph2: "",
@@ -278,15 +281,11 @@ const index = () => {
   );
 
   const who = (next) =>
-    card(
-      "Opportunists",
-      "Stay lean with the perfect blend of credibility & flexibility.",
-      next
-    );
+    card("Lean Businesses", "Build. Measure. Learn. Repeat.", next);
 
   const what = (next) =>
     card(
-      "Build a web app in less than 10 minutes",
+      "Launch your website in less than 10 minutes",
       "Show the world you mean business.",
       next
     );
@@ -306,10 +305,7 @@ const index = () => {
   //     "In the early stages, it is hard to close sales without credibility, Hard to invest in website without sales"
   //   );
   const why = (next) =>
-    card(
-      "Websites should require less to convert more.",
-      "Connect audiences to focused topics, with clear next steps."
-    );
+    card("Website Building is Broken", "Be credible, without arts and crafts.");
 
   switch (active) {
     case "who":

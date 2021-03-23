@@ -1,5 +1,6 @@
 import mongoose, { Types } from "mongoose";
 import { updateIfCurrentPlugin } from "mongoose-update-if-current";
+import { pp, ua } from "./legal";
 
 interface SiteAttrs {
   title: string;
@@ -102,13 +103,11 @@ const siteSchema = new mongoose.Schema(
     },
     privacyPolicy: {
       type: String,
-      default:
-        "By using this website, you agree to a retroactive privacy policy that will be written at some point in the future.",
+      default: pp,
     },
     termsOfService: {
       type: String,
-      default:
-        "By using this website, you agree to a retroactive terms of service that will be made in some point in the future. We are not responsible for any loss of data. You agree that we are not liable for any damages. You agree to hold us harmless from any and all claims. ",
+      default: ua,
     },
     servicesPageHeadline: {
       type: String,
