@@ -28,7 +28,6 @@ const Signup = ({ createSitePermission }) => {
   });
 
   const handleChange = (name) => (e) => {
-    console.log();
     if (
       name === "phone" &&
       /^\d+$/.test(e.target.value) === false &&

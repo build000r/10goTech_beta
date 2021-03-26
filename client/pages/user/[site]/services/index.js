@@ -112,8 +112,6 @@ index.getInitialProps = async (context) => {
     `/api/site/${context.query.site}`
   );
 
-  console.log(site);
-
   let isAdmin;
 
   if (user) {

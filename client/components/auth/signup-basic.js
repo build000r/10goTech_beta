@@ -32,8 +32,6 @@ const Signup = ({ createSitePermission }) => {
   const clickSubmit = async (event) => {
     event.preventDefault(); // keep browser from reloading when btn click
 
-    console.log(values);
-
     setValues({ ...values, loading: true });
 
     const response = await doRequest();

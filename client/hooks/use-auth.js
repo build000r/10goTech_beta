@@ -39,7 +39,6 @@ const useAuth = ({ user, currentUrlSite, renderIfAuth, siteOwnerId }) => {
   );
 
   if (user && user.id === siteOwnerId) {
-    console.log(user);
     return renderIfAuth();
   }
 

@@ -91,8 +91,6 @@ AppComponent.getInitialProps = async (appContext) => {
     domainUrl = appContext.ctx.req.headers.host;
   }
 
-  console.log("domainUrl, ", domainUrl);
-
   return { pageProps, user, siteExists, siteInfo, authUserIsAdmin, domainUrl };
 };
 

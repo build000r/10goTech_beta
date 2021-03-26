@@ -53,8 +53,6 @@ const UpdateOrderEmail = ({ email, path, ownerId }) => {
 
     const res = await doRequest();
     setValues({ ...values, loading: false });
-
-    console.log(res);
   };
 
   const formCard = () => {

@@ -74,8 +74,6 @@ users.getInitialProps = async (context) => {
     `/api/users/by-site/${context.query.site}`
   );
 
-  console.log(users);
-
   users = users.sort(function (a, b) {
     return new Date(b.createdAt) - new Date(a.createdAt);
   });
