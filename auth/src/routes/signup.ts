@@ -74,6 +74,7 @@ router.post(
 
     return res.status(200).send({
       email,
+      token,
     });
 
     // rules around tenant id - there can only be one super-user
