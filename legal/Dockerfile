@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM --platform=linux/x86-64 node:alpine
 ENV CI=true
 
 WORKDIR /app
