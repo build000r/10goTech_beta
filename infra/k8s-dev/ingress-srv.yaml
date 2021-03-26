@@ -13,6 +13,10 @@ spec:
             backend:
               serviceName: auth-srv
               servicePort: 3000
+          - path: /api/legal/?(.*)
+            backend:
+              serviceName: legal-srv
+              servicePort: 3000
           - path: /api/site/?(.*)
             backend:
               serviceName: site-srv
@@ -47,6 +51,10 @@ spec:
           - path: /api/users/?(.*)
             backend:
               serviceName: auth-srv
+              servicePort: 3000
+          - path: /api/legal/?(.*)
+            backend:
+              serviceName: legal-srv
               servicePort: 3000
           - path: /api/site/?(.*)
             backend:

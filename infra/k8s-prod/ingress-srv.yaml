@@ -22,6 +22,10 @@ spec:
             backend:
               serviceName: site-srv
               servicePort: 3000
+          - path: /api/legal/?(.*)
+            backend:
+              serviceName: legal-srv
+              servicePort: 3000
           - path: /api/product/?(.*)
             backend:
               serviceName: product-srv
@@ -56,6 +60,10 @@ spec:
           - path: /api/site/?(.*)
             backend:
               serviceName: site-srv
+              servicePort: 3000
+          - path: /api/legal/?(.*)
+            backend:
+              serviceName: legal-srv
               servicePort: 3000
           - path: /api/product/?(.*)
             backend:
@@ -92,6 +100,10 @@ spec:
             backend:
               serviceName: site-srv
               servicePort: 3000
+          - path: /api/legal/?(.*)
+            backend:
+              serviceName: legal-srv
+              servicePort: 3000
           - path: /api/product/?(.*)
             backend:
               serviceName: product-srv
@@ -126,6 +138,10 @@ spec:
           - path: /api/site/?(.*)
             backend:
               serviceName: site-srv
+              servicePort: 3000
+          - path: /api/legal/?(.*)
+            backend:
+              serviceName: legal-srv
               servicePort: 3000
           - path: /api/product/?(.*)
             backend:
@@ -162,6 +178,10 @@ spec:
             backend:
               serviceName: site-srv
               servicePort: 3000
+          - path: /api/legal/?(.*)
+            backend:
+              serviceName: legal-srv
+              servicePort: 3000
           - path: /api/product/?(.*)
             backend:
               serviceName: product-srv
@@ -196,6 +216,10 @@ spec:
           - path: /api/site/?(.*)
             backend:
               serviceName: site-srv
+              servicePort: 3000
+          - path: /api/legal/?(.*)
+            backend:
+              serviceName: legal-srv
               servicePort: 3000
           - path: /api/product/?(.*)
             backend:
@@ -232,6 +256,10 @@ spec:
             backend:
               serviceName: site-srv
               servicePort: 3000
+          - path: /api/legal/?(.*)
+            backend:
+              serviceName: legal-srv
+              servicePort: 3000
           - path: /api/product/?(.*)
             backend:
               serviceName: product-srv
@@ -266,6 +294,10 @@ spec:
           - path: /api/site/?(.*)
             backend:
               serviceName: site-srv
+              servicePort: 3000
+          - path: /api/legal/?(.*)
+            backend:
+              serviceName: legal-srv
               servicePort: 3000
           - path: /api/product/?(.*)
             backend:
@@ -302,6 +334,10 @@ spec:
             backend:
               serviceName: site-srv
               servicePort: 3000
+          - path: /api/legal/?(.*)
+            backend:
+              serviceName: legal-srv
+              servicePort: 3000
           - path: /api/product/?(.*)
             backend:
               serviceName: product-srv
@@ -336,6 +372,10 @@ spec:
           - path: /api/site/?(.*)
             backend:
               serviceName: site-srv
+              servicePort: 3000
+          - path: /api/legal/?(.*)
+            backend:
+              serviceName: legal-srv
               servicePort: 3000
           - path: /api/product/?(.*)
             backend:
