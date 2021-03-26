@@ -73,13 +73,7 @@ router.post(
     });
 
     return res.status(200).send({
-      name,
       email,
-      createSitePermission,
-      userOfSite,
-      password,
-      phone,
-      token,
     });
 
     // rules around tenant id - there can only be one super-user
