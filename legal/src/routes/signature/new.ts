@@ -16,7 +16,7 @@ router.post(
   [body("userId").notEmpty().withMessage("userId must be provided")],
   validateRequest,
   async (req: Request, res: Response) => {
-    const { userId, docId } = req.body;
+    const { userId } = req.body;
 
     if (userId !== req.currentUser!.id) {
       throw new NotAuthorizedError();
