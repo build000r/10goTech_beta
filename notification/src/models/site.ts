@@ -8,6 +8,10 @@ interface SiteAttrs {
   owner: UserDoc;
   sendgridApiKey?: string;
   sendFromEmail?: string;
+  mailjetPublic?: string;
+  mailjetPrivate?: string;
+  mailjetFromEmail?: string;
+  mailjetFromName?: string;
 }
 
 interface SiteDoc extends mongoose.Document {
@@ -16,6 +20,10 @@ interface SiteDoc extends mongoose.Document {
   sendgridApiKey: string;
   sendFromEmail: string;
   version: string;
+  mailjetPublic: string;
+  mailjetPrivate: string;
+  mailjetFromEmail: string;
+  mailjetFromName: string;
 }
 
 interface SiteModel extends mongoose.Model<SiteDoc> {
@@ -44,6 +52,26 @@ const siteSchema = new mongoose.Schema(
       default:
         "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",
     },
+    mailjetPublic: {
+      type: String,
+      required: true,
+      default: "e86505e366887ea9004824ee1ea77485",
+    },
+    mailjetPrivate: {
+      type: String,
+      required: true,
+      default: "7caf765c788d3b2374dcb6bc3ea4afa4",
+    },
+    mailjetFromEmail: {
+      type: String,
+      required: true,
+      default: "noreply@10gotech.com",
+    },
+    mailjetFromName: {
+      type: String,
+      required: true,
+      default: "NO REPLY @ 10goTech",
+    },
   },
   {
     toJSON: {
@@ -64,6 +92,10 @@ siteSchema.statics.build = (attrs: SiteAttrs) => {
     owner: attrs.owner,
     sendgridApiKey: attrs.sendgridApiKey,
     sendFromEmail: attrs.sendFromEmail,
+    mailjetPublic: attrs.mailjetPublic,
+    mailjetPrivate: attrs.mailjetPrivate,
+    mailjetFromEmail: attrs.mailjetFromEmail,
+    mailjetFromName: attrs.mailjetFromName,
   });
 };
 

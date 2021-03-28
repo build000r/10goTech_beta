@@ -5,7 +5,8 @@ import {
   Subjects,
   UserActivatedEvent,
 } from "@thesaas/common-rfp";
-import { firmActivated, userActivated } from "../../services/email";
+import { userActivated } from "../../services/email-user-activated";
+import { firmActivated } from "../../services/email-firm-activated";
 import { User } from "../../models/user";
 
 import { queueGroupName } from "./queue-group-name";

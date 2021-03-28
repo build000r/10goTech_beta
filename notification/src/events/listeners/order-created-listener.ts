@@ -6,7 +6,8 @@ import {
   OrderCreatedEvent,
   OrderCrmStatus,
 } from "@thesaas/common-rfp";
-import { orderCreatedReceipt, orderCreatedAlert } from "../../services/email";
+import { orderCreatedAlert } from "../../services/email-order-created-alert";
+import { orderCreatedReceipt } from "../../services/email-order-created-receipt";
 import { queueGroupName } from "./queue-group-name";
 import { Order } from "../../models/order";
 import { User, UserDoc } from "../../models/user";

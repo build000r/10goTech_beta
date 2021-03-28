@@ -7,7 +7,7 @@ import {
 } from "@thesaas/common-rfp";
 import { Site } from "../../models/site";
 import { User } from "../../models/user";
-import { siteCreated } from "../../services/email";
+import { siteCreated } from "../../services/email-site-created";
 
 import { queueGroupName } from "./queue-group-name";
 import { Email } from "../../models/email";

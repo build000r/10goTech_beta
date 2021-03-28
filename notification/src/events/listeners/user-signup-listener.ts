@@ -5,10 +5,9 @@ import {
   Subjects,
   UserSignupEvent,
 } from "@thesaas/common-rfp";
-import { userSignup } from "../../services/email";
+import { userSignup } from "../../services/email-signup";
 
 import { queueGroupName } from "./queue-group-name";
-import { Site } from "../../models/site";
 
 export class UserSignupListener extends Listener<UserSignupEvent> {
   readonly subject = Subjects.UserSignup;
