@@ -120,17 +120,7 @@ const Checkout = ({
         </Header>
       );
     } else {
-      return (
-        <Header
-          as="h2"
-          icon
-          textAlign="center"
-          style={{ marginBottom: "25px" }}
-        >
-          <Icon name="cart" circular />
-          <Header.Content></Header.Content>
-        </Header>
-      );
+      return null;
     }
   };
 

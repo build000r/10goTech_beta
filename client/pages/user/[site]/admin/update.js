@@ -1,6 +1,13 @@
 import Router, { useRouter } from "next/router";
 import { useState } from "react";
-import { Form, Input, Container, Segment, TextArea } from "semantic-ui-react";
+import {
+  Form,
+  Input,
+  TextArea,
+  Divider,
+  Header,
+  Icon,
+} from "semantic-ui-react";
 import { buildClient } from "../../../../api/build-client";
 import { useRequest } from "../../../../hooks/use-request";
 
@@ -22,9 +29,7 @@ const update = ({ site }) => {
     servicesPageSubheadline: site.servicesPageSubheadline,
   });
 
-  console.log(useRouter().query.site);
-
-  const { doRequest, errors } = useRequest({
+  const { doRequest, errors, errMsgArr } = useRequest({
     url: `/api/site/${useRouter().query.site}`, // MUST CHANGE
     method: "put",
     body: {
@@ -63,26 +68,43 @@ const update = ({ site }) => {
       leaderboardData={{
         header: "Website Details",
         subHeader: "Update the content and configuration of your website",
-        dividerText: "Form",
+        dividerText: "Configure",
       }}
       heightOverride={"1200px"}
     >
       <Form onSubmit={clickSubmit} loading={values.loading}>
         <br />
-        <Form.Field>
-          <label>Site Title (this will change your URL)</label>
+        {errors}
+        <Form.Field
+          error={
+            errMsgArr &&
+            errMsgArr.includes("This title has been reserved by another user.")
+          }
+        >
+          <label>Site Title </label>
           <Input
-            fluid
+            style={{ maxWidth: "300px" }}
+            label=".10gotech.com"
+            labelPosition="right"
             value={values.title}
             placeholder={values.title || "Enter the new title of your site"}
             onChange={handleChange("title")}
           />
+          <p style={{ marginTop: "20px", marginBottom: "10px" }}>
+            To configure custom email & domain name, respond to the email sent
+            from rob@10gotech.com
+          </p>
         </Form.Field>
+        <Divider horizontal>
+          <Header as="h4">
+            <Icon name="home" />
+            Home
+          </Header>
+        </Divider>{" "}
         <Form.Field>
-          <label>Header text on the home page</label>
+          <label>Header</label>
 
           <Input
-            fluid
             value={values.homeTitle}
             placeholder={
               values.homeTitle || "Enter the new header on your homepage "
@@ -91,39 +113,35 @@ const update = ({ site }) => {
           />
         </Form.Field>
         <Form.Field>
-          <label>Sub header text on the home page</label>
+          <label>Sub header</label>
           <Input
-            fluid
             value={values.tagline}
             placeholder={values.tagline || "Enter new tagline..."}
             onChange={handleChange("tagline")}
           />
         </Form.Field>
         <Form.Field>
-          <label>Title of the section with the boxes on the home page</label>
+          <label>Section Header</label>
 
           <Input
-            fluid
             value={values.aboutUsTitle}
             placeholder={values.aboutUsTitle || "Enter new about us title..."}
             onChange={handleChange("aboutUsTitle")}
           />
         </Form.Field>
         <Form.Field>
-          <label>Paragraph section on the home page</label>
+          <label>Section Paragraph</label>
           <TextArea
-            fluid
             value={values.aboutUsBlurb}
             placeholder={values.aboutUsBlurb || "Enter new aboutus blurb..."}
             onChange={handleChange("aboutUsBlurb")}
           />
         </Form.Field>
-        <Form.Field>
+        {/* <Form.Field>
           <label>
             Send from custom email address? Enter in your sendgrid "from" email
           </label>
           <TextArea
-            fluid
             value={values.sendFromEmail}
             placeholder={
               values.sendFromEmail || "Enter new sendgrid email blurb..."
@@ -136,18 +154,22 @@ const update = ({ site }) => {
             Send from custom email address? Enter in your sendgrid api key.
           </label>
           <TextArea
-            fluid
             value={values.sendgridApiKey}
             placeholder={
               values.sendgridApiKey || "Enter new sendgrid api key blurb..."
             }
             onChange={handleChange("sendgridApiKey")}
           />
-        </Form.Field>
+        </Form.Field> */}
+        <Divider horizontal>
+          <Header as="h4">
+            <Icon name="money" />
+            Services
+          </Header>
+        </Divider>{" "}
         <Form.Field>
           <label>Enter new services page headline</label>
-          <TextArea
-            fluid
+          <Input
             value={values.servicesPageHeadline}
             placeholder={
               values.servicesPageHeadline ||
@@ -158,8 +180,7 @@ const update = ({ site }) => {
         </Form.Field>
         <Form.Field>
           <label>Enter new services page subheadline</label>
-          <TextArea
-            fluid
+          <Input
             value={values.servicesPageSubheadline}
             placeholder={
               values.servicesPageSubheadline ||
@@ -168,10 +189,15 @@ const update = ({ site }) => {
             onChange={handleChange("servicesPageSubheadline")}
           />
         </Form.Field>
+        <Divider horizontal>
+          <Header as="h4">
+            <Icon name="law" />
+            Legal
+          </Header>
+        </Divider>{" "}
         <Form.Field>
           <label>Custom privacy policy for your website</label>
           <TextArea
-            fluid
             value={values.privacyPolicy}
             placeholder={values.privacyPolicy || "Enter new privacy policy..."}
             onChange={handleChange("privacyPolicy")}
@@ -180,7 +206,6 @@ const update = ({ site }) => {
         <Form.Field>
           <label>Custom terms of service for your website</label>
           <TextArea
-            fluid
             value={values.termsOfService}
             placeholder={
               values.termsOfService || "Enter new terms of service..."
@@ -188,10 +213,8 @@ const update = ({ site }) => {
             onChange={handleChange("termsOfService")}
           />
         </Form.Field>
-
         <Form.Button floated="right">Update</Form.Button>
       </Form>
-      {errors}
     </Layout>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import Link from "next/link";
-import { Header } from "semantic-ui-react";
+import { Header, Segment, Divider } from "semantic-ui-react";
 
 import Card from "../../../components/user-site/CartCard";
 import Checkout from "../../../components/user-site/Checkout";
@@ -23,20 +23,22 @@ const Cart = ({ user }) => {
   }, [run]);
 
   const showItems = () => (
-    <Fragment>
-      <Header>There are {`${items.length}`} item(s) in your order:</Header>
+    <Segment>
       {items.map((product, i) => (
-        <Card
-          key={i}
-          product={product}
-          showAddToCartButton={false}
-          cartUpdate={true}
-          showRemoveItemButton={true}
-          run={run}
-          setRun={setRun}
-        />
+        <Fragment>
+          <Card
+            key={i}
+            product={product}
+            showAddToCartButton={false}
+            cartUpdate={true}
+            showRemoveItemButton={true}
+            run={run}
+            setRun={setRun}
+          />
+          <Divider />
+        </Fragment>
       ))}
-    </Fragment>
+    </Segment>
   );
 
   const noItemsMessage = () => {
@@ -56,31 +58,24 @@ const Cart = ({ user }) => {
     <Layout
       smallLeaderboard
       leaderboardData={{
-        header: `Service Cart`,
+        header: `There are ${items.length} item${
+          items.length > 0 ? "s" : ""
+        } in your order`,
         subHeader: "Shop for services, and submit the details when ready.",
         dividerText: "Items",
       }}
     >
-      <div>
-        <Checkout
-          products={items.map((i) => i.item)}
-          user={user}
-          setRun={setRun}
-          run={run}
-          tellSuccess={(bool) => {
-            setSuccess(bool);
-          }}
-        />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+      <Checkout
+        products={items.map((i) => i.item)}
+        user={user}
+        setRun={setRun}
+        run={run}
+        tellSuccess={(bool) => {
+          setSuccess(bool);
         }}
-      >
-        {items.length > 0 ? showItems(items) : noItemsMessage()}
-      </div>
+      />
+
+      {items.length > 0 ? showItems(items) : noItemsMessage()}
     </Layout>
   );
 

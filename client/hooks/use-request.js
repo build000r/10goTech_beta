@@ -4,6 +4,7 @@ import { List, Message } from "semantic-ui-react";
 
 const useRequest = ({ url, method, body, onSuccess }) => {
   const [errors, setErrors] = useState(null);
+  const [errMsgArr, setErrMsgArr] = useState(null);
 
   const doRequest = async (props = {}) => {
     try {
@@ -31,10 +32,12 @@ const useRequest = ({ url, method, body, onSuccess }) => {
           </List>
         </Message>
       );
+
+      setErrMsgArr(err.response.data.errors.map((e) => e.message));
     }
   };
 
-  return { doRequest, errors };
+  return { doRequest, errors, errMsgArr };
 };
 
 export { useRequest };

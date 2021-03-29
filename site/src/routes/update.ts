@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
 import {
+  BadRequestError,
   NotAuthorizedError,
   NotFoundError,
   requireAuth,
@@ -69,6 +70,13 @@ router.put(
     } = req.body;
 
     const site = await Site.findOne({ title: req.params.oldTitle });
+    const nameTaken = await Site.findOne({ title });
+
+    if (nameTaken && title !== req.params.oldTitle) {
+      throw new BadRequestError(
+        "This title has been reserved by another user."
+      );
+    }
 
     if (!site) {
       throw new NotFoundError();

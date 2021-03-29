@@ -3,11 +3,11 @@ import { buildClient } from "../../../../api/build-client";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment, useState } from "react";
-import VertCenterGrid from "../../../../components/grid/vert-center";
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { CheckoutForm } from "../../../../components/payment/checkout-form";
+import Layout from "../../../../components/layouts";
 
 const stripePromise = loadStripe(
   "pk_test_51HcBP1AbNtIO9WIz2YyuWzAj9jjcgkBW4m1CFzKTMa3F80USq2ic8Hg5BNBFQdV5CCSw8voWoMXZCGxw2RNLVulQ001jMUK3UP"
@@ -15,8 +15,8 @@ const stripePromise = loadStripe(
 
 const index = ({ packages, currentUser, onePackage }) => {
   const [values, setValues] = useState({
-    active: "feedback",
-    payment: false,
+    active: "solo",
+    payment: true,
   });
 
   const { active, payment } = values;
@@ -45,34 +45,11 @@ const index = ({ packages, currentUser, onePackage }) => {
   const showPackageDetails = () => (
     <Fragment>
       <Card fluid>
-        <Card.Content>
+        {/* <Card.Content>
           <Card.Meta>{description}</Card.Meta>
-        </Card.Content>
-
-        <Card.Content extra>
-          <Icon name="check" /> {freeTrial} day free trial (w/ easy
-          cancellation)
-        </Card.Content>
-        <Card.Content extra>
-          <Icon name="check" /> {sites} Website
-        </Card.Content>
-        <Card.Content extra>
-          <Icon name="check" /> Client Accounts
-        </Card.Content>
-        <Card.Content extra>
-          <Icon name="check" /> Admin Account
-        </Card.Content>
-        <Card.Content extra>
-          <Icon name="check" /> Service Order/Email Automation
-        </Card.Content>
-
-        <Card.Content extra textAlign="center">
-          <Icon name="dollar sign" />
-          {/* {active ? packages[active].monthlyPrice : ""} */}
-          {monthlyPrice} per month
-        </Card.Content>
+        </Card.Content> */}
+        {showPackageIncludes()}
       </Card>
-
       {/* <Link href={`/admin/${site}/pricing/${title}`}> */}
       <Button
         attached="bottom"
@@ -91,54 +68,82 @@ const index = ({ packages, currentUser, onePackage }) => {
     </Fragment>
   );
 
+  const showPackageIncludes = () => (
+    <Fragment>
+      <Card.Content extra>
+        <Icon name="check" /> {sites} Website
+      </Card.Content>
+      <Card.Content extra>
+        <Icon name="check" /> {freeTrial} day free trial (1 click cancellation)
+      </Card.Content>
+      <Card.Content extra>
+        <Icon name="check" /> Custom Domain
+      </Card.Content>
+      <Card.Content extra>
+        <Icon name="check" /> Adminstrator Account
+      </Card.Content>
+      <Card.Content extra>
+        <Icon name="check" /> Client Accounts
+      </Card.Content>
+      <Card.Content extra>
+        <Icon name="check" /> Customer Relationship Manager
+      </Card.Content>
+
+      <Card.Content extra textAlign="center">
+        <Icon name="dollar sign" />
+        {/* {active ? packages[active].monthlyPrice : ""} */}
+        {monthlyPrice} per month
+      </Card.Content>
+    </Fragment>
+  );
+
   const showPackagePayment = () => {
     title = capitalizeFirstLetter(title);
 
     return (
       <Elements stripe={stripePromise}>
         <Card fluid>
-          <Card.Content extra>
-            <Icon name="check" /> {freeTrial} day free trial
-          </Card.Content>
-
-          <Card.Content extra>
-            <Icon name="check" /> Easy to cancel
-          </Card.Content>
-
-          <Card.Content extra>
-            Billed at ${monthlyPrice} per month once your free trial expires
-          </Card.Content>
-
+          {showPackageIncludes()}
           <CheckoutForm packageId={id} />
         </Card>
       </Elements>
     );
   };
 
-  return (
+  const showContent = () => (
     <Fragment>
-      <VertCenterGrid>
-        <Header textAlign="center">Three Packages Available</Header>
-        <Button.Group fluid basic attached="top">
-          {packages.map((p) => (
-            // <Link href={`/admin/${site}/pricing/${p.title}`}>
-            <Button
-              key={p.id}
-              active={active === p.title}
-              onClick={() =>
-                setValues({
-                  active: `${p.title}`,
-                  payment: false,
-                })
-              }
-            >
-              {capitalizeFirstLetter(p.title)}
-            </Button>
-          ))}
-        </Button.Group>
-        {payment ? showPackagePayment() : showPackageDetails()}
-      </VertCenterGrid>
+      {/* <Button.Group fluid basic attached="top">
+        {packages.map((p) => (
+          // <Link href={`/admin/${site}/pricing/${p.title}`}>
+          <Button
+            key={p.id}
+            active={active === p.title}
+            onClick={() =>
+              setValues({
+                active: `${p.title}`,
+                payment: false,
+              })
+            }
+          >
+            {capitalizeFirstLetter(p.title)}
+          </Button>
+        ))}
+      </Button.Group> */}
+      {payment ? showPackagePayment() : showPackageDetails()}
     </Fragment>
+  );
+
+  return (
+    <Layout
+      smallLeaderboard
+      leaderboardData={{
+        header: "Create your website",
+        subHeader: "Cancel anytime & enjoy a 7 day free trial",
+        dividerText: "Get Started",
+      }}
+    >
+      {showContent()}
+    </Layout>
   );
 };
 

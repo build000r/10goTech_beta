@@ -10,6 +10,13 @@ import {
 } from "semantic-ui-react";
 import { useRequest } from "../../hooks/use-request";
 import Router from "next/router";
+import { UpdatePaymentPerSubscription } from "../payment/UpdatePaymentPerSubscription";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(
+  "pk_test_51HcBP1AbNtIO9WIz2YyuWzAj9jjcgkBW4m1CFzKTMa3F80USq2ic8Hg5BNBFQdV5CCSw8voWoMXZCGxw2RNLVulQ001jMUK3UP"
+);
 
 const CurrentSubscription = ({ subscription, site, userOfSite, pay }) => {
   const { doRequest, errors } = useRequest({
@@ -41,16 +48,33 @@ const CurrentSubscription = ({ subscription, site, userOfSite, pay }) => {
 
     return (
       <div>
-        <Item.Group divided>
+        <Item.Group>
           <Item>
             <Item.Content>
-              <Item.Header as="a">{site}</Item.Header>
-              <Item.Meta>
-                <span>SubscriptionId: {id} </span>
-              </Item.Meta>
-              <Item.Description>
+              <Item.Header as="a">
+                {" "}
                 ${amount / 100} per {interval}
-              </Item.Description>
+              </Item.Header>
+            </Item.Content>
+          </Item>
+          <Item>
+            <Elements stripe={stripePromise}>
+              <UpdatePaymentPerSubscription subscription={subscription} />
+            </Elements>
+          </Item>
+          <Item>
+            <Item.Content>
+              <Item.Header>
+                {brand.charAt(0).toUpperCase() + brand.slice(1)} On File
+              </Item.Header>
+              <Item.Meta>
+                <Icon name="credit card outline" /> {last4} expires {exp_month}/
+                {exp_year}
+              </Item.Meta>
+
+              <Item.Extra>
+                <Label>Next Bill {nextBillDate}</Label>
+              </Item.Extra>
               <Item.Extra>
                 <Popup
                   trigger={
@@ -95,21 +119,6 @@ const CurrentSubscription = ({ subscription, site, userOfSite, pay }) => {
                 {trialEnd > now ? (
                   <Label>Free trial expires {trialEndDate}</Label>
                 ) : null}
-              </Item.Extra>
-            </Item.Content>
-          </Item>
-          <Item>
-            <Item.Content>
-              <Item.Header>
-                {brand.charAt(0).toUpperCase() + brand.slice(1)} On File
-              </Item.Header>
-              <Item.Meta>
-                <Icon name="credit card outline" /> {last4} expires {exp_month}/
-                {exp_year}
-              </Item.Meta>
-
-              <Item.Extra>
-                <Label>Next Bill {nextBillDate}</Label>
               </Item.Extra>
             </Item.Content>
           </Item>

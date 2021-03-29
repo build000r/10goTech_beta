@@ -19,7 +19,7 @@ const index = () => {
   const { site } = useRouter().query;
 
   const showItem = ({ header, subheader, paragraph1, demo1, paragraph2 }) => (
-    <Item>
+    <Item key={header}>
       <Item.Content>
         <Item.Header>{header}</Item.Header>
         <Item.Meta>{subheader}</Item.Meta>
@@ -259,7 +259,7 @@ const index = () => {
           What
         </Button>
       </Button.Group>
-      <Segment style={{ marginBottom: "2rem" }} attached="bottom" fluid>
+      <Segment style={{ marginBottom: "2rem" }} attached="bottom">
         {showActiveContent(active)}
       </Segment>
     </Fragment>

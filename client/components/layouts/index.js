@@ -60,9 +60,7 @@ const Layout = ({
             <Header as="h2" textAlign="center">
               {header}
 
-              <Header.Subheader as="h3" textAlign="center">
-                {subHeader}
-              </Header.Subheader>
+              <Header.Subheader>{subHeader}</Header.Subheader>
 
               {btnPath && btnText && (
                 <Button

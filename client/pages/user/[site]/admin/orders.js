@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Item,
   Divider,
@@ -16,8 +16,13 @@ import { useRequest } from "../../../../hooks/use-request";
 import Router, { useRouter } from "next/router";
 import Layout from "../../../../components/layouts";
 
-const services = ({ orders, siteUsers }) => {
-  if (orders.length === 0) {
+const services = ({ serverOrders, siteUsers }) => {
+  const [orders, setOrders] = useState(serverOrders);
+  const [statusFilter, setStatusFilter] = useState("");
+  const [statusMsg, setStatusMsg] = useState("");
+  const [sortNew, setSortNew] = useState(true);
+
+  if (orders && orders.length === 0) {
     return (
       <Container style={{ minHeight: "90vh" }}>
         <Header>
@@ -107,7 +112,31 @@ const services = ({ orders, siteUsers }) => {
 
   // do request update status /api/order put
 
-  const filterByStatus = () => <div>only show orders with certain status</div>;
+  const filterByStatus = (status) => {
+    const ordersWithStatus = serverOrders.filter((o) => o.crmStatus === status);
+
+    setStatusMsg("");
+
+    ordersWithStatus.length > 0
+      ? setOrders(ordersWithStatus)
+      : setStatusMsg(`There are no ${status} items`);
+  };
+
+  const sortByNew = (bool) => {
+    bool
+      ? setOrders(
+          orders.sort(function (a, b) {
+            return new Date(b.createdAt) - new Date(a.createdAt);
+          })
+        )
+      : setOrders(
+          orders.sort(function (b, a) {
+            return new Date(b.createdAt) - new Date(a.createdAt);
+          })
+        );
+
+    setSortNew(bool);
+  };
 
   const showProducts = (products) => {
     return products.map((product) => {
@@ -121,20 +150,20 @@ const services = ({ orders, siteUsers }) => {
       } = product;
 
       return (
-        <Item>
+        <Item key={id}>
           <Divider horizontal>Service Requested</Divider>{" "}
           <Item.Content>
             <Item.Header as="h4">{title}</Item.Header>
             <Item.Meta>{brief}</Item.Meta>
             {clickOptionsSelected.map((o, i) => (
               <Item.Extra key={i}>
-                <i class="check icon"></i>
+                <i className="check icon"></i>
                 {o.name}
               </Item.Extra>
             ))}
             <Item.Description>
               {" "}
-              <i class="sticky note outline icon"></i> {userMessage}
+              <i className="sticky note outline icon"></i> {userMessage}
             </Item.Description>
           </Item.Content>
         </Item>
@@ -154,53 +183,72 @@ const services = ({ orders, siteUsers }) => {
         dividerText: "Service Requests",
       }}
     >
-      <Item.Group divided>
-        <Card.Group centered itemsPerRow={useMediaQuery(700) ? 1 : 3}>
-          {orders.map((order) => {
-            let { crmStatus, userId, products, id } = order;
+      <Item style={{ width: "100%", marginBottom: "30px" }}>
+        {/* <Button onClick={() => sortByNew(!sortNew)}>sort</Button> */}
 
-            let orderer;
+        <Item.Content>
+          <Item.Meta>{statusMsg}</Item.Meta>
+          <Button.Group fluid>
+            <Button onClick={() => filterByStatus("created")}>created</Button>
+            <Button onClick={() => filterByStatus("following-up")}>
+              following-up
+            </Button>
+            <Button onClick={() => filterByStatus("closed-won")}>
+              closed-won
+            </Button>
+            <Button onClick={() => filterByStatus("closed-lost")}>
+              closed-lost
+            </Button>
+          </Button.Group>
+        </Item.Content>
+      </Item>
 
-            if (id) {
-              orderer = getOrderer(userId)[0];
-            }
+      <Card.Group centered itemsPerRow={useMediaQuery(1000) ? 1 : 3}>
+        {orders.map((order) => {
+          let { crmStatus, userId, products, id } = order;
 
-            const { name, email, phone, createdAt } = orderer;
+          let orderer;
 
-            return (
-              <Card>
-                <Card.Content>
-                  <Card.Header as="h3">
-                    Order created {new Date(createdAt).toLocaleDateString()} at{" "}
-                    {new Date(createdAt).toLocaleTimeString()}
-                  </Card.Header>
-                  <Item>
-                    <Item.Content>
-                      <Divider horizontal>Customer info</Divider>
-                      <Item.Meta>
-                        <span>{name ? name : null}</span>
-                      </Item.Meta>
-                      <Item.Meta>
-                        <span>{email}</span>
-                      </Item.Meta>
-                      <Item.Meta>
-                        <span>{phone ? `Phone #: ${phone} ` : ""}</span>
-                      </Item.Meta>
-                      <Item.Description>
-                        {showProducts(products)}
-                      </Item.Description>
-                    </Item.Content>
-                  </Item>
-                </Card.Content>
-                <Card.Content extra>
-                  {updateOrderStatus(id)}
-                  <Label>{crmStatus}</Label>
-                </Card.Content>
-              </Card>
-            );
-          })}
-        </Card.Group>
-      </Item.Group>
+          if (id) {
+            orderer = getOrderer(userId)[0];
+          }
+
+          const { name, email, phone, createdAt } = orderer;
+
+          return (
+            <Card key={id}>
+              <Card.Content>
+                <Card.Meta>
+                  <Header as="h4">
+                    {/* Received {new Date(createdAt).toLocaleDateString()} */}
+                  </Header>
+                </Card.Meta>
+                <Item>
+                  <Item.Content>
+                    <Divider horizontal>Customer info</Divider>
+                    <Item.Meta>
+                      <span>{name ? name : null}</span>
+                    </Item.Meta>
+                    <Item.Meta>
+                      <span>{email}</span>
+                    </Item.Meta>
+                    <Item.Meta>
+                      <span>{phone ? `Phone #: ${phone} ` : ""}</span>
+                    </Item.Meta>
+                    <Item.Description>
+                      {showProducts(products)}
+                    </Item.Description>
+                  </Item.Content>
+                </Item>
+              </Card.Content>
+              <Card.Content extra>
+                {updateOrderStatus(id)}
+                <Label>{crmStatus}</Label>
+              </Card.Content>
+            </Card>
+          );
+        })}
+      </Card.Group>
     </Layout>
   );
 };
@@ -214,11 +262,11 @@ services.getInitialProps = async (context) => {
     `/api/users/by-site/${context.query.site}`
   );
 
-  orders = orders.sort(function (a, b) {
+  let serverOrders = orders.sort(function (a, b) {
     return new Date(b.createdAt) - new Date(a.createdAt);
   });
 
-  return { orders, siteUsers };
+  return { serverOrders, siteUsers };
 };
 
 export default services;
