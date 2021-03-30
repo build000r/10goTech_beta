@@ -40,12 +40,6 @@ router.put(
     body("termsOfService")
       .notEmpty()
       .withMessage("The terms of service must be provided."),
-    body("sendFromEmail")
-      .notEmpty()
-      .withMessage("The sendfrom email  must be provided."),
-    body("sendgridApiKey")
-      .notEmpty()
-      .withMessage("The sendgrid api key must be provided."),
     body("servicesPageSubheadline")
       .notEmpty()
       .withMessage("The servicesPageSubheadline must be provided."),
@@ -63,8 +57,6 @@ router.put(
       aboutUsBlurb,
       privacyPolicy,
       termsOfService,
-      sendFromEmail,
-      sendgridApiKey,
       servicesPageSubheadline,
       servicesPageHeadline,
     } = req.body;
@@ -96,8 +88,6 @@ router.put(
       aboutUsBlurb,
       privacyPolicy,
       termsOfService,
-      sendFromEmail,
-      sendgridApiKey,
       servicesPageSubheadline,
       servicesPageHeadline,
     });

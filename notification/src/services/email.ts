@@ -4,7 +4,6 @@ import { Email } from "../models/email";
 import { OrderDoc } from "../models/order";
 import { Site, SiteDoc } from "../models/site";
 import { User, UserDoc } from "../models/user";
-import mailjet from "node-mailjet";
 
 // change to env variables...
 

@@ -19,6 +19,8 @@ interface SiteAttrs {
   termsOfService?: string;
   servicesPageHeadline?: string;
   servicesPageSubheadline?: string;
+  mailjetFromEmail?: string;
+  mailjetFromName?: string;
 }
 
 interface SiteDoc extends mongoose.Document {
@@ -40,6 +42,8 @@ interface SiteDoc extends mongoose.Document {
   termsOfService: string;
   servicesPageHeadline: string;
   servicesPageSubheadline: string;
+  mailjetFromEmail: string;
+  mailjetFromName: string;
 }
 
 interface SiteModel extends mongoose.Model<SiteDoc> {
@@ -116,6 +120,14 @@ const siteSchema = new mongoose.Schema(
     servicesPageSubheadline: {
       type: String,
       default: "Learn more and inquire about our services",
+    },
+    mailjetFromEmail: {
+      type: String,
+      default: "noreply@10gotech.com",
+    },
+    mailjetFromName: {
+      type: String,
+      default: "No Reply",
     },
   },
   {

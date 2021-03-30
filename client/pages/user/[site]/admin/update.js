@@ -7,13 +7,15 @@ import {
   Divider,
   Header,
   Icon,
+  Segment,
 } from "semantic-ui-react";
 import { buildClient } from "../../../../api/build-client";
 import { useRequest } from "../../../../hooks/use-request";
 
 import Layout from "../../../../components/layouts";
+import EmailConfig from "../../../../components/admin-site/email-config";
 
-const update = ({ site }) => {
+const update = ({ site, config }) => {
   const [values, setValues] = useState({
     title: site.title,
     homeTitle: site.homeTitle,
@@ -23,8 +25,6 @@ const update = ({ site }) => {
     loading: false,
     privacyPolicy: site.privacyPolicy,
     termsOfService: site.termsOfService,
-    sendgridApiKey: site.sendgridApiKey,
-    sendFromEmail: site.sendFromEmail,
     servicesPageHeadline: site.servicesPageHeadline,
     servicesPageSubheadline: site.servicesPageSubheadline,
   });
@@ -40,8 +40,6 @@ const update = ({ site }) => {
       aboutUsTitle: values.aboutUsTitle,
       privacyPolicy: values.privacyPolicy,
       termsOfService: values.termsOfService,
-      sendgridApiKey: values.sendgridApiKey,
-      sendFromEmail: values.sendFromEmail,
       servicesPageHeadline: values.servicesPageHeadline,
       servicesPageSubheadline: values.servicesPageSubheadline,
     },
@@ -70,7 +68,7 @@ const update = ({ site }) => {
         subHeader: "Update the content and configuration of your website",
         dividerText: "Configure",
       }}
-      heightOverride={"1200px"}
+      heightOverride={"1500px"}
     >
       <Form onSubmit={clickSubmit} loading={values.loading}>
         <br />
@@ -90,17 +88,7 @@ const update = ({ site }) => {
             placeholder={values.title || "Enter the new title of your site"}
             onChange={handleChange("title")}
           />
-          <p style={{ marginTop: "20px", marginBottom: "10px" }}>
-            To configure custom email & domain name, respond to the email sent
-            from rob@10gotech.com
-          </p>
         </Form.Field>
-        <Divider horizontal>
-          <Header as="h4">
-            <Icon name="home" />
-            Home
-          </Header>
-        </Divider>{" "}
         <Form.Field>
           <label>Header</label>
 
@@ -137,30 +125,6 @@ const update = ({ site }) => {
             onChange={handleChange("aboutUsBlurb")}
           />
         </Form.Field>
-        {/* <Form.Field>
-          <label>
-            Send from custom email address? Enter in your sendgrid "from" email
-          </label>
-          <TextArea
-            value={values.sendFromEmail}
-            placeholder={
-              values.sendFromEmail || "Enter new sendgrid email blurb..."
-            }
-            onChange={handleChange("sendFromEmail")}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>
-            Send from custom email address? Enter in your sendgrid api key.
-          </label>
-          <TextArea
-            value={values.sendgridApiKey}
-            placeholder={
-              values.sendgridApiKey || "Enter new sendgrid api key blurb..."
-            }
-            onChange={handleChange("sendgridApiKey")}
-          />
-        </Form.Field> */}
         <Divider horizontal>
           <Header as="h4">
             <Icon name="money" />
@@ -215,6 +179,7 @@ const update = ({ site }) => {
         </Form.Field>
         <Form.Button floated="right">Update</Form.Button>
       </Form>
+      <EmailConfig config={config} />
     </Layout>
   );
 };
@@ -223,8 +188,11 @@ update.getInitialProps = async (context) => {
   const { data: site } = await buildClient(context).get(
     `/api/site/${context.query.site}`
   );
+  const { data: config } = await buildClient(context).get(
+    `/api/notification/config/${context.query.site}`
+  );
 
-  return { site };
+  return { site, config };
 };
 
 export default update;

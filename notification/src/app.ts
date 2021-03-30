@@ -5,6 +5,8 @@ import cookieSession from "cookie-session";
 import { errorHandler, NotFoundError, currentUser } from "@thesaas/common-rfp";
 import { showBySubscriptionRouter } from "./routes/show";
 import { updateEmailRouter } from "./routes/update";
+import { configShowRouter } from "./routes/config-show";
+import { configUpdateRouter } from "./routes/config-update";
 
 // import { createNotificationRouter } from "./routes/new";
 // import { showNotificationRouter } from "./routes/show";
@@ -28,8 +30,8 @@ app.use(currentUser);
 
 app.use(showBySubscriptionRouter);
 app.use(updateEmailRouter);
-// app.use(createNotificationRouter);
-// app.use(showNotificationRouter);
+app.use(configShowRouter);
+app.use(configUpdateRouter);
 // app.use(indexNotificationRouter);
 // app.use(updateNotificationRouter);
 

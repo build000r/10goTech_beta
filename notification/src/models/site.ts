@@ -70,7 +70,7 @@ const siteSchema = new mongoose.Schema(
     mailjetFromName: {
       type: String,
       required: true,
-      default: "NO REPLY @ 10goTech",
+      default: "No Reply",
     },
   },
   {
