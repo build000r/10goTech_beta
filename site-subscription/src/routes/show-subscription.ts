@@ -40,12 +40,12 @@ router.get(
     //   throw new BadRequestError("subscriptoun details not found");
     // }
 
-    console.log("user from get subscription call");
-
     const paymentMethod = await getPaymentMethod(
       //@ts-ignore
       subscription.default_payment_method
     );
+
+    console.log(paymentMethod);
 
     res.status(200).send({ subscription, paymentMethod });
   }

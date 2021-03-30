@@ -23,40 +23,40 @@ export class SiteCreatedListener extends Listener<SiteCreatedEvent> {
           title: "solo",
           site: data.title,
           sites: 1,
-          monthlyPrice: 29,
-          priceId: "price_1IGVPxAbNtIO9WIzMfUu9Lpg",
+          monthlyPrice: 74,
+          priceId: "price_1IaMNuAbNtIO9WIz6e0gkPbw",
           freeTrial: 7,
           description: "Website-only package plus email automation.",
         });
 
-        const scale = Package.build({
-          title: "feedback",
-          site: data.title,
-          sites: 1,
-          monthlyPrice: 179,
-          priceId: "price_1IGVToAbNtIO9WIzgf2j8mhM",
-          freeTrial: 7,
-          description:
-            "One website plus monthly 1-hour long consultations with a tech startup expert. This package is best suited for those who would like personalized strategic guidance.",
-        });
+        // const scale = Package.build({
+        //   title: "feedback",
+        //   site: data.title,
+        //   sites: 1,
+        //   monthlyPrice: 179,
+        //   priceId: "price_1IGVToAbNtIO9WIzgf2j8mhM",
+        //   freeTrial: 7,
+        //   description:
+        //     "One website plus monthly 1-hour long consultations with a tech startup expert. This package is best suited for those who would like personalized strategic guidance.",
+        // });
 
-        const sprint = Package.build({
-          title: "invest",
-          site: data.title,
-          sites: 1,
-          monthlyPrice: 629,
-          priceId: "price_1IGVUWAbNtIO9WIzlzAJh9iH",
-          freeTrial: 7,
-          description:
-            "One website plus bi-monthly 2-hour consulting sessions with a technology startup expert. This package is best suited for those using the website as an MVP for proof of concept to raise funding.",
-        });
+        // const sprint = Package.build({
+        //   title: "invest",
+        //   site: data.title,
+        //   sites: 1,
+        //   monthlyPrice: 629,
+        //   priceId: "price_1IGVUWAbNtIO9WIzlzAJh9iH",
+        //   freeTrial: 7,
+        //   description:
+        //     "One website plus bi-monthly 2-hour consulting sessions with a technology startup expert. This package is best suited for those using the website as an MVP for proof of concept to raise funding.",
+        // });
 
         await solo.save();
-        await scale.save();
-        await sprint.save();
+        // await scale.save();
+        // await sprint.save();
 
-        console.log(`creating pricing packages for ${data.title} site`);
-        console.log(scale, sprint, solo);
+        // console.log(`creating pricing packages for ${data.title} site`);
+        // console.log(scale, sprint, solo);
         break;
       default:
         break;

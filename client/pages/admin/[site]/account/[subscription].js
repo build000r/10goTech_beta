@@ -58,6 +58,7 @@ subscriptionDetails.getInitialProps = async (context) => {
   const sub = subscription.subscription;
   const pay = subscription.paymentMethod;
 
+  console.log(sub, pay);
   return { user, sub, pay };
 };
 

@@ -10,7 +10,7 @@ import { CheckoutForm } from "../../../../components/payment/checkout-form";
 import Layout from "../../../../components/layouts";
 
 const stripePromise = loadStripe(
-  "pk_test_51HcBP1AbNtIO9WIz2YyuWzAj9jjcgkBW4m1CFzKTMa3F80USq2ic8Hg5BNBFQdV5CCSw8voWoMXZCGxw2RNLVulQ001jMUK3UP"
+  "pk_live_51HcBP1AbNtIO9WIzJZdkXSA3YTs4VwLHf9V5PjtLraiKEQFoZE8UfWn7rT1FYpaoLEoeWmdBltvjdseEZRpIyQEK00C4GPYpLW"
 );
 
 const index = ({ packages, currentUser, onePackage }) => {
