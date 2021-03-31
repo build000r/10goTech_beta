@@ -39,8 +39,8 @@ export const orderCreatedReceipt = async (
           },
           To: [
             {
-              Email: owner.email,
-              Name: owner.email,
+              Email: email,
+              Name: name || email,
             },
           ],
           Subject: subject,

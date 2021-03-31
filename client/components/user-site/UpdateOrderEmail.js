@@ -11,11 +11,13 @@ import {
 import { useRequest } from "../../hooks/use-request";
 import Router, { useRouter } from "next/router";
 import DeleteProduct from "../admin-site/delete-product";
+import Editor from "../email";
 
 const UpdateOrderEmail = ({ email, path, ownerId }) => {
   const [values, setValues] = useState({
     subject: "",
     body: "",
+    oldBody: "",
     productId: "",
     loading: false,
   });
@@ -25,7 +27,7 @@ const UpdateOrderEmail = ({ email, path, ownerId }) => {
     method: "put",
     body: {
       subject: values.subject,
-      body: values.body,
+      body: values.body || values.oldBody,
     },
     onSuccess: () => Router.push(path),
   });
@@ -37,7 +39,7 @@ const UpdateOrderEmail = ({ email, path, ownerId }) => {
       setValues({
         ...values,
         subject,
-        body,
+        oldBody: body,
         productId,
       });
     }
@@ -47,8 +49,12 @@ const UpdateOrderEmail = ({ email, path, ownerId }) => {
     setValues({ ...values, [name]: evt.target.value });
   };
 
+  const handleBodyChange = (body) => {
+    setValues({ ...values, body });
+  };
+
   const handleSubmit = async (evt) => {
-    evt.preventDefault();
+    evt && evt.preventDefault();
     setValues({ ...values, loading: true });
 
     const res = await doRequest();
@@ -72,13 +78,18 @@ const UpdateOrderEmail = ({ email, path, ownerId }) => {
               />
             </Form.Field>
             <Form.Field>
-              <label>Body</label>
+              {/* <label>Body</label>
               <TextArea
                 style={{ minHeight: 200 }}
                 placeholder="body"
                 onChange={handleChange("body")}
                 className="form-control"
                 value={body}
+              /> */}
+
+              <Editor
+                onBodyChange={handleBodyChange}
+                oldBody={values.oldBody}
               />
             </Form.Field>
           </Form>
