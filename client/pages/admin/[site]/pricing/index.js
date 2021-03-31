@@ -6,7 +6,7 @@ import { Fragment, useState } from "react";
 import Layout from "../../../../components/layouts";
 
 const index = ({ packages }) => {
-  const [active, setActive] = useState("feedback");
+  const [active, setActive] = useState("solo");
   const { site } = useRouter().query;
 
   const activePackage = packages.find((p, i) => {
@@ -21,54 +21,46 @@ const index = ({ packages }) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+  const showPackageIncludes = () => (
+    <Card fluid>
+      <Card.Content extra>
+        <Icon name="check" /> {sites} Website
+      </Card.Content>
+      <Card.Content extra>
+        <Icon name="check" /> {freeTrial} day free trial (1 click cancellation)
+      </Card.Content>
+      <Card.Content extra>
+        <Icon name="check" /> Custom Domain
+      </Card.Content>
+      <Card.Content extra>
+        <Icon name="check" /> Adminstrator Account
+      </Card.Content>
+      <Card.Content extra>
+        <Icon name="check" /> Client Accounts
+      </Card.Content>
+      <Card.Content extra>
+        <Icon name="check" /> Customer Relationship Manager
+      </Card.Content>
+
+      <Card.Content extra textAlign="center">
+        <Icon name="dollar sign" />
+        {/* {active ? packages[active].monthlyPrice : ""} */}
+        {monthlyPrice} per month
+      </Card.Content>
+    </Card>
+  );
+
   return (
     <Fragment>
       <Layout
         smallLeaderboard
         leaderboardData={{
-          header: "Flexible Packages",
+          header: "Create your website",
           subHeader: "Cancel anytime & enjoy a 7 day free trial",
-          dividerText: "Select One",
+          dividerText: "Get Started",
         }}
       >
-        <Button.Group fluid basic attached="top">
-          {packages.map((p) => (
-            <Button
-              key={p.id}
-              active={active === p.title}
-              onClick={() => setActive(`${p.title}`)}
-            >
-              {capitalizeFirstLetter(p.title)}
-            </Button>
-          ))}
-        </Button.Group>
-        <Card fluid>
-          <Card.Content>
-            <Card.Meta>{description}</Card.Meta>
-          </Card.Content>
-
-          <Card.Content extra>
-            <Icon name="check" /> {freeTrial} day free trial (w/ easy
-            cancellation)
-          </Card.Content>
-          <Card.Content extra>
-            <Icon name="check" /> {sites} Website
-          </Card.Content>
-          <Card.Content extra>
-            <Icon name="check" /> Client Accounts
-          </Card.Content>
-          <Card.Content extra>
-            <Icon name="check" /> Admin Account
-          </Card.Content>
-          <Card.Content extra>
-            <Icon name="check" /> Service Order/Email Automation
-          </Card.Content>
-
-          <Card.Content extra textAlign="center">
-            <Icon name="dollar sign" />
-            {monthlyPrice} per month
-          </Card.Content>
-        </Card>
+        {showPackageIncludes()}
         <Link href={`/admin/${site}/signup`}>
           <Button attached="bottom" fluid color="linkedin">
             Create an account to get started
