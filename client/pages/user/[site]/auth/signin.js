@@ -1,6 +1,6 @@
-import { Grid, Segment } from "semantic-ui-react";
+import Link from "next/link";
+import { Button } from "semantic-ui-react";
 import { Signin } from "../../../../components/auth/signin";
-import VertCenterGrid from "../../../../components/grid/vert-center";
 import Layout from "../../../../components/layouts";
 
 const signin = () => {
@@ -14,6 +14,9 @@ const signin = () => {
       }}
     >
       <Signin siteType="user" />
+      <Button basic floated="right" style={{ marginTop: "30px" }}>
+        <Link href="/admin/rfp/signin">Go to admin login</Link>
+      </Button>
     </Layout>
   );
 };

@@ -43,22 +43,30 @@ const index = ({ user, siteOwnerId }) => {
     >
       <Item.Group>
         {showItem(
+          `/user/${site}/services`,
+          "Services",
+          "Manage the photos, copy & follow up emails associated with each service you provide."
+        )}
+        {showItem(
           `/user/${site}/admin/update`,
-          "Update Site",
-          "Site Content & Email Configuration"
+          "Homepage & Settings",
+          "Homepage content, email settings, and other system settings "
+        )}
+        {showItem(
+          `/user/${site}/admin/orders`,
+          "Orders",
+          "A list of all of the orders that have been placed on your website."
+        )}
+        {showItem(
+          `/user/${site}/admin/users`,
+          "Users",
+          "A list of all of the users who have signed up for your website."
         )}
         {showItem(
           `/admin/${user.userOfSite}/account/${site}`,
-          "Manage Subscription",
-          "Update your payment method & adjust or cancel your subscription"
+          "Subscription",
+          "Manage all of your websites, payment methods, and subscriptions."
         )}
-        {showItem(
-          `/user/${site}/admin/create-service`,
-          "Create New Service",
-          "Create new order-able items for your website users to view."
-        )}
-        {showItem(`/user/${site}/admin/orders`, "View Orders", "orders")}
-        {showItem(`/user/${site}/admin/users`, "View Users", "orders")}
         {showItem(`/user/${site}/auth/signout`, "Sign out", "")}
       </Item.Group>
     </Layout>

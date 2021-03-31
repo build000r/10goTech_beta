@@ -63,11 +63,9 @@ const Signup = ({ createSitePermission }) => {
           type="Password"
         />
         <Form.Checkbox
-          label={`I agree to the Terms and Conditions`}
+          label="I agree to the Terms and Conditions"
           onChange={() => setValues({ ...values, agreeTos: !agreeTos })}
-        >
-          {" "}
-        </Form.Checkbox>
+        />
 
         {errors}
         <Form.Button disabled={!agreeTos} fluid onClick={clickSubmit}>

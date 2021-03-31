@@ -5,7 +5,7 @@ const privacyPolicy = ({ privacyPolicy }) => {
   return (
     <Layout
       smallLeaderboard
-      leaderboardData={{ header: "Terms of Service", subHeader: "" }}
+      leaderboardData={{ header: "Privacy Policy", subHeader: "" }}
     >
       <p class="p3">
         10goTech is committed to protecting your privacy. It governs the Privacy

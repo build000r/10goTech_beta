@@ -7,73 +7,73 @@ const tos = ({ tos }) => {
       smallLeaderboard
       leaderboardData={{ header: "User Agreement", subHeader: "" }}
     >
-      <p class="p4">
+      <p className="p4">
         10gotech LLC doing business as <strong>10goTech</strong> (&ldquo;we or
         &ldquo;10goTech&rdquo; or &ldquo;Company&rdquo;) provides Digital
         products &amp; consulting (&ldquo;web-application&rdquo; or
         &ldquo;System&rdquo;) for use by you (&ldquo;User&rdquo;).
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         <strong>
           By accessing, downloading, and/or using 10goTech and/or the Services,
           you agree to this User Agreement (&ldquo;Agreement&rdquo;). THESE USER
           TERMS CREATE A BINDING LEGAL AGREEMENT BETWEEN YOU AND 10goTech,
         </strong>
-        <span class="s1">&nbsp;</span>
+        <span className="s1">&nbsp;</span>
         <strong>
           10goTech and customers of 10gotech PLEASE READ THEM CAREFULLY. IF YOU
           DO NOT AGREE WITH ANY OF THESE TERMS, YOU SHOULD NOT ACCESS, DOWNLOAD,
           and/or use our website/service/app.
         </strong>
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         10goTech reserves the right to modify these Terms at any time by email
         or posting a notice on the Platform. Your access to the Platform after
         the notice is posted indicates acceptance of those changes.
       </p>
-      <p class="p5">
+      <p className="p5">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>Definitions</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         When the following words are used in these Terms, this is what they will
         mean:
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         <strong>Company</strong>: When this terms mention &ldquo;Company,&rdquo;
         &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our,&rdquo; it refers to
         10goTech that is responsible for the information under this Agreement.
       </p>
-      <p class="p4">
+      <p className="p4">
         <strong>Software</strong>: The online software applications provided by
         10goTech as part of the Services.
       </p>
-      <p class="p4">
+      <p className="p4">
         <strong>User</strong>: Means the customer, person, company, or
         organisation who purchases Subscription Service from 10goTech Platform.
       </p>
-      <p class="p4">
+      <p className="p4">
         <strong>License Fee</strong>: The subscription licence fee payable by
         the User to 10goTech as set out in this Agreement.
       </p>
-      <p class="p4">
+      <p className="p4">
         <strong>Intellectual Property Rights:</strong> Means (without
         limitation) any patents, rights to inventions, copyright and related
         rights, trade-marks and service marks, goodwill and the right to sue for
@@ -84,121 +84,121 @@ const tos = ({ tos }) => {
         rights and all similar or equivalent rights or forms of protection which
         subsist or will subsist now or in the future in any part of the world.
       </p>
-      <p class="p4">
+      <p className="p4">
         <strong>Notification:</strong> The email/push sent from 10goTech to a
         User.
       </p>
-      <p class="p6">
-        <span class="s2">
+      <p className="p6">
+        <span className="s2">
           <strong>Website:</strong>{" "}
           <a href="https://10gotech.com">
-            <span class="s3">https://10gotech.com</span>
+            <span className="s3">https://10gotech.com</span>
           </a>
         </span>
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>General Restrictions</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         You represent, warrant, and agree that you will not use the Website,
         interact with the Services, in a manner that:
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         (a) Infringes or violates the intellectual property rights or any other
         rights of anyone else (including 10goTech);
       </p>
-      <p class="p4">
+      <p className="p4">
         (b) Violates any law, international law, including, without limitation,
         any applicable export control laws;
       </p>
-      <p class="p4">
+      <p className="p4">
         (c) Is harmful, fraudulent, deceptive, threatening, harassing,
         defamatory, obscene, or otherwise objectionable;
       </p>
-      <p class="p4">
+      <p className="p4">
         (d) Jeopardizes the security of your 10goTech account or anyone
         else&rsquo;s (such as allowing someone else to log in to the Services as
         you);
       </p>
-      <p class="p4">
+      <p className="p4">
         (e) Attempts, in any manner, to obtain the password, account, or other
         security information from any other user;
       </p>
-      <p class="p4">
+      <p className="p4">
         (f) Violates the security of any computer network, or cracks any
         passwords or security encryption codes;
       </p>
-      <p class="p4">
+      <p className="p4">
         (g) Runs Mail list, Listserv, any form of auto-responder or
         &ldquo;spam&rdquo; on the Services, or any processes that run or are
         activated while you are not logged into the Services, or that otherwise
         interfere with the proper working of the Services (including by placing
         an unreasonable load on the Services&rsquo; infrastructure);
       </p>
-      <p class="p4">
+      <p className="p4">
         (h) &ldquo;Crawls,&rdquo; &ldquo;scrapes,&rdquo; or
         &ldquo;spiders&rdquo; any page, data, or portion of or relating to the
         Services or Content (through use of manual or automated means);
       </p>
-      <p class="p4">
+      <p className="p4">
         (i) Copies or stores any significant portion of the Content; or
       </p>
-      <p class="p4">
+      <p className="p4">
         (j) Decompiles, reverse engineers, or otherwise attempts to obtain the
         source code or underlying ideas or information of or relating to the
         Services.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         A VIOLATION OF THE FOREGOING IS GROUNDS FOR TERMINATION OF YOUR RIGHT TO
         USE OR ACCESS THE SERVICES.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>License &amp; Delivery</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         <strong>3.1 License</strong>
       </p>
-      <p class="p4">
+      <p className="p4">
         10goTech hereby grants You a nonexclusive, nontransferable license to
         use 10goTech Software for Customer&rsquo;s internal business purposes on
         your device, solely as a component of the System provided You comply
         with the restrictions set forth below in Section 3.2 (Restrictions on
         Software Rights). The license in the preceding sentence does not include
         use by any third party, and You shall not permit any such use.
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         <strong>3.2 Restrictions on Software Rights</strong>
       </p>
-      <p class="p2">
+      <p className="p2">
         <strong>&nbsp; &nbsp;&nbsp;</strong>
       </p>
-      <p class="p4">
+      <p className="p4">
         In consideration You acknowledge that all Intellectual Property Rights
         in the Software System anywhere in the world belong to 10goTech or its
         licensors, that rights in the Software are licensed (not sold) to you,
@@ -206,10 +206,10 @@ const tos = ({ tos }) => {
         right to use it in accordance with these Terms. You acknowledge that you
         have no right to have access to the System in source-code form.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         Without limiting the generality of the foregoing, User shall not: (a)
         modify, create derivative works from, distribute, publicly display,
         publicly perform, or sublicense the software; (b) use the Software for
@@ -218,18 +218,18 @@ const tos = ({ tos }) => {
         disassemble, or otherwise attempt to derive any of the Software&rsquo;s
         source code.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>Confidential Information</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         Confidential Information refers to the following one party to this
         Agreement (Discloser) discloses to the other (Recipient): (a) any
         document Discloser marks confidential; (b) any information Discloser
@@ -244,18 +244,18 @@ const tos = ({ tos }) => {
         Recipient&rsquo;s improper action or inaction; or (iv) is approved for
         release in writing by Discloser. Recipient is on notice that the
         Confidential information may include Discloser&rsquo;s valuable trade
-        secrets.<span class="Apple-converted-space">&nbsp;</span>
+        secrets.<span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p3">
+      <p className="p3">
         <strong>4.1 Nondisclosure</strong>
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         Recipient shall not use Confidential Information for any purpose other
         than to facilitate the transactions contemplated by this Agreement (the
         &ldquo;Purpose&rdquo;). Recipient: (a) shall not disclose Confidential
@@ -277,35 +277,35 @@ const tos = ({ tos }) => {
         Discloser in any effort to seek a protective order or otherwise to
         contest such required disclosure, at Discloser&rsquo;s expense.
       </p>
-      <p class="p5">
+      <p className="p5">
         <br />
       </p>
-      <p class="p3">
+      <p className="p3">
         <strong>4.2 Injunction</strong>
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         Recipient agrees that breach of this Article 4 would cause Discloser
         irreparable injury, for which monetary damages would not provide
         adequate compensation, and that in addition to any other remedy,
         Discloser will be entitled to injunctive relief against such breach or
         threatened breach, without proving actual damage or posting a bond or
-        other security.<span class="Apple-converted-space">&nbsp;</span>
+        other security.<span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p7">
+      <p className="p7">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>Property Rights</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         As between You and 10goTech, we own or license all data, content,
         graphics, audio clips, video clips, presentations, forms, artwork,
         images, photographs, functional components, and any software concepts
@@ -322,18 +322,18 @@ const tos = ({ tos }) => {
         10goTech, You have the right to use the Product Materials in accordance
         with these Terms.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>Subscription Terms</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         Your subscription begins as soon as your initial payment is processed.
         Your subscription will automatically renew each month without notice
         until you cancel. You authorise us to store your payment method(s) and
@@ -341,164 +341,164 @@ const tos = ({ tos }) => {
         cancel. We will automatically charge you the then-current rate for your
         plan, plus applicable taxes, every month upon renewal until you cancel.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         If your primary payment method fails, you authorise us to charge any
         other payment method in your account. If you have not provided us a
         backup payment method(s) and you fail to provide payment, or if all
         payment methods in your account fail, we may suspend your subscription.
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>Cancellation Terms</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         You can cancel your subscription anytime via your 10goTech account page.
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p4">
+      <p className="p4">
         Or the Agreement is otherwise terminated in accordance with its Terms,
         (and any Trial Period and Subscription Term(s) shall together constitute
         the &ldquo;Term&rdquo;).
       </p>
-      <p class="p4">
+      <p className="p4">
         Should you cancel after Trial Period, your payment in nonrefundable, and
         your service will be stopped immediately.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>Acceptable Use</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         You shall <strong>not</strong>
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p4">
+      <p className="p4">
         (a) provide System passwords or other log-in information to any
-        third-party;<span class="Apple-converted-space">&nbsp;</span>
+        third-party;<span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p4">
+      <p className="p4">
         (b) share nonpublic System features or content with any third-party;
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p4">
+      <p className="p4">
         (c) access the System in order to build a competitive product or
         service, to build a product using similar ideas, features, functions or
         graphics of the System, or to copy any ideas; or
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p4">
+      <p className="p4">
         (d) engage in web scraping or data scraping on or related to the System,
         including without limitation collection of information through any
         software that simulates human activity or any bot or web crawler.
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         If 10goTech suspects that you have violated the requirements of this
         section, we may suspend your access to the System without advanced
         notice, in addition to other remedies we may have.
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         10goTech is not obligated to take any action against you or any other
         System user or other third party for violating this Agreement, but we
         are free to take any such action it sees fit.
       </p>
-      <p class="p8">
+      <p className="p8">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>System Access</strong>
         </li>
       </ol>
-      <p class="p5">
+      <p className="p5">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         You are responsible and liable for:
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p4">
+      <p className="p4">
         (a) your use of the System, including unauthorised conduct and conduct
         that would violate the requirements of this Agreement;
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p4">
+      <p className="p4">
         (b) any use of the System through your account or passwords, whether
         authorized or not.
       </p>
-      <p class="p5">
+      <p className="p5">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>&nbsp; &nbsp; 10.Unauthorized Access</strong>
         </li>
       </ol>
-      <p class="p5">
+      <p className="p5">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         You agree to take reasonable steps to prevent unauthorized access to the
         System, including by protecting your password and other log-in
         information. You shall notify 10goTech immediately if you know of or
         suspect unauthorized use of the System or breach of its security.
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p5">
+      <p className="p5">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>&nbsp; &nbsp; 11.Compliance with Law</strong>
         </li>
       </ol>
-      <p class="p5">
+      <p className="p5">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         In using the Platform, you shall comply with all applicable laws,
         including laws governing the protection of personally identifiable
         information and other laws applicable to the protection of your content.
       </p>
-      <p class="p5">
+      <p className="p5">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>
             &nbsp; &nbsp; 12.Right to Retain, Delete, or Suspend Access
           </strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         You agree that you shall not rely on the System for backup or storage or
         your content. 10goTech may retain your content even if you are no longer
         using the System but is not required to provide copies of your content
@@ -506,18 +506,18 @@ const tos = ({ tos }) => {
         your access to your content through the System at any time and for any
         reason.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>&nbsp; &nbsp; 13.Disclaimer of Liability</strong>
         </li>
       </ol>
-      <p class="p5">
+      <p className="p5">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         10goTech is not liable, and you agree not to hold us (owners, founder,
         co-founders, executive team, employees, subsidiaries, affiliates,
         agents) responsible for any: DAMAGES FOR LOSS OF REVENUES, PROFITS,
@@ -526,29 +526,29 @@ const tos = ({ tos }) => {
         DAMAGES ARE BASED ON CONTRACT, TORT (INCLUDING NEGLIGENCE AND STRICT
         LIABILITY), WARRANTY, STATUTE OR OTHERWISE.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>&nbsp; &nbsp; 14.Disclaimer of Warranties</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         10goTech disclaims all warranties, express or implied regard to this
         service. 10goTech does not make representations of any kind or
         warranties available to you through the Platform.{" "}
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p4">
+      <p className="p4">
         No oral advice or written information given by 10goTech or any of its
         affiliates, employees, officers, directors, agents, or the like will
         create a warranty.
       </p>
-      <p class="p4">
+      <p className="p4">
         WITHOUT LIMITATING THE GENERALITY OF THE FOREGOING: (a) 10GOTECH HAS NO
         OBLIGATION TO INDEMNIFY OR DEFEND YOU AGAINST CLAIMS RELATED TO
         INFRINGMENT OF INTELLECTUAL PROPERTY; (b) 10GOTECH DOES NOT REPRESENT OR
@@ -558,20 +558,20 @@ const tos = ({ tos }) => {
         PRIVATE OR SECURE; AND (d) 10GOTECH DISCLAIMS ANY REPRESENTATION OR
         WARRANTY CONCERNING PRODUCTS OR SERVICES PROVIDED BY OTHER USERS OF THE
         SYSTEM OR OTHER THIRD PARTIES.
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>&nbsp; &nbsp; 15.Risk of Exposure</strong>
         </li>
       </ol>
-      <p class="p9">
+      <p className="p9">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         You understand and agree that sharing content online involves risks of
         unauthorized disclosure or exposure and that, in submitting your
         content, data to or transmitting it through the system, you assume the
@@ -579,60 +579,60 @@ const tos = ({ tos }) => {
         your content will not be exposed or disclosed through the System or
         through errors or the actions of third parties.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         The Risks exist and are really dangerous in the online environment. It
         is important to be aware of the risks that subsist on the internet and
         how to minimize them:
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol2">
-        <li class="li4">Exposure to inappropriate material</li>
-        <li class="li4">Illegal activities</li>
-        <li class="li4">Harassment</li>
-        <li class="li4">Legal and financial risks</li>
-        <li class="li4">Identity theft</li>
-        <li class="li4">Cyberattack</li>
-        <li class="li4">Invasion of privacy</li>
-        <li class="li4">Data breach</li>
-        <li class="li4">Scams</li>
+      <ol className="ol2">
+        <li className="li4">Exposure to inappropriate material</li>
+        <li className="li4">Illegal activities</li>
+        <li className="li4">Harassment</li>
+        <li className="li4">Legal and financial risks</li>
+        <li className="li4">Identity theft</li>
+        <li className="li4">Cyberattack</li>
+        <li className="li4">Invasion of privacy</li>
+        <li className="li4">Data breach</li>
+        <li className="li4">Scams</li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li4">
+      <ol className="ol1">
+        <li className="li4">
           <strong>&nbsp;Cybersecurity and Online Platform Disclaimer</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <li class="li4">
+      <ul className="ul1">
+        <li className="li4">
           <strong>Cyber Security&nbsp;</strong>is technologies, processes,
           procedures and controls that are designed to protect Digital
           Environments from Cyber Security Incidents;
         </li>
-        <li class="li4">
+        <li className="li4">
           <strong>Cyber Security Incident</strong> is the loss or unauthorised
           destruction, alteration, disclosure of, access to, or control of a
           Digital Environment;
         </li>
-        <li class="li4">
+        <li className="li4">
           <strong>Digital Environment&nbsp;</strong>is information technology
           systems, operational technology systems, networks, internet-enabled
           applications or devices and the data contained within such systems.
         </li>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         10goTech has implemented administrative, physical and technical
         safeguards to protect Client&rsquo;s Personal information. We shall
         ensure that all such safeguards, including the manner in which Personal
@@ -640,10 +640,10 @@ const tos = ({ tos }) => {
         and disclosed, comply with applicable data protection and privacy laws,
         as well as the terms and conditions of this Agreement.
       </p>
-      <p class="p2">
-        <span class="Apple-converted-space">&nbsp;</span>
+      <p className="p2">
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p4">
+      <p className="p4">
         You understand and agree that sharing content online involves risks of
         unauthorised disclosure or exposure and that, in submitting your content
         to or transmitting it through the system, you assume the risks. 10goTech
@@ -651,102 +651,104 @@ const tos = ({ tos }) => {
         not be exposed or disclosed through the System or through errors or the
         actions of third parties.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         10goTech is not liable, and you agree not to hold us responsible for any
         damages or losses arising out of or in connection with this Agreement,
         including, but not limited to:
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <li class="li4">
+      <ul className="ul1">
+        <li className="li4">
           Your use of or your inability to use our Site or Site Services;
         </li>
-        <li class="li4">Delays or disruptions in our Site or Site Services;</li>
-        <li class="li4">
+        <li className="li4">
+          Delays or disruptions in our Site or Site Services;
+        </li>
+        <li className="li4">
           Viruses or other malicious software got by accessing, or linking to,
           our Site or Site Services;
         </li>
-        <li class="li4">
+        <li className="li4">
           Glitches, bugs, errors, or inaccuracies of any kind in our Site or
           Site Services;
         </li>
-        <li class="li4">
+        <li className="li4">
           Damage to your hardware device from the use of the Site or Site
           Services;
         </li>
-        <li class="li4">
+        <li className="li4">
           The content, actions, or inactions of third parties&rsquo; use of the
           Site or Site Services;
         </li>
-        <li class="li4">
+        <li className="li4">
           A suspension or other action taken regarding your Account;
         </li>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>&nbsp; &nbsp; 17.Information Security Experts</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <ol class="ol2">
-          <li class="li4">
+      <ul className="ul1">
+        <ol className="ol2">
+          <li className="li4">
             Regularly we consult with our developers if urgent issues arise with
             the site or if there is scheduled feature releases or upgrades.
           </li>
-          <li class="li4">
+          <li className="li4">
             Hosting company will only be asked to access the data in the
             site&apos;s event being down or server issues.
           </li>
-          <li class="li4">
+          <li className="li4">
             We may consult with security experts to ensure continuous site
             safety and compliance.
           </li>
         </ol>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>&nbsp; &nbsp; 18.Cyberattack Disclaimer</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         A cyberattack is where an attacker tries to gain unauthorized access to
         an IT system for the purpose of theft, extortion, disruption on other
         nefarious reasons.
       </p>
-      <p class="p4">
+      <p className="p4">
         Normally, a cyberattack is carried out by someone who is not, or was
         not, a member of your organization.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         10goTech strives to protect Customers against Cyberattacks. We have
         implemented our system with security experts; we take different types of
         security measures, but the Internet environment is a 24/7 risky and
         vulnerable.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         We are not liable for any Cyberattack, damage, or loss on the World Wide
         Web. You expressly agree and acknowledge that the use of the 10goTech
         Platform is at your sole risk. In no event will 10goTech, 10goTech
@@ -757,56 +759,56 @@ const tos = ({ tos }) => {
         goodwill, use data or other intangible losses arising out of or related
         to your use of the site or the services.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p3">
+      <p className="p3">
         <strong>Types of Cyberattacks we take no responsibility</strong>:
       </p>
-      <p class="p9">
+      <p className="p9">
         <br />
       </p>
-      <ul class="ul1">
-        <ol class="ol2">
-          <li class="li4">
+      <ul className="ul1">
+        <ol className="ol2">
+          <li className="li4">
             <strong>Malware</strong>: is a type of application that can perform
             a variety of malicious tasks &ndash; spy on the user in other to
             obtain credentials or other valuable data or to cause disruption.
           </li>
         </ol>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <ol class="ol2">
-          <li class="li4">
+      <ul className="ul1">
+        <ol className="ol2">
+          <li className="li4">
             <strong>Phishing</strong>: is where the attacker tries to trick an
             unsuspecting victim into handing over valuable information, such as
             passwords, credit card details, intellectual property, and so on.
           </li>
         </ol>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <ol class="ol2">
-          <li class="li4">
+      <ul className="ul1">
+        <ol className="ol2">
+          <li className="li4">
             <strong>MITM - Man-in-the-middle-attack</strong> is where an
             attacker intercepts the communications between two parties in an
             attempt to spy on the victims, steal personal information or
             credentials, or perhaps alter the conversation in some way.
-            <span class="Apple-converted-space">&nbsp;</span>
+            <span className="Apple-converted-space">&nbsp;</span>
           </li>
         </ol>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <ol class="ol2">
-          <li class="li4">
+      <ul className="ul1">
+        <ol className="ol2">
+          <li className="li4">
             <strong>
               DDoS &ndash; Distributed Denial-of-Service attack&nbsp;
             </strong>
@@ -817,12 +819,12 @@ const tos = ({ tos }) => {
           </li>
         </ol>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <ol class="ol2">
-          <li class="li4">
+      <ul className="ul1">
+        <ol className="ol2">
+          <li className="li4">
             <strong>SQL injection</strong>: is a type of attack which is
             specific to SQL databases. The attacker can exploit the HTML form to
             execute queries that will create, read, modify, or delete the data
@@ -830,12 +832,12 @@ const tos = ({ tos }) => {
           </li>
         </ol>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <ol class="ol2">
-          <li class="li4">
+      <ul className="ul1">
+        <ol className="ol2">
+          <li className="li4">
             <strong>Zero-day exploit</strong>: is where cyber-criminals learn of
             a vulnerability that has been discovered in certain widely-used
             software applications and operation systems, and then target
@@ -844,12 +846,12 @@ const tos = ({ tos }) => {
           </li>
         </ol>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <ol class="ol2">
-          <li class="li4">
+      <ul className="ul1">
+        <ol className="ol2">
+          <li className="li4">
             <strong>DNS tunnelling</strong>: is a sophisticated attack vector
             that is designed to provide attackers with persistent access to a
             given target. Attacker are able to insert or tunnel malware into DNS
@@ -858,12 +860,12 @@ const tos = ({ tos }) => {
           </li>
         </ol>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <ol class="ol2">
-          <li class="li4">
+      <ul className="ul1">
+        <ol className="ol2">
+          <li className="li4">
             <strong>BEC &ndash; Business Email Compromise</strong>: is where the
             attacker targets specific individuals, usually an employee who has
             the ability to authorize financial transactions, in order to trick
@@ -873,28 +875,28 @@ const tos = ({ tos }) => {
           </li>
         </ol>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <ol class="ol2">
-          <li class="li4">
+      <ul className="ul1">
+        <ol className="ol2">
+          <li className="li4">
             <strong>Cryptojacking</strong>: is where cyber criminals compromise
             a user&rsquo;s computer or device and use it to mine
             cryptocurrencies, such as Bitcoin. Organizations don&rsquo;t have
             great visibility when it comes to this type of attack, which means
             that a hacker could use valuable network resources to mine a
             cryptocurrency without the organization having any knowledge of it.
-            <span class="Apple-converted-space">&nbsp;</span>
+            <span className="Apple-converted-space">&nbsp;</span>
           </li>
         </ol>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <ol class="ol2">
-          <li class="li4">
+      <ul className="ul1">
+        <ol className="ol2">
+          <li className="li4">
             <strong>Drive-by Attack</strong>: A drive-by-download&rsquo; attack
             is where an unsuspecting victim visits a website which in turn
             infects their device with malware. The website in question could be
@@ -904,12 +906,12 @@ const tos = ({ tos }) => {
           </li>
         </ol>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <ol class="ol2">
-          <li class="li4">
+      <ul className="ul1">
+        <ol className="ol2">
+          <li className="li4">
             <strong>Cross-site scripting (XSS) attacks</strong>: Cross-site
             scripting attacks are quite similar to SQL injection attacks,
             although instead of extracting data from a database, they are
@@ -918,12 +920,12 @@ const tos = ({ tos }) => {
           </li>
         </ol>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <ol class="ol2">
-          <li class="li4">
+      <ul className="ul1">
+        <ol className="ol2">
+          <li className="li4">
             <strong>Password attack</strong>: is a type of cyberattack where an
             attacker tries to guess, or crack a user&rsquo;s password. Some
             examples: Brute-force attack, Dictionary attack, Rainbow table
@@ -931,12 +933,12 @@ const tos = ({ tos }) => {
           </li>
         </ol>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <ol class="ol2">
-          <li class="li4">
+      <ul className="ul1">
+        <ol className="ol2">
+          <li className="li4">
             <strong>Eavesdropping attack</strong>: Sometimes referred as
             &ldquo;snooping&rdquo; or &ldquo;sniffing&rdquo;, an eavesdropping
             attack is where the attacker looks for unsecured network
@@ -945,12 +947,12 @@ const tos = ({ tos }) => {
           </li>
         </ol>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <ol class="ol2">
-          <li class="li4">
+      <ul className="ul1">
+        <ol className="ol2">
+          <li className="li4">
             <strong>AI-Powered attack</strong>: AI-powered software is able to
             slave machines to perform a huge DDoS attack. Also, can learn what
             kinds of approaches work best and adapt their attack methods
@@ -961,12 +963,12 @@ const tos = ({ tos }) => {
           </li>
         </ol>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ul class="ul1">
-        <ol class="ol2">
-          <li class="li4">
+      <ul className="ul1">
+        <ol className="ol2">
+          <li className="li4">
             <strong>IOT-Based attacks</strong>: is a type of attack where an
             attacker goes through an IOT (internet-of-things) device and exploit
             target such as medical devices, security systems, smart thermometers
@@ -974,27 +976,27 @@ const tos = ({ tos }) => {
           </li>
         </ol>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>
             &nbsp; &nbsp; 19.Cookies
-            <span class="Apple-converted-space">&nbsp;</span>
+            <span className="Apple-converted-space">&nbsp;</span>
           </strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         10goTech uses &quot;Cookies&quot; to identify the areas of our website
         that you have visited. A Cookie is a small piece of data stored on your
         computer or mobile device by your web browser. We use Cookies to
@@ -1005,41 +1007,41 @@ const tos = ({ tos }) => {
         in Cookies. By using our site, registering an account, or making a
         purchase, you consent to the fact that we use cookies.
       </p>
-      <p class="p10">
+      <p className="p10">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>
             &nbsp; &nbsp; 20.Privacy Policy
-            <span class="Apple-converted-space">&nbsp;</span>
+            <span className="Apple-converted-space">&nbsp;</span>
           </strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         You acknowledge the collection, use, disclosure and other handling of
         information described in our Privacy Policy{" "}
         <a href="https://www.10gotech.com/privacy-policy">
-          <span class="s3">https://www.10gotech.com/privacy-policy</span>
+          <span className="s3">https://www.10gotech.com/privacy-policy</span>
         </a>{" "}
         which we may update from time to time.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>&nbsp; &nbsp; 21.How we Protect your Data</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol2">
-        <li class="li4">
+      <ol className="ol2">
+        <li className="li4">
           We implement a variety of security measures to maintain the safety of
           your personal information when you use our service through the
           Platform. We offer the use of a secure server. All supplied
@@ -1048,14 +1050,14 @@ const tos = ({ tos }) => {
           providers&apos; database only to be accessible by those authorized
           with special access rights to such systems, and are required to keep
           the information confidential.
-          <span class="Apple-converted-space">&nbsp;</span>
+          <span className="Apple-converted-space">&nbsp;</span>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol2">
-        <li class="li4">
+      <ol className="ol2">
+        <li className="li4">
           After a transaction, your private information (credit cards, social
           security numbers, financials, etc.,) is never kept on file. We cannot,
           however, ensure or warrant the absolute security of any information
@@ -1064,107 +1066,107 @@ const tos = ({ tos }) => {
           breach of our physical, technical, or managerial safeguards.
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>&nbsp; &nbsp; 22.Legal Basis for Processing your Data</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         If you are from The United States, The United Kingdom or European
         Economic Area (EEA), 10goTech legal basis for collecting and using the
         personal information described in this Platform Agreement depends on the
         Personal Data we collect and the specific context in which we collect
         it.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">10goTech may process your Personal Data because:</p>
-      <ul class="ul1">
-        <li class="li4">We need to perform a contract with you;</li>
-        <li class="li4">You have given us permission to do so;</li>
-        <li class="li4">
+      <p className="p4">10goTech may process your Personal Data because:</p>
+      <ul className="ul1">
+        <li className="li4">We need to perform a contract with you;</li>
+        <li className="li4">You have given us permission to do so;</li>
+        <li className="li4">
           The processing is in our legitimate interests, and it&apos;s not
           overridden by your rights;
         </li>
-        <li class="li4">For payment processing purposes;</li>
-        <li class="li4">To comply with the law.</li>
+        <li className="li4">For payment processing purposes;</li>
+        <li className="li4">To comply with the law.</li>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>
             &nbsp; &nbsp; 23.Data Protection Rights Under GDPRs / CCPA / PIPEDA
             / LGPD/ PDPA
           </strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         You have certain data protection rights. 10goTech aims to take
         reasonable steps to allow you to correct, amend, delete, or limit the
         use of your Personal Data.
       </p>
-      <p class="p4">
+      <p className="p4">
         If you wish to be informed what Personal Data, we hold about you and if
         you want it to be removed from our systems, please contact us.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         In certain circumstances, you have the following data protection rights:
       </p>
-      <ul class="ul1">
-        <li class="li4">
+      <ul className="ul1">
+        <li className="li4">
           The right to access, update, or to delete&nbsp;the information we have
           on you.
         </li>
-        <li class="li4">
+        <li className="li4">
           The right of rectification.&nbsp;You have the right to have your
           information rectified if that information is inaccurate or incomplete.
         </li>
-        <li class="li4">
+        <li className="li4">
           The right to object.&nbsp;You have the right to object to our
           processing of your Personal Data.
         </li>
-        <li class="li4">
+        <li className="li4">
           The right of restriction.&nbsp;You have the right to request that we
           restrict the processing of your personal information.
         </li>
-        <li class="li4">
+        <li className="li4">
           The right to data portability.&nbsp;You have the right to be provided
           with a copy of your Personal Data in a structured, machine-readable
           and commonly used format.
         </li>
-        <li class="li4">
+        <li className="li4">
           The right to withdraw consent.&nbsp;You also have the right to
           withdraw your consent at any time where the 10goTech relied on your
           consent to process your personal information.
         </li>
       </ul>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>&nbsp; &nbsp; 24.Conduct and Behaviour</strong>
         </li>
       </ol>
-      <p class="p5">
+      <p className="p5">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         Without limiting other remedies, we may limit, suspend, or terminate
         your User account and access to our Services, restrict or prohibit
         access to, and your activities on, our Services, remove or demote, delay
@@ -1172,40 +1174,40 @@ const tos = ({ tos }) => {
         account, reduce or eliminate any discounts, and take technical and legal
         steps to keep you from using our Services if:
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol2">
-        <li class="li4">
+      <ol className="ol2">
+        <li className="li4">
           we think that you are creating problems or possible legal liabilities
           for us, our users, suppliers or other third parties;
         </li>
-        <li class="li4">
+        <li className="li4">
           we think that such restrictions will improve the security of the
           10goTech community or reduce our or another 10goTech user&apos;s
           exposure to financial liabilities;
         </li>
-        <li class="li4">
+        <li className="li4">
           we think that you are infringing the rights of third parties;
         </li>
-        <li class="li4">
+        <li className="li4">
           we think that you are acting inconsistently with the letter or spirit
           of this User Agreement or our policies or abuse our employees or
           users.
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>&nbsp; &nbsp; 25.Indemnification</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         You agree to defend, indemnify, and hold harmless 10goTech and the
         10goTech Associates, officers, directors, shareholders, parents,
         subsidiaries, agents, successors, and assigns, against any
@@ -1222,103 +1224,103 @@ const tos = ({ tos }) => {
         unreasonably, to reject any settlement or compromise that requires that
         it admit wrongdoing or liability or subjects it to any ongoing
         affirmative obligations.
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         In no event shall 10goTech, its employees, agents, and sub-contractors
         be liable to the Customer to the extent that the alleged infringement is
         based on:
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol2">
-        <li class="li4">
+      <ol className="ol2">
+        <li className="li4">
           A modification of the Services or Documentation by anyone other than
           10goTech, unless approved in writing by 10goTech; or
         </li>
-        <li class="li4">
+        <li className="li4">
           A combination of the Software with software or products not supplied
           or approved in writing by 10goTech;
         </li>
-        <li class="li4">
+        <li className="li4">
           The Customer&apos;s use of the Services or Documentation in a manner
           contrary to the instructions given to the Customer by 10goTech; or
         </li>
-        <li class="li4">
+        <li className="li4">
           The Customer&apos;s use of the Services or Documentation after notice
           of the alleged or actual infringement from 10goTech or any appropriate
           authority.
         </li>
       </ol>
-      <p class="p2">
-        <span class="Apple-converted-space">&nbsp; &nbsp;&nbsp;</span>
+      <p className="p2">
+        <span className="Apple-converted-space">&nbsp; &nbsp;&nbsp;</span>
       </p>
-      <p class="p4">
-        <span class="Apple-converted-space">&nbsp;</span>The Customer shall
+      <p className="p4">
+        <span className="Apple-converted-space">&nbsp;</span>The Customer shall
         defend, indemnify and hold harmless 10goTech against claims, actions,
         proceedings, losses, damages, expenses, and costs (including without
         limitation court costs and reasonable legal fees) arising out of or in
         connection with the Customer&apos;s use of the Services and/or
         Documentation, provided that:
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol2">
-        <li class="li4">
+      <ol className="ol2">
+        <li className="li4">
           Any such claim does not arise as a result of any breach by 10goTech of
           its obligations under the Agreement;
         </li>
-        <li class="li4">
+        <li className="li4">
           The Customer is given prompt notice of any such claim;
         </li>
-        <li class="li4">
+        <li className="li4">
           10goTech provides reasonable co-operation to the Customer in the
           defence and settlement of such claim, at the Customer&apos;s expense;
           and
         </li>
-        <li class="li4">
+        <li className="li4">
           The Customer is given sole authority to defend or settle the claim.
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>&nbsp; &nbsp; 26.Term &amp;Termination</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p3">
+      <p className="p3">
         <strong>22.1 Term</strong>
       </p>
-      <p class="p4">
+      <p className="p4">
         The Term of this Agreement (the &ldquo;Term&rdquo;) will commence on the
         Effective Date and continue until terminated by either you or 10goTech.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p3">
+      <p className="p3">
         <strong>22.2 Termination</strong>
       </p>
-      <p class="p4">
+      <p className="p4">
         Either party may terminate this Agreement for any reason at any time.
         You may terminate this Agreement by closing your account. 10goTech may
         terminate by notifying You in writing (including without limitation via
         text to your mobile device) and closing Your account.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         Cause for such termination shall include, but not be limited to: (a)
         violations of these Terms of Use; (b) a request by you to cancel or
         terminate your account; (c) discontinuance or material modification to
@@ -1331,18 +1333,18 @@ const tos = ({ tos }) => {
         any prepaid fees or amounts, and we will not be responsible to you or
         any third party for any damages that may result or arise out of such
         termination or suspension of your account and/or access to the 10goTech
-        Services.<span class="Apple-converted-space">&nbsp;</span>
+        Services.<span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p3">
+      <p className="p3">
         <strong>
           22.3 Effects of Termination
-          <span class="Apple-converted-space">&nbsp;</span>
+          <span className="Apple-converted-space">&nbsp;</span>
         </strong>
       </p>
-      <p class="p4">
+      <p className="p4">
         Upon termination of this Agreement, Customer shall cease all use of the
         Software. The following will survive termination or expiration of this
         Agreement: (a) any obligation of Customer to pay fees incurred before
@@ -1352,40 +1354,40 @@ const tos = ({ tos }) => {
         (Indemnification); and (c) any other provision of this Agreement that
         must survive to fulfill its essential purpose.
       </p>
-      <p class="p5">
+      <p className="p5">
         <br />
       </p>
-      <ol class="ol1">
-        <li class="li3">
+      <ol className="ol1">
+        <li className="li3">
           <strong>&nbsp; &nbsp; 27.Miscellaneous</strong>
         </li>
       </ol>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         <strong>Governing Law</strong>: This Agreement shall be governed by the
         laws of Delaware. The parties agree that the exclusive jurisdiction of
         any dispute arising from this Contract shall be heard and determined by
         the competent jurisdiction of the courts in Delaware.
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         <strong>Force Majeure</strong>: Neither party to these terms will be
         deemed liable for its failure to perform or delay in performance under
         these Terms where such delay or failure is beyond its control, such as
         were caused by internet or telecommunications failures, shortages of or
         inability to obtain labor, energy, or supplies, war, terrorism, riot,
         acts of God or governmental action, natural disasters.
-        <span class="Apple-converted-space">&nbsp;</span>
+        <span className="Apple-converted-space">&nbsp;</span>
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p4">
+      <p className="p4">
         <strong>Severability</strong>: If any provision of this Agreement is
         determined to be illegal or unenforceable, such provision shall be
         automatically reformed and construed so as to be valid, operative and
@@ -1393,32 +1395,32 @@ const tos = ({ tos }) => {
         preserving its original intent. The invalidity of any part of this
         Agreement shall not render invalid the remainder of this Agreement.
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p5">
+      <p className="p5">
         <br />
       </p>
-      <p class="p3">
+      <p className="p3">
         <strong>Contact us</strong>
       </p>
-      <p class="p4">
+      <p className="p4">
         Please Contact us if you have any questions or concerns regarding this
         Agreement.
       </p>
-      <p class="p11">
+      <p className="p11">
         <strong>e-mail</strong>: rob@10gotech.com
       </p>
-      <p class="p2">
+      <p className="p2">
         <br />
       </p>
-      <p class="p8">
+      <p className="p8">
         <br />
       </p>
-      <p class="p8">
+      <p className="p8">
         <br />
       </p>
-      <p class="p8">
+      <p className="p8">
         <br />
       </p>
     </Layout>
