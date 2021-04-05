@@ -189,16 +189,12 @@ const services = ({ serverOrders, siteUsers }) => {
         <Item.Content>
           <Item.Meta>{statusMsg}</Item.Meta>
           <Button.Group fluid>
-            <Button onClick={() => filterByStatus("created")}>created</Button>
+            <Button onClick={() => filterByStatus("created")}>New</Button>
             <Button onClick={() => filterByStatus("following-up")}>
-              following-up
+              Following-Up
             </Button>
-            <Button onClick={() => filterByStatus("closed-won")}>
-              closed-won
-            </Button>
-            <Button onClick={() => filterByStatus("closed-lost")}>
-              closed-lost
-            </Button>
+            <Button onClick={() => filterByStatus("closed-won")}>Won</Button>
+            <Button onClick={() => filterByStatus("closed-lost")}>Lost</Button>
           </Button.Group>
         </Item.Content>
       </Item>

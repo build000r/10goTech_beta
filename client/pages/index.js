@@ -17,11 +17,11 @@ const index = () => {
         return "/user/vacation";
       // end custom domains
       case "www":
-        return "/admin/rfp";
+        return "/admin/rfp/landing";
       case "10gotech":
-        return "/admin/rfp";
+        return "/admin/rfp/landing";
       case "rfp":
-        return "/admin/rfp";
+        return "/admin/rfp/landing";
       // domains without customizations yet
       default:
         return `/user/${url}`;
@@ -50,10 +50,10 @@ const index = () => {
     if (typeof subdomain === "string") {
       switch (subdomain) {
         case "rfp":
-          Router.push(`/admin/rfp`);
+          Router.push(`/admin/rfp/landing`);
           break;
         case "10gotech":
-          Router.push(`/admin/rfp`);
+          Router.push(`/admin/rfp/landing`);
           break;
         case "www":
           link = lookupSubdomainForCustomUrl(url);

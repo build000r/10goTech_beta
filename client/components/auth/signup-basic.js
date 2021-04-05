@@ -68,7 +68,12 @@ const Signup = ({ createSitePermission }) => {
         />
 
         {errors}
-        <Form.Button disabled={!agreeTos} fluid onClick={clickSubmit}>
+        <Form.Button
+          color="linkedin"
+          disabled={!agreeTos}
+          fluid
+          onClick={clickSubmit}
+        >
           Sign Up
         </Form.Button>
         <Message>

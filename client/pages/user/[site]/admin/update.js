@@ -85,7 +85,7 @@ const update = ({ site, config }) => {
             label=".10gotech.com"
             labelPosition="right"
             value={values.title}
-            placeholder={values.title || "Enter the new title of your site"}
+            placeholder={values.title || "Your title"}
             onChange={handleChange("title")}
           />
         </Form.Field>
@@ -94,9 +94,7 @@ const update = ({ site, config }) => {
 
           <Input
             value={values.homeTitle}
-            placeholder={
-              values.homeTitle || "Enter the new header on your homepage "
-            }
+            placeholder={values.homeTitle || "Your headline"}
             onChange={handleChange("homeTitle")}
           />
         </Form.Field>
@@ -104,7 +102,7 @@ const update = ({ site, config }) => {
           <label>Sub header</label>
           <Input
             value={values.tagline}
-            placeholder={values.tagline || "Enter new tagline..."}
+            placeholder={values.tagline || "Your tagline"}
             onChange={handleChange("tagline")}
           />
         </Form.Field>
@@ -113,7 +111,7 @@ const update = ({ site, config }) => {
 
           <Input
             value={values.aboutUsTitle}
-            placeholder={values.aboutUsTitle || "Enter new about us title..."}
+            placeholder={values.aboutUsTitle || "Your About Us Header"}
             onChange={handleChange("aboutUsTitle")}
           />
         </Form.Field>
@@ -121,7 +119,7 @@ const update = ({ site, config }) => {
           <label>Section Paragraph</label>
           <TextArea
             value={values.aboutUsBlurb}
-            placeholder={values.aboutUsBlurb || "Enter new aboutus blurb..."}
+            placeholder={values.aboutUsBlurb || "Your About Us Paragraph"}
             onChange={handleChange("aboutUsBlurb")}
           />
         </Form.Field>
