@@ -49,7 +49,9 @@ const index = () => {
         divided={useMediaQuery(600) ? false : true}
       >
         <Grid.Row textAlign="center">
-          <Grid.Column>
+          <Grid.Column
+            style={{ marginTop: useMediaQuery(600) ? "30px" : "0px" }}
+          >
             <Item>
               <Item.Content>
                 <Item.Header as="h3">
@@ -72,7 +74,9 @@ const index = () => {
               </Item.Content>
             </Item>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column
+            style={{ marginTop: useMediaQuery(600) ? "30px" : "0px" }}
+          >
             <Item>
               <Item.Content>
                 <Item.Header as="h3">Communicate efficiently</Item.Header>
@@ -94,7 +98,9 @@ const index = () => {
               </Item.Content>
             </Item>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column
+            style={{ marginTop: useMediaQuery(600) ? "30px" : "0px" }}
+          >
             <Item>
               <Item.Content>
                 <Item.Header as="h3">Keep up with new clients</Item.Header>
