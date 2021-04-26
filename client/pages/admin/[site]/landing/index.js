@@ -132,9 +132,8 @@ const index = () => {
       fullPageLeaderboard
       leaderboardData={{
         header: "Build Your Website Now",
-        subHeader:
-          "Straighforward website builder for service based businesses",
-        btnText: "Try me",
+        subHeader: "Website builder for service based businesses",
+        btnText: "TRY ME",
         btnPath: `/admin/${site}/signup`,
         dividerText: "Focus on what matters",
       }}
