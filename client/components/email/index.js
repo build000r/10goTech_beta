@@ -1,9 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Button } from "semantic-ui-react";
-if (typeof window !== "undefined") {
-  require("react-quill/dist/quill.snow.css");
-  const ReactQuill = require("react-quill");
-}
+import "react-quill/dist/quill.snow.css";
+import ReactQuill from "react-quill";
 
 const Editor = ({ onBodyChange, oldBody }) => {
   const [values, setValues] = useState({
