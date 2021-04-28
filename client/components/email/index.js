@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Button } from "semantic-ui-react";
 import "react-quill/dist/quill.snow.css";
-import ReactQuill from "react-quill";
+import ReactQuill from "react-quilljs";
 
 const Editor = ({ onBodyChange, oldBody }) => {
   const [values, setValues] = useState({
