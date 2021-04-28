@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Button } from "semantic-ui-react";
 import "react-quill/dist/quill.snow.css";
-import ReactQuill from "react-quilljs";
+import { useQuill } from "react-quilljs";
 
 const Editor = ({ onBodyChange, oldBody }) => {
   const [values, setValues] = useState({
@@ -9,6 +9,8 @@ const Editor = ({ onBodyChange, oldBody }) => {
   });
 
   const { editorHtml } = values;
+
+  const { quill, quillRef } = useQuill();
 
   const handleChange = (name) => (e) => {
     setValues({ ...values, [name]: e });
@@ -21,7 +23,8 @@ const Editor = ({ onBodyChange, oldBody }) => {
   return (
     <Fragment>
       {typeof window !== "undefined" && ReactQuill ? (
-        <ReactQuill
+        <div
+          ref={quillRef}
           style={{ minHeight: "375px" }}
           theme="snow"
           onChange={handleChange("editorHtml")}
