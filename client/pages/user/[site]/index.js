@@ -10,71 +10,56 @@ import {
   Icon,
 } from "semantic-ui-react";
 import VertCenterGrid from "../../../components/grid/vert-center";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import TinyCard from "../../../components/card/tiny-card";
 import Layout from "../../../components/layouts";
 
-const index = ({ currentUser, siteExists, siteInfo }) => {
-  const { site } = useRouter().query;
-
+const index = ({ site }) => {
   const isSaas = site === "rfp";
 
-  const { title, tagline, homeTitle, aboutUsTitle, aboutUsBlurb } = siteInfo;
+  const existingSite = () => {
+    if (site.title) {
+      const { title, tagline, homeTitle, aboutUsTitle, aboutUsBlurb } = site;
 
-  const isUserOfCurrentSite = currentUser
-    ? site === currentUser.userOfSite
-    : false;
+      return (
+        <Layout
+          fullPageLeaderboard
+          leaderboardData={{
+            header: homeTitle,
+            subHeader: tagline,
+            btnText: "Let's work together",
+            btnPath: `/user/${title}/services`,
+          }}
+        >
+          <Container centered style={{ marginBottom: "3rem" }}>
+            <Segment>
+              <Header textAlign="center">{aboutUsTitle}</Header>
+              <p style={{ padding: "0 0 25px 10px" }}>{aboutUsBlurb}</p>
+              <Grid columns={2} columns="equal">
+                <Grid.Row verticalAlign="middle">
+                  <Grid.Column>
+                    <Card.Group centered>
+                      <TinyCard
+                        header="View Services"
+                        // description="Specific & upfront details on the services we offer."
+                        linkTo={`/user/${title}/services`}
+                      />
 
-  const claimSite = () => (
-    <div>
-      a site by the name of {site} doesn't exist yet - do you want to claim it?
-      <Button>Claim</Button>
-      <Button>View a Demo</Button>
-      <Button>Learn More</Button>
-    </div>
-  );
-
-  const aboutBlurb = () => (
-    <p style={{ padding: "0 0 25px 10px" }}>{aboutUsBlurb}</p>
-  );
-
-  const existingSite = () => (
-    <Layout
-      fullPageLeaderboard
-      leaderboardData={{
-        header: homeTitle,
-        subHeader: tagline,
-        btnText: "Let's work together",
-        btnPath: `/user/${title}/services`,
-      }}
-    >
-      <Container centered style={{ marginBottom: "3rem" }}>
-        <Segment>
-          <Header textAlign="center">{aboutUsTitle}</Header>
-          {aboutBlurb()}
-          <Grid columns={2} columns="equal">
-            <Grid.Row verticalAlign="middle">
-              <Grid.Column>
-                <Card.Group centered>
-                  <TinyCard
-                    header="View Services"
-                    // description="Specific & upfront details on the services we offer."
-                    linkTo={`/user/${title}/services`}
-                  />
-
-                  <TinyCard
-                    header="Create Account"
-                    // description="Create an account to begin your service order."
-                    linkTo={`/user/${title}/auth/signup`}
-                  />
-                </Card.Group>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Segment>
-      </Container>
-    </Layout>
-  );
+                      <TinyCard
+                        header="Create Account"
+                        // description="Create an account to begin your service order."
+                        linkTo={`/user/${title}/auth/signup`}
+                      />
+                    </Card.Group>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Segment>
+          </Container>
+        </Layout>
+      );
+    }
+  };
 
   const saasPage = () => (
     <Fragment>
@@ -160,23 +145,47 @@ const index = ({ currentUser, siteExists, siteInfo }) => {
     </Fragment>
   );
 
-  return siteExists ? (isSaas ? saasPage() : existingSite()) : claimSite();
+  return true
+    ? isSaas
+      ? saasPage()
+      : existingSite()
+    : "this site does not exist";
 };
 
-index.getInitialProps = async (context) => {
-  const { data } = await buildClient(context).get("/api/users/currentuser");
+// index.getInitialProps = async (context) => {
+//   const { data } = await buildClient(context).get("/api/users/currentuser");
 
-  let siteExists = true;
+//   let siteExists = true;
 
-  try {
-    const res = await buildClient(context).get(
-      `/api/site/${context.query.site}`
-    );
+//   try {
+//     const res = await buildClient(context).get(
+//       `/api/site/${context.query.site}`
+//     );
 
-    return { ...data, siteExists, siteInfo: res.data };
-  } catch (error) {
-    return { ...data, siteExists: false };
-  }
-};
+//     return { ...data, siteExists, siteInfo: res.data };
+//   } catch (error) {
+//     return { ...data, siteExists: false };
+//   }
+// };
+
+export async function getServerSideProps(context) {
+  const { req, res, query } = context;
+
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=1, stale-while-revalidate=59"
+  );
+  const { data: site } = await buildClient(context).get(
+    `/api/site/${query.site}`
+  );
+
+  console.log("getServerSideProps", site);
+
+  return {
+    props: {
+      site,
+    },
+  };
+}
 
 export default index;

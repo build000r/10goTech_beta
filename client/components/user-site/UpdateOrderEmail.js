@@ -86,11 +86,12 @@ const UpdateOrderEmail = ({ email, path, ownerId }) => {
                 className="form-control"
                 value={body}
               /> */}
-
-              <Editor
-                onBodyChange={handleBodyChange}
-                oldBody={values.oldBody}
-              />
+              {values.oldBody && (
+                <Editor
+                  onBodyChange={handleBodyChange}
+                  oldBody={values.oldBody}
+                />
+              )}
             </Form.Field>
           </Form>
         </Card.Content>

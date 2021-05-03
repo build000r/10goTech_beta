@@ -4,8 +4,18 @@ import { buildClient } from "../../../../../api/build-client";
 import UpdateOrderEmail from "../../../../../components/user-site/UpdateOrderEmail";
 import Layout from "../../../../../components/layouts";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const index = ({ email, ownerId }) => {
+  const [renderClientSideComponent, setRenderClientSideComponent] = useState(
+    false
+  );
+
+  useEffect(() => {
+    // update some client side state to say it is now safe to render the client-side only component
+    setRenderClientSideComponent(true);
+  });
+
   return (
     <Layout
       leaderboardData={{
@@ -13,16 +23,25 @@ const index = ({ email, ownerId }) => {
         subHeader: "This is email is sent immediately upon receipt of order",
       }}
     >
-      <UpdateOrderEmail
-        email={email}
-        path={useRouter().asPath}
-        ownerId={ownerId}
-      />
+      {renderClientSideComponent && (
+        <UpdateOrderEmail
+          email={email}
+          path={useRouter().asPath}
+          ownerId={ownerId}
+        />
+      )}
     </Layout>
   );
 };
 
-index.getInitialProps = async (context) => {
+export async function getServerSideProps(context) {
+  const { req, res, query } = context;
+
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=1, stale-while-revalidate=59"
+  );
+
   const { data: product } = await buildClient(context).get(
     `/api/product/${context.query.site}/${context.query.service}`
   );
@@ -31,7 +50,9 @@ index.getInitialProps = async (context) => {
     `/api/notification/email-by-product/${product.id}`
   );
 
-  return { email, ownerId: product.site.ownerId };
-};
+  return {
+    props: { email, ownerId: product.site.ownerId },
+  };
+}
 
 export default index;

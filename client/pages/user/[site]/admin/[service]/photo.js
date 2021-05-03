@@ -1,6 +1,5 @@
 import { buildClient } from "../../../../../api/build-client";
 import ViewPhotos from "../../../../../components/user-site/ViewPhotos";
-import { useRouter } from "next/router";
 import UploadImage from "../../../../../components/util/UploadImage";
 import Layout from "../../../../../components/layouts";
 
@@ -12,20 +11,29 @@ const Photo = ({ ownerId, productId, photos }) => {
     >
       <UploadImage
         productId={productId}
-        path={useRouter().asPath}
+        // path={useRouter().asPath}
         ownerId={ownerId}
       />
-      <ViewPhotos photos={photos} />
+      {photos.length > 0 && <ViewPhotos photos={photos} />}
     </Layout>
   );
 };
 
-Photo.getInitialProps = async (context) => {
+// Photo.getInitialProps = async (context) => {};
+
+export async function getServerSideProps(context) {
+  const { req, res, query } = context;
+
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=1, stale-while-revalidate=59"
+  );
+
+  // res.setHeader("content-type", "multipart/form-data");
+
   const { data: product } = await buildClient(context).get(
     `/api/product/${context.query.site}/${context.query.service}`
   );
-
-  // photos by product id
 
   console.log(`/api/photos/${product.id}`);
 
@@ -33,7 +41,9 @@ Photo.getInitialProps = async (context) => {
     `/api/photos/${product.id}`
   );
 
-  return { ownerId: product.site.ownerId, productId: product.id, photos };
-};
+  return {
+    props: { ownerId: product.site.ownerId, productId: product.id, photos },
+  };
+}
 
 export default Photo;

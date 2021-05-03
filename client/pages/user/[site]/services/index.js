@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useMediaQuery } from "../../../../hooks/use-media-query";
 import Slideshow from "../../../../components/util/Slideshow";
 import Layout from "../../../../components/layouts";
+import { useEffect } from "react";
 
 const index = ({ products, isAdmin, siteTitle, site }) => {
   const adminLinks = (slug) =>
@@ -62,7 +63,7 @@ const index = ({ products, isAdmin, siteTitle, site }) => {
     </Card.Group>
   );
 
-  return (
+  return site ? (
     <Layout
       smallLeaderboard
       leaderboardData={{
@@ -95,6 +96,8 @@ const index = ({ products, isAdmin, siteTitle, site }) => {
         </Grid.Row>
       </Grid>
     </Layout>
+  ) : (
+    ""
   );
 };
 
@@ -107,6 +110,8 @@ index.getInitialProps = async (context) => {
     "/api/users/currentuser"
   );
   const user = currentUser.currentUser;
+
+  console.log(context.query.site);
 
   const { data: site } = await buildClient(context).get(
     `/api/site/${context.query.site}`
