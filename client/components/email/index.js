@@ -1,7 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Button, TextArea } from "semantic-ui-react";
-import { useQuill } from "react-quilljs";
-import "quill/dist/quill.snow.css";
+
+import dynamic from "next/dynamic";
+
+const { useQuill } = dynamic(() => import("react-quilljs"));
+
+dynamic(() => import("quill/dist/quill.snow.css"));
 
 const Editor = ({ onBodyChange, oldBody }) => {
   const [values, setValues] = useState({
