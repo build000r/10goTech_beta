@@ -4,7 +4,6 @@ import { Button, TextArea } from "semantic-ui-react";
 import dynamic from "next/dynamic";
 
 const { useQuill } = dynamic(() => import("react-quilljs"));
-
 dynamic(() => import("quill/dist/quill.snow.css"));
 
 const Editor = ({ onBodyChange, oldBody }) => {
