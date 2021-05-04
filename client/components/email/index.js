@@ -3,11 +3,11 @@ import { Button, TextArea } from "semantic-ui-react";
 
 import dynamic from "next/dynamic";
 
-// const useQuill = dynamic(async () => await import("react-quilljs/lib"), {
-//   ssr: false,
-// });
+const useQuill = dynamic(() =>
+  import("react-quilljs/lib").then((m) => m.useQuill)
+);
 
-// dynamic(() => import("quill/dist/quill.snow.css"), { ssr: false });
+dynamic(() => import("quill/dist/quill.snow.css"), { ssr: false });
 
 const Editor = ({ onBodyChange, oldBody }) => {
   const [values, setValues] = useState({
@@ -27,13 +27,7 @@ const Editor = ({ onBodyChange, oldBody }) => {
   };
 
   useEffect(async () => {
-    // if (useQuill && oldBody) {
-    if (oldBody) {
-      const { quill, quillRef } = dynamic(()=>(await import("react-quilljs")).default
-      , {ssr:false});
-
-      await import("quill/dist/quill.snow.css");
-
+    if (useQuill && oldBody) {
       setValues({
         ...values,
         editorHtml: oldBody,
@@ -46,8 +40,7 @@ const Editor = ({ onBodyChange, oldBody }) => {
         onBodyChange(quillRef.current.innerHTML);
       });
     }
-  }, [oldBody]);
-  // }, [quill, oldBody]);
+  }, [quill, oldBody]);
 
   return quill ? (
     <Fragment>
