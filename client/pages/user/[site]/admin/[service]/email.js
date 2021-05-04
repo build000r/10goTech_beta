@@ -8,8 +8,9 @@ import { useEffect, useState } from "react";
 
 import dynamic from "next/dynamic";
 
-const UpdateOrderEmail = dynamic(() =>
-  import("../../../../../components/user-site/UpdateOrderEmail")
+const UpdateOrderEmail = dynamic(
+  () => import("../../../../../components/user-site/UpdateOrderEmail"),
+  { ssr: false }
 );
 
 const index = ({ email, ownerId }) => {
