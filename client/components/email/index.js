@@ -29,7 +29,9 @@ const Editor = ({ onBodyChange, oldBody }) => {
   useEffect(async () => {
     // if (useQuill && oldBody) {
     if (oldBody) {
-      const { quill, quillRef } = (await import("react-quilljs")).default;
+      const { quill, quillRef } = dynamic(()=>(await import("react-quilljs")).default
+      , {ssr:false});
+
       await import("quill/dist/quill.snow.css");
 
       setValues({
