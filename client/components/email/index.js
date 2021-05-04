@@ -27,7 +27,8 @@ const Editor = ({ onBodyChange, oldBody }) => {
   };
 
   useEffect(async () => {
-    if (useQuill && oldBody) {
+    // if (useQuill && oldBody) {
+    if (oldBody) {
       const { quill, quillRef } = (await import("react-quilljs")).default;
       await import("quill/dist/quill.snow.css");
 
@@ -43,9 +44,10 @@ const Editor = ({ onBodyChange, oldBody }) => {
         onBodyChange(quillRef.current.innerHTML);
       });
     }
-  }, [quill, oldBody]);
+  }, [oldBody]);
+  // }, [quill, oldBody]);
 
-  return useQuill ? (
+  return quill ? (
     <Fragment>
       {console.log(editorHtml)}
       <div
