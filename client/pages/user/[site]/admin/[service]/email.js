@@ -1,17 +1,17 @@
 // create the email associated with this service
 
 import { buildClient } from "../../../../../api/build-client";
-// import UpdateOrderEmail from "../../../../../components/user-site/UpdateOrderEmail";
+import UpdateOrderEmail from "../../../../../components/user-site/UpdateOrderEmail";
 import Layout from "../../../../../components/layouts";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import dynamic from "next/dynamic";
 
-const UpdateOrderEmail = dynamic(
-  () => import("../../../../../components/user-site/UpdateOrderEmail"),
-  { ssr: false }
-);
+// const UpdateOrderEmail = dynamic(
+//   () => import("../../../../../components/user-site/UpdateOrderEmail"),
+//   { ssr: false }
+// );
 
 const index = ({ email, ownerId }) => {
   const [renderClientSideComponent, setRenderClientSideComponent] = useState(
