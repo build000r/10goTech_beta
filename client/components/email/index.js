@@ -3,7 +3,8 @@ import { Button, TextArea } from "semantic-ui-react";
 
 import dynamic from "next/dynamic";
 
-const useQuill = dynamic(() => import("react-quilljs").then((m) => m.useQuill));
+// const useQuill = dynamic(() => import ("react-quilljs") from .then((m) => m.useQuill));
+import useQuill from "react-quilljs";
 
 dynamic(() => import("quill/dist/quill.snow.css"), { ssr: false });
 
