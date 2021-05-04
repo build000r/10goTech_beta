@@ -3,8 +3,9 @@ import { Button, TextArea } from "semantic-ui-react";
 
 import dynamic from "next/dynamic";
 
-const { useQuill } = dynamic(() => import("react-quilljs"));
-dynamic(() => import("quill/dist/quill.snow.css"));
+const { useQuill } = dynamic(() => import("react-quilljs"), { ssr: false });
+
+dynamic(() => import("quill/dist/quill.snow.css"), { ssr: false });
 
 const Editor = ({ onBodyChange, oldBody }) => {
   const [values, setValues] = useState({
