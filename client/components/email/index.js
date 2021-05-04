@@ -10,11 +10,11 @@ dynamic(() => import("quill/dist/quill.snow.css"), { ssr: false });
 const Editor = ({ onBodyChange, oldBody }) => {
   const [values, setValues] = useState({
     editorHtml: oldBody,
+    quill: {},
+    quillRef: {},
   });
 
-  const { quill, quillRef } = useQuill();
-
-  const { editorHtml } = values;
+  const { editorHtml, quill, quillRef } = values;
 
   const handleChange = (name) => (e) => {
     setValues({ ...values, [name]: e });
@@ -25,8 +25,13 @@ const Editor = ({ onBodyChange, oldBody }) => {
   };
 
   useEffect(() => {
-    if (quill && oldBody) {
-      setValues({ ...values, editorHtml: oldBody });
+    if (useQuill && oldBody) {
+      setValues({
+        ...values,
+        editorHtml: oldBody,
+        quill: useQuill().quill,
+        quillRef: useQuill().quillRef,
+      });
       quill.clipboard.dangerouslyPasteHTML(editorHtml);
       quill.on("text-change", () => {
         onBodyChange(quillRef.current.innerHTML);
@@ -34,7 +39,7 @@ const Editor = ({ onBodyChange, oldBody }) => {
     }
   }, [quill, oldBody]);
 
-  return (
+  return useQuill ? (
     <Fragment>
       {console.log(editorHtml)}
       <div
@@ -95,6 +100,8 @@ const Editor = ({ onBodyChange, oldBody }) => {
         Save Email Body
       </Button> */}
     </Fragment>
+  ) : (
+    ""
   );
 };
 
