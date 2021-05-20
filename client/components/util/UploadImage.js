@@ -55,7 +55,7 @@ const UploadImage = ({ productId, path, ownerId }) => {
         <Form onSubmit={onFormSubmit} loading={loading}>
           <Header as="h2">Photo Upload</Header>
           <Form.Field>
-            <Input type="file" name="myImage" onChange={onChange} />
+            <input type="file" name="myImage" onChange={onChange} />
           </Form.Field>
           <Form.Field>
             <Form.Button

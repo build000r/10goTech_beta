@@ -2,9 +2,9 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Button, TextArea } from "semantic-ui-react";
 
 import dynamic from "next/dynamic";
-
+// next try is to import these modules on load of this component from the lst one
 // const useQuill = dynamic(() => import ("react-quilljs") from .then((m) => m.useQuill));
-import useQuill from "react-quilljs";
+import {useQuill} from "react-quilljs";
 
 dynamic(() => import("quill/dist/quill.snow.css"), { ssr: false });
 

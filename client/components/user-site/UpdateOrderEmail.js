@@ -10,8 +10,8 @@ import {
 } from "semantic-ui-react";
 import { useRequest } from "../../hooks/use-request";
 import Router, { useRouter } from "next/router";
-import DeleteProduct from "../admin-site/delete-product";
-import Editor from "../email";
+// import Editor from "../email";
+import EmailDraftJs from "../email/draftjs";
 
 const UpdateOrderEmail = ({ email, path, ownerId }) => {
   const [values, setValues] = useState({
@@ -89,7 +89,7 @@ const UpdateOrderEmail = ({ email, path, ownerId }) => {
               {values.oldBody &&
                 typeof window !==
                   "undefined"(
-                    <Editor
+                    <EmailDraftJs
                       onBodyChange={handleBodyChange}
                       oldBody={values.oldBody}
                     />

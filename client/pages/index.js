@@ -1,10 +1,10 @@
 import { Segment } from "semantic-ui-react";
 import { useEffect } from "react";
 import Router from "next/router";
+import LandingPage from "../components/admin-site/landing-page";
 
 const index = () => {
   const lookupSubdomainForCustomUrl = (url) => {
-    console.log("url pushed to", url);
     switch (url) {
       // custom domains
       case "hairytask":
@@ -17,11 +17,14 @@ const index = () => {
         return "/user/vacation";
       // end custom domains
       case "www":
-        return "/admin/rfp/landing";
+        console.log("www");
+        return "t";
       case "10gotech":
-        return "/admin/rfp/landing";
+        console.log("10gotech");
+        return "t";
       case "rfp":
-        return "/admin/rfp/landing";
+        console.log("rfp");
+        return "t";
       // domains without customizations yet
       default:
         return `/user/${url}`;
@@ -44,30 +47,34 @@ const index = () => {
     const subdomain = getSubdomain();
     const url = getUrl();
 
-    // console.log(subdomain, "subdomain");
-    // console.log(url, "url");
-
     if (typeof subdomain === "string") {
       switch (subdomain) {
-        case "rfp":
-          Router.push(`/admin/rfp/landing`);
-          break;
-        case "10gotech":
-          Router.push(`/admin/rfp/landing`);
-          break;
         case "www":
           link = lookupSubdomainForCustomUrl(url);
-          Router.push(link);
-          break;
+          return link === "t" ? <LandingPage /> : Router.push(link);
         default:
           link = lookupSubdomainForCustomUrl(subdomain);
-          Router.push(link);
-          break;
+          return link === "t" ? <LandingPage /> : Router.push(link);
       }
     }
   }, []);
 
-  return <Segment basic style={{ minHeight: "100vh" }} loading></Segment>;
+  return <LandingPage />;
 };
+
+export async function getServerSideProps({ req, res }) {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=1, stale-while-revalidate=59"
+  );
+
+  console.log("server side props", req.headers.host);
+
+  return {
+    props: {
+      host: req.headers.host,
+    },
+  };
+}
 
 export default index;

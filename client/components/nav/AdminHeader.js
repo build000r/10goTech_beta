@@ -21,7 +21,13 @@ const Header = ({ user }) => {
   const [menuFixed, setMenuFixed] = useState(false);
   const [active, setActive] = useState("");
 
-  const { site } = useRouter().query;
+  let { site } = useRouter().query;
+
+  if (typeof site === "undefined") {
+    site = "rfp";
+  }
+
+  console.log(site);
 
   const stickTopMenu = () => setMenuFixed(true);
   const unStickTopMenu = () => setMenuFixed(false);

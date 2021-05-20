@@ -15,6 +15,7 @@ const checkExistenceOfSite = async ({ context }) => {
 
     return { siteExists, siteInfo: site };
   } catch (error) {
+    console.log(error);
     return { siteExists: false, siteInfo: null };
   }
 };

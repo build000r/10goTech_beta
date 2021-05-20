@@ -14,6 +14,10 @@ import Router from "next/router";
 const Footer = ({ siteType }) => {
   const { site } = useRouter().query;
 
+  if (site === "undefined") {
+    site = "rfp";
+  }
+
   let isTempTitle = (sitetitle) =>
     sitetitle ? sitetitle.includes("Change_This_Title") : "";
 

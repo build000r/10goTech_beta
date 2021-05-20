@@ -19,6 +19,7 @@ function AppComponent({
 }) {
   const router = useRouter();
   const isAdmin = router.pathname.includes("/admin/[site]");
+  const isUser = router.pathname.includes("/user/[site]");
 
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -33,7 +34,7 @@ function AppComponent({
   }, [router.events]);
 
   const renderHeader = () => {
-    return isAdmin ? (
+    return !isUser ? (
       <AdminHeader user={user} siteExists={siteExists} />
     ) : (
       <SiteHeader
@@ -56,9 +57,19 @@ function AppComponent({
     </div>
   );
 
+  const homeLayout = () => (
+    <div>
+      <AdminHeader user={user} />
+
+      <Component {...pageProps} />
+
+      <Footer siteType={"admin"} />
+    </div>
+  );
+
   // mon 8:42 change
   // return <Layout layout={layout()} children={layout}></Layout>;
-  return layout();
+  return router.pathname === "/" ? homeLayout() : layout();
 
   // return siteExists ? layout() : <NoSite />;
 }
@@ -91,7 +102,68 @@ AppComponent.getInitialProps = async (appContext) => {
     domainUrl = appContext.ctx.req.headers.host;
   }
 
+  console.log(siteExists);
+
   return { pageProps, user, siteExists, siteInfo, authUserIsAdmin, domainUrl };
 };
+
+export async function getServerSideProps(appContext) {
+  const { req, res, query } = appContext.ctx;
+
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=1, stale-while-revalidate=59"
+  );
+
+  const { siteExists, siteInfo } = await checkExistenceOfSite({
+    context: appContext.ctx,
+  });
+
+  if (!siteExists) {
+    return { props: { siteExists } };
+  }
+
+  const client = buildClient(appContext.ctx);
+
+  const { data: currentUser } = await client.get("/api/users/currentuser");
+  const user = currentUser.currentUser;
+
+  let pageProps = {};
+
+  if (appContext.Component.getInitialProps) {
+    pageProps = await appContext.Component.getInitialProps(appContext.ctx);
+  }
+
+  const authUserIsAdmin = user && user.id === siteInfo.ownerId;
+
+  let domainUrl;
+
+  if (appContext.ctx.req) {
+    domainUrl = appContext.ctx.req.headers.host;
+  }
+
+  console.log(siteExists);
+
+  console.log(
+    "_app getServerSideProps",
+    pageProps,
+    user,
+    siteExists,
+    siteInfo,
+    authUserIsAdmin,
+    domainUrl
+  );
+
+  return {
+    props: {
+      pageProps,
+      user,
+      siteExists,
+      siteInfo,
+      authUserIsAdmin,
+      domainUrl,
+    },
+  };
+}
 
 export default AppComponent;
